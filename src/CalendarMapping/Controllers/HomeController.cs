@@ -25,7 +25,7 @@ namespace CalendarMapping.Controllers
             return View();
         }
 
-        //Register
+        //Register New Account
         public IActionResult Register()
         {
             return View();
@@ -45,7 +45,7 @@ namespace CalendarMapping.Controllers
             }
         }
 
-        //Login
+        //Log In User
         public IActionResult Login()
         {
             return View();
@@ -62,6 +62,14 @@ namespace CalendarMapping.Controllers
             {
                 return View();
             }
+        }
+
+        //Log Out User
+        [HttpPost]
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index");
         }
     }
 }
