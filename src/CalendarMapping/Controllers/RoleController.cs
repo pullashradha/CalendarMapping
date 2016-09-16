@@ -29,5 +29,28 @@ namespace CalendarMapping.Controllers
             var rolesList = _db.Roles.ToList();
             return View(rolesList);
         }
+
+        //Create Role
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateRoleViewModel model)
+        {
+            var newRole = new IdentityRole();
+            newRole.Name = model.Name;
+            IdentityResult createdRole = await _roleManager.CreateAsync(newRole);
+            if (createdRole.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
