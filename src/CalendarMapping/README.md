@@ -23,7 +23,7 @@ This program can only be accessed on a PC with Windows 10, and with Git, Visual 
   * Open the project solution in Visual Studio
   * Click the IIS Express play button on the top navbar in Visual Studio. The web page will automatically launch in Google Chrome
 
-## Testing Authentication/Authorization Capabilities
+## Testing Authentication/Authorization
 
 Sample users have been created by the developer for program testing use.
 
