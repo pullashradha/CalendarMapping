@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace CalendarMapping.Models
 {
-    public class Events
+    public class ApplicationEvent
     {
+
     }
 }

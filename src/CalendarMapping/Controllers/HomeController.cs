@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CalendarMapping.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace CalendarMapping.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: /<controller>/
+        private readonly ApplicationDbContext _db;
+        public HomeController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
         public IActionResult Index()
         {
             return View();

@@ -13,7 +13,7 @@ using CalendarMapping.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace DotNetRPG
+namespace CalendarMapping
 {
     public class Startup
     {
@@ -28,27 +28,20 @@ namespace DotNetRPG
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
             services.AddEntityFramework()
-                .AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDbContext<ApplicationDbContext>(options =>
+                    options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
         }
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app)
         {
-            loggerFactory.AddConsole();
-            app.UseIdentity();
+            //2
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
 
             app.Run(async (context) =>
             {
