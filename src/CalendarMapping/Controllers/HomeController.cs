@@ -24,12 +24,34 @@ namespace CalendarMapping.Controllers
         {
             return View();
         }
+
+        //Register
+        public IActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            var newUser = new ApplicationUser { UserName = model.Username };
+            IdentityResult registeredUser = await _userManager.CreateAsync(newUser, model.Password);
+            if (registeredUser.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        //Login
         public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: true, lockoutOnFailure: false);
             if (signInResult.Succeeded)
