@@ -38,7 +38,7 @@ namespace CalendarMapping
         }
         public void Configure(IApplicationBuilder app)
         {
-            //2
+            app.UseIdentity();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
