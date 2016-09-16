@@ -1,0 +1,28 @@
+﻿@using CalendarMapping.ViewModels
+@model CreateEventViewModel
+
+@{ 
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a New Event</h1>
+<hr />
+
+<h2>@Html.ActionLink("View All Events", "Index")</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Label("Description")
+    @Html.TextBox("Description")
+
+    @Html.Label("Date")
+    @Html.TextBox("Date")
+
+    @Html.Label("Address")
+    @Html.TextBox("Address")
+
+    <input type="submit" value="Save" />
+}

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CalendarMapping.Migrations
 {
-    public partial class first : Migration
+    public partial class CalendarMappingDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

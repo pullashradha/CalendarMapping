@@ -48,7 +48,7 @@ namespace CalendarMapping
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("<h1>Sorry, an error has occurred, please return <a href='Index'>Home</a></h1>");
+                await context.Response.WriteAsync("<h1>Sorry, an error has occurred, please return <a href='/'>Home</a></h1>");
             });
         }
     }

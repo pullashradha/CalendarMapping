@@ -8,8 +8,8 @@ using CalendarMapping.Models;
 namespace CalendarMapping.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160916142049_initial")]
-    partial class initial
+    [Migration("20160916200330_CalendarMappingDB")]
+    partial class CalendarMappingDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
