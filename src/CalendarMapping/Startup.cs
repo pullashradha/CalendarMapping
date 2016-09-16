@@ -32,6 +32,9 @@ namespace CalendarMapping
             services.AddEntityFramework()
                 .AddDbContext<ApplicationDbContext>(options =>
                     options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
         }
         public void Configure(IApplicationBuilder app)
         {
