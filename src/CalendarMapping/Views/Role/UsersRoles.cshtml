@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CalendarMapping.Models.ApplicationDbContext>
+
+@{ 
+    ViewData["Title"] = "UsersRoles";
+}
+
+<h1>List All Users' Roles</h1>
+<hr />
+
+
+@foreach(var relation in Model)
+{
+    <h2>@relation.Roles.Name</h2>
+    <ul>
+        <li>@relation.Users.Username</li>
+    </ul>
+}

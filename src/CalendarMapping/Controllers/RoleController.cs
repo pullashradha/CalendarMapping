@@ -31,12 +31,13 @@ namespace CalendarMapping.Controllers
         }
 
         //Create Role
-
+        [Authorize(Roles = "UltimateAdmin, Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "UltimateAdmin, Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateRoleViewModel model)
         {
@@ -52,5 +53,36 @@ namespace CalendarMapping.Controllers
                 return View();
             }
         }
+
+        //Add Role to User
+        public IActionResult AddUser()
+        {
+            var rolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = rolesList;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddUser(string UserName, string roleName)
+        {
+            ApplicationUser selectedUser = _db.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            IdentityResult result = await _userManager.AddToRoleAsync(selectedUser, roleName);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("UsersRoles");
+            }
+            else
+            {
+                var rolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+                ViewBag.Roles = rolesList;
+                return View();
+            }
+        }
+        /*
+        public IActionResult UsersRoles()
+        {
+            var combinedList = _db.UserRoles.ToList();
+            return View(combinedList);
+        }*/
     }
 }

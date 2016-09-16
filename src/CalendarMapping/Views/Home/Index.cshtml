@@ -11,6 +11,7 @@
 {
     <h2>Welcome @User.Identity.Name!</h2>
     <h3>@Html.ActionLink("View All Events", "Index", "Event")</h3>
+    <h3>@Html.ActionLink("View All Roles", "Index", "Role")</h3>
     @using (Html.BeginForm("LogOut", "Home"))
     {
         <input type="submit" value="Log Out" />
