@@ -1,53 +1,80 @@
-﻿<!DOCTYPE html>
+﻿<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <script src="~/wwwroot/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+        <script src="~/wwwroot/lib/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="~/wwwroot/lib/bootstrap/dist/css/bootstrap.css" type="text/css" />
+        <title>@ViewBag.Title</title>
+    </head>
+    <body>
+    @*Boostrap & jQuery Start*@
+        <environment names="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/site.css" />
+        </environment>
+        <environment names="Staging,Production">
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>
+        <environment names="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/site.js" asp-append-version="true"></script>
+        </environment>
+        <environment names="Staging,Production">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
+    @*Boostrap & jQuery End*@
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <script src="~/wwwroot/lib/jquery/dist/jquery.js" type="text/javascript"></script>
-    <script src="~/wwwroot/lib/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="~/wwwroot/lib/bootstrap/dist/css/bootstrap.css" type="text/css" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-@*Boostrap & jQuery Start*@
-    <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-@*Boostrap & jQuery End*@
+        @if (User.Identity.IsAuthenticated)
+        {
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <a class="navbar-brand navbar-left" href="/">Calendar Mapping</a>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/User">@User.Identity.Name<span class="sr-only">(current)</span></a></li>
+                        <li><a href="/Event">Event Manager</a></li>
+                        @if (User.IsInRole("SiteBoss"))
+                        {
+                            <li><a href="/Role">Role Manager</a></li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+            <br />
+            <br />
+            <br />
+            <br />
+        }
+        else
+        {
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <a class="navbar-brand navbar-left" href="/">Calendar Mapping</a>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Account/Login">Login</a></li>
+                        <li><a href="/Account/Register">Register</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <br />
+            <br />
+            <br />
+            <br />
+        }
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <a class="navbar-brand navbar-left">Calendar Mapping</a>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a>Home<span class="sr-only">(current)</span></a></li>
-            </ul>
+        <div>
+            @RenderBody()
         </div>
-    </nav>
-    <div>
-        @RenderBody()
-    </div>
-</body>
+    </body>
 </html>

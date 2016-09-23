@@ -25,6 +25,7 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
+        [Authorize(Roles = "SiteBoss")]
         public IActionResult Index()
         {
             var rolesList = _db.Roles.ToList();
@@ -36,7 +37,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Create New Role
-        //[Authorize(Roles = "UltimateAdmin, Admin")]
+        [Authorize(Roles = "SiteBoss")]
         [HttpPost]
         public async Task<IActionResult> Create(string newName)
         {
@@ -54,6 +55,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Add User to Role
+        [Authorize(Roles = "SiteBoss")]
         [HttpPost]
         public async Task<IActionResult> AddUser(string username, string roleName)
         {
