@@ -72,19 +72,5 @@ namespace CalendarMapping.Controllers
                 return View();
             }
         }
-
-
-        
-        //public IActionResult UsersRoles()
-        //{
-        //    var combinedList = _db.UserRoles.ToList();
-        //    return View(combinedList);
-        //}
-        //public IActionResult AddUser()
-        //{
-        //    var rolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-        //    ViewBag.Roles = rolesList;
-        //    return View();
-        //}
     }
 }
