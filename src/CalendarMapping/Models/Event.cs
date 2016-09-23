@@ -21,6 +21,8 @@ namespace CalendarMapping.Models
 
         public string Address { get; set; }
 
+        public virtual User User { get; set; }
+
         public Event(string description, DateTime date, string address, int id = 0)
         {
             Description = description;

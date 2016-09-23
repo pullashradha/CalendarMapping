@@ -9,30 +9,36 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace CalendarMapping.Controllers
 {
     public class EventController : Controller
     {
         private readonly DBContext _db;
+        private readonly UserManager<User> _userManager;
 
-        public EventController(DBContext db)
+        public EventController(UserManager<User> userManager, DBContext db)
         {
+            _userManager = userManager;
             _db = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var eventsList = _db.Events.ToList();
-
-            return View(eventsList);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            return View(_db.Events.Where(x => x.User.Id == currentUser.Id));
         }
 
         //Create a New Event
         [HttpPost]
-        public IActionResult Create(string newDescription, DateTime newDate, string newAddress)
+        public async Task<IActionResult> Create(string newDescription, DateTime newDate, string newAddress)
         {
             Event newEvent = new Event(newDescription, newDate, newAddress);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            newEvent.User = currentUser;
             _db.Events.Add(newEvent);
             _db.SaveChanges();
 
