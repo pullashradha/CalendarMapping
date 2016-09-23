@@ -6,6 +6,7 @@ using CalendarMapping.Models;
 using CalendarMapping.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CalendarMapping.Controllers
 {
@@ -64,6 +65,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Log Out User
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public async Task<IActionResult> LogOut()
         {

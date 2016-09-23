@@ -21,6 +21,7 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         public IActionResult Index()
         {
             var username = User.Identity.Name;

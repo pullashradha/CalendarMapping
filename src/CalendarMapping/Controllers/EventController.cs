@@ -24,6 +24,7 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -32,6 +33,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Create a New Event
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public async Task<IActionResult> Create(string newDescription, DateTime newDate, DateTime newStartTime, DateTime newEndTime, string newAddress)
         {
