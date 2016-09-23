@@ -29,7 +29,8 @@ namespace CalendarMapping.Controllers
         {
             var newUser = new User { FirstName = model.FirstName, LastName = model.LastName, UserName = model.Username };
             IdentityResult registeredUser = await _userManager.CreateAsync(newUser, model.Password);
-            if (registeredUser.Succeeded)
+            IdentityResult userAddedToRole = await _userManager.AddToRoleAsync(newUser, "AccountHolder");
+            if (registeredUser.Succeeded && userAddedToRole.Succeeded)
             {
                 return RedirectToAction("Index", "Home");
             }
