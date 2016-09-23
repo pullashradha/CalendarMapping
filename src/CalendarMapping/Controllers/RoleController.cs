@@ -72,5 +72,16 @@ namespace CalendarMapping.Controllers
                 return View();
             }
         }
+
+        //Delete A Role
+        [HttpPost]
+        public IActionResult Delete(string roleName)
+        {
+            var selectedRole = _db.Roles.FirstOrDefault(r => r.Name == roleName);
+            _db.Roles.Remove(selectedRole);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }
