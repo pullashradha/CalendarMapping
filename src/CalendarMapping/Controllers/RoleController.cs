@@ -24,27 +24,26 @@ namespace CalendarMapping.Controllers
             _userManager = userManager;
             _db = db;
         }
+
         public IActionResult Index()
         {
             var rolesList = _db.Roles.ToList();
+
+            var userRolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            ViewBag.Roles = userRolesList;
+
             return View(rolesList);
         }
 
-        //Create Role
-        //[Authorize(Roles = "UltimateAdmin, Admin")]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
+        //Create New Role
         //[Authorize(Roles = "UltimateAdmin, Admin")]
         [HttpPost]
-        public async Task<IActionResult> Create(CreateRoleViewModel model)
+        public async Task<IActionResult> Create(string newName)
         {
             var newRole = new IdentityRole();
-            newRole.Name = model.Name;
-            IdentityResult createdRole = await _roleManager.CreateAsync(newRole);
-            if (createdRole.Succeeded)
+            newRole.Name = newName;
+            IdentityResult result = await _roleManager.CreateAsync(newRole);
+            if (result.Succeeded)
             {
                 return RedirectToAction("Index");
             }
@@ -54,22 +53,15 @@ namespace CalendarMapping.Controllers
             }
         }
 
-        //Add Role to User
-        public IActionResult AddUser()
-        {
-            var rolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-            ViewBag.Roles = rolesList;
-            return View();
-        }
-
+        //Add User to Role
         [HttpPost]
-        public async Task<IActionResult> AddUser(string UserName, string roleName)
+        public async Task<IActionResult> AddUser(string username, string roleName)
         {
-            User selectedUser = _db.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            IdentityResult result = await _userManager.AddToRoleAsync(selectedUser, roleName);
+            User user = _db.Users.Where(u => u.UserName.Equals(username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            IdentityResult result = await _userManager.AddToRoleAsync(user, roleName);
             if (result.Succeeded)
             {
-                return RedirectToAction("UsersRoles");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -78,11 +70,19 @@ namespace CalendarMapping.Controllers
                 return View();
             }
         }
-        /*
-        public IActionResult UsersRoles()
-        {
-            var combinedList = _db.UserRoles.ToList();
-            return View(combinedList);
-        }*/
+
+
+        
+        //public IActionResult UsersRoles()
+        //{
+        //    var combinedList = _db.UserRoles.ToList();
+        //    return View(combinedList);
+        //}
+        //public IActionResult AddUser()
+        //{
+        //    var rolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+        //    ViewBag.Roles = rolesList;
+        //    return View();
+        //}
     }
 }

@@ -35,6 +35,7 @@ namespace CalendarMapping.Controllers
             Event newEvent = new Event(newDescription, newDate, newAddress);
             _db.Events.Add(newEvent);
             _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }

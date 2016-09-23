@@ -6,8 +6,11 @@ using CalendarMapping.Models;
 using CalendarMapping.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
-namespace UsersRoles.Controllers
+namespace CalendarMapping.Controllers
 {
     public class UserController : Controller
     {
@@ -23,6 +26,7 @@ namespace UsersRoles.Controllers
             var username = User.Identity.Name;
             var currentUser = _db.Users.SingleOrDefault(u => u.UserName == username);
             string fullName = currentUser.FirstName + " " + currentUser.LastName;
+
             ViewData.Add("FullName", fullName);
 
             return View();

@@ -7,7 +7,7 @@ using CalendarMapping.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 
-namespace UsersRoles.Controllers
+namespace CalendarMapping.Controllers
 {
     public class AccountController : Controller
     {

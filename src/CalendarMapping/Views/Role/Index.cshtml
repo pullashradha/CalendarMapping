@@ -1,20 +1,87 @@
-﻿@model IEnumerable<Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole>
+﻿@using CalendarMapping.Models
+@model IEnumerable<Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole>
 
-@{ 
+@{
     ViewData["Title"] = "Index";
 }
 
-<h1>List of All Roles</h1>
-<hr />
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#new-role-form").hide();
+                $("#display-role-form").click(function () {
+                    $("#new-role-form").show();
+                    $("#display-role-form").hide();
+                });
+                $("#new-role-form").submit(function (event) {
+                    event.preventDefault();
+                    $.ajax ({
+                        type: "POST",
+                        dataType: "html",
+                        data: $(this).serialize(),
+                        url: '@Url.Action("Create")',
+                        success: function (result) {
+                            location.reload();
+                        }
+                    });
+                });
+                $("#add-user-form").submit(function (event) {
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        dataType: "html",
+                        data: $(this).serialize(),
+                        url: '@Url.Action("AddUser")',
+                        success: function (result) {
+                            location.reload();
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Role Manager</h1>
+        <br />
+        <hr />
 
-<h2>@Html.ActionLink("Create New Role", "Create")</h2>
-<h2>@Html.ActionLink("Manage User Roles", "AddUser")</h2>
-<h2>@Html.ActionLink("View Users' Roles", "UsersRoles")</h2>
+        <div>
+            <button id="display-role-form">Create a New Role</button>
 
-<ul>
-    @foreach (var role in Model)
-    {
-        <li>@role.Name |</li>
-    }
-</ul>
+            <form action="Create" method="post" id="new-role-form">
+                <h2>Create Role</h2>
+                <label for="roleName">Role Name</label>
+                <input type="text" name="newName" />
+                <button type="submit">Save</button>
+            </form>
+        </div>
+        <br />
+        <hr />
+
+        <div>
+            <h2>Roles List</h2>
+            <ul>
+                @foreach (var role in Model)
+                {
+                    <li>@role.Name</li>
+                }
+            </ul>
+        </div>
+        <br />
+        <hr />
+
+        <div>
+            <h2>Add User to Role</h2>
+            <form action="AddUser" method="post" id="add-user-form">
+                <label>Username</label>
+                <input name="username" />
+                <label>Roles</label>
+                @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </body>
+</html>
 

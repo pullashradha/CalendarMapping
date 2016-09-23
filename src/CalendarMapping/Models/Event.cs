@@ -29,7 +29,6 @@ namespace CalendarMapping.Models
             Id = id;
         }
 
-
         public Event () { }
     }
 }

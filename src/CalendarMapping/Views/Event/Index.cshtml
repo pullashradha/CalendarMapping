@@ -6,25 +6,25 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script>
-                $(document).ready(function () {
-                    $("#new-event-form").hide();
-                    $("#display-event-form").click(function () {
-                        $("#new-event-form").show();
-                        $("#display-event-form").hide();
-                    });
-                    $("#new-event-form").submit(function (event) {
-                        event.preventDefault();
-                        $.ajax ({
-                            type: "POST",
-                            dataType: "html",
-                            data: $(this).serialize(),
-                            url: '@Url.Action("Create")',
-                            success: function (result) {
-                                location.reload();
-                            }
-                        });
+            $(document).ready(function () {
+                $("#new-event-form").hide();
+                $("#display-event-form").click(function () {
+                    $("#new-event-form").show();
+                    $("#display-event-form").hide();
+                });
+                $("#new-event-form").submit(function (event) {
+                    event.preventDefault();
+                    $.ajax ({
+                        type: "POST",
+                        dataType: "html",
+                        data: $(this).serialize(),
+                        url: '@Url.Action("Create")',
+                        success: function (result) {
+                            location.reload();
+                        }
                     });
                 });
+            });
         </script>
     </head>
     <body>
