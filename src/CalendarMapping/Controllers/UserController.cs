@@ -33,6 +33,7 @@ namespace CalendarMapping.Controllers
             return View();
         }
 
+        [Authorize(Roles = "SiteBoss")]
         public IActionResult List()
         {
             var usersList = _db.Users.ToList();
