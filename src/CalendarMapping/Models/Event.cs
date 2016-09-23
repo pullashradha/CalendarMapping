@@ -20,5 +20,16 @@ namespace CalendarMapping.Models
         public DateTime Date { get; set; }
 
         public string Address { get; set; }
+
+        public Event(string description, DateTime date, string address, int id = 0)
+        {
+            Description = description;
+            Date = date;
+            Address = address;
+            Id = id;
+        }
+
+
+        public Event () { }
     }
 }

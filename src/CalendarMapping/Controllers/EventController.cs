@@ -14,43 +14,28 @@ namespace CalendarMapping.Controllers
 {
     public class EventController : Controller
     {
-        /*
-        private readonly ApplicationDbContext _db;
-        private readonly RoleManager<ApplicationEvent> _eventManager;
+        private readonly DBContext _db;
 
-        public EventController(RoleManager<ApplicationEvent> eventManager, ApplicationDbContext db)
+        public EventController(DBContext db)
         {
-            _eventManager = eventManager;
             _db = db;
         }
+
         public IActionResult Index()
         {
             var eventsList = _db.Events.ToList();
+
             return View(eventsList);
         }
 
-        //Create Event
-
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //Create a New Event
         [HttpPost]
-        public async Task<IActionResult> Create(CreateEventViewModel model)
+        public IActionResult Create(string newDescription, DateTime newDate, string newAddress)
         {
-            var newEvent = new ApplicationEvent ();
-            newEvent.Description = model.Description;
-            newEvent.Date = model.Date;
-            newEvent.Address = model.Address;
-            IdentityResult createdEvent = await _eventManager.CreateAsync(newEvent);
-            if (createdEvent.Succeeded)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View();
-            }
-        }*/
+            Event newEvent = new Event(newDescription, newDate, newAddress);
+            _db.Events.Add(newEvent);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
