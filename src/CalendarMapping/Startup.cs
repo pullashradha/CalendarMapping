@@ -39,6 +39,7 @@ namespace CalendarMapping
         public void Configure(IApplicationBuilder app)
         {
             app.UseIdentity();
+            app.UseStaticFiles();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -48,7 +49,7 @@ namespace CalendarMapping
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("<h1>An error has occurred :(");
+                await context.Response.WriteAsync("<h1>An error has occurred :(</h1>");
             });
         }
     }
