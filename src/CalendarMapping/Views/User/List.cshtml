@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CalendarMapping.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>User Manager</h1>
+<br />
+<hr />
+
+<div>
+    <h2>Users List</h2>
+    <ul>
+        @foreach (var user in Model)
+        {
+            <li>@user.UserName</li>
+        }
+    </ul>
+</div>
+<br />
+<hr />
+
+<div>
+    <h2>View Users By Role</h2>
+    <div>
+        <h3>Site Boss</h3>
+        <ul>
+            @if (User.IsInRole("SiteBoss"))
+            {
+                <li>@User.Identity.Name</li>
+            }
+        </ul>
+    </div>
+</div>
+

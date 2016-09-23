@@ -32,5 +32,11 @@ namespace CalendarMapping.Controllers
 
             return View();
         }
+
+        public IActionResult List()
+        {
+            var usersList = _db.Users.ToList();
+            return View(usersList);
+        }
     }
 }
