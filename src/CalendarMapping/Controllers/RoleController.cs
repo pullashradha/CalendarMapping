@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CalendarMapping.Models;
+using CalendarMapping.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using CalendarMapping.Models;
-using CalendarMapping.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 
@@ -14,11 +14,11 @@ namespace CalendarMapping.Controllers
 {
     public class RoleController : Controller
     {
-        private readonly ApplicationDbContext _db;
+        private readonly DBContext _db;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<User> _userManager;
 
-        public RoleController (RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, ApplicationDbContext db)
+        public RoleController (RoleManager<IdentityRole> roleManager, UserManager<User> userManager, DBContext db)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -65,7 +65,7 @@ namespace CalendarMapping.Controllers
         [HttpPost]
         public async Task<IActionResult> AddUser(string UserName, string roleName)
         {
-            ApplicationUser selectedUser = _db.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            User selectedUser = _db.Users.Where(u => u.UserName.Equals(UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
             IdentityResult result = await _userManager.AddToRoleAsync(selectedUser, roleName);
             if (result.Succeeded)
             {

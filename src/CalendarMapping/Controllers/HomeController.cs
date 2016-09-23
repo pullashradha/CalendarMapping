@@ -4,17 +4,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using CalendarMapping.Models;
 using CalendarMapping.ViewModels;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CalendarMapping.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        public HomeController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext db)
+        private readonly DBContext _db;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        public HomeController(UserManager<User> userManager, SignInManager<User> signInManager, DBContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -33,7 +36,7 @@ namespace CalendarMapping.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var newUser = new ApplicationUser { UserName = model.Username };
+            var newUser = new User { UserName = model.Username };
             IdentityResult registeredUser = await _userManager.CreateAsync(newUser, model.Password);
             if (registeredUser.Succeeded)
             {

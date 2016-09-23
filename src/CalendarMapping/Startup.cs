@@ -30,10 +30,10 @@ namespace CalendarMapping
             services.AddMvc();
 
             services.AddEntityFramework()
-                .AddDbContext<ApplicationDbContext>(options =>
+                .AddDbContext<DBContext>(options =>
                     options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<DBContext>()
                 .AddDefaultTokenProviders();
         }
         public void Configure(IApplicationBuilder app)
@@ -48,7 +48,7 @@ namespace CalendarMapping
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("<h1>Sorry, an error has occurred, please return <a href='/'>Home</a></h1>");
+                await context.Response.WriteAsync("<h1>An error has occurred :( <br/>Return <a href='/'>home</a></h1>");
             });
         }
     }

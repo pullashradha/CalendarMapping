@@ -7,17 +7,32 @@ using CalendarMapping.Models;
 
 namespace CalendarMapping.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160916200330_CalendarMappingDB")]
-    partial class CalendarMappingDB
+    [DbContext(typeof(DBContext))]
+    partial class DBContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CalendarMapping.Models.ApplicationUser", b =>
+            modelBuilder.Entity("CalendarMapping.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Description");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("CalendarMapping.Models.User", b =>
                 {
                     b.Property<string>("Id");
 
@@ -183,7 +198,7 @@ namespace CalendarMapping.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("CalendarMapping.Models.ApplicationUser")
+                    b.HasOne("CalendarMapping.Models.User")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -191,7 +206,7 @@ namespace CalendarMapping.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("CalendarMapping.Models.ApplicationUser")
+                    b.HasOne("CalendarMapping.Models.User")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -204,7 +219,7 @@ namespace CalendarMapping.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("CalendarMapping.Models.ApplicationUser")
+                    b.HasOne("CalendarMapping.Models.User")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
