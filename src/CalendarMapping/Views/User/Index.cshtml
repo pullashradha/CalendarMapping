@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Welcome @(ViewData["FullName"])!</h2>
+    <h2>@Html.ActionLink("Events Manager", "Index", "Event")</h2>
+    <h2>@Html.ActionLink("Roles Manager", "Index", "Role")</h2>
+    @using (Html.BeginForm("LogOut", "Account"))
+    {
+        <input type="submit" value="Log Out" />
+    }
+}

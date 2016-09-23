@@ -31,13 +31,13 @@ namespace CalendarMapping.Controllers
         }
 
         //Create Role
-        [Authorize(Roles = "UltimateAdmin, Admin")]
+        //[Authorize(Roles = "UltimateAdmin, Admin")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [Authorize(Roles = "UltimateAdmin, Admin")]
+        //[Authorize(Roles = "UltimateAdmin, Admin")]
         [HttpPost]
         public async Task<IActionResult> Create(CreateRoleViewModel model)
         {

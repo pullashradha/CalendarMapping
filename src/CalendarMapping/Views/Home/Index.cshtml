@@ -7,20 +7,6 @@
 <h1>Welcome to CalendarMapping!</h1>
 <hr />
 
-@if (User.Identity.IsAuthenticated)
-{
-    <h2>Welcome @User.Identity.Name!</h2>
-    <h3>@Html.ActionLink("View All Events", "Index", "Event")</h3>
-    <h3>@Html.ActionLink("View All Roles", "Index", "Role")</h3>
-    @using (Html.BeginForm("LogOut", "Home"))
-    {
-        <input type="submit" value="Log Out" />
-    }
-}
-else
-{
-    <h2>@Html.ActionLink("Log In", "Login")</h2>
-    <h2>@Html.ActionLink("Register New Account", "Register")</h2>
-    <h2>@Html.ActionLink("View All Roles", "Index", "Role")</h2>
-}
-
+<h2>@Html.ActionLink("Log In", "Login", "Account")</h2>
+<h2>@Html.ActionLink("Register New Account", "Register", "Account")</h2>
+<h2>@Html.ActionLink("Role Manager", "Index", "Role")</h2>
