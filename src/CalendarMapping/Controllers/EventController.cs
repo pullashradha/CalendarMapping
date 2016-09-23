@@ -33,9 +33,9 @@ namespace CalendarMapping.Controllers
 
         //Create a New Event
         [HttpPost]
-        public async Task<IActionResult> Create(string newDescription, DateTime newDate, string newAddress)
+        public async Task<IActionResult> Create(string newDescription, DateTime newDate, DateTime newStartTime, DateTime newEndTime, string newAddress)
         {
-            Event newEvent = new Event(newDescription, newDate, newAddress);
+            Event newEvent = new Event(newDescription, newStartTime, newEndTime, newAddress, newDate);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
             newEvent.User = currentUser;

@@ -19,15 +19,21 @@ namespace CalendarMapping.Models
 
         public DateTime Date { get; set; }
 
+        public DateTime StartTime { get; set; }
+
+        public DateTime EndTime { get; set; }
+
         public string Address { get; set; }
 
         public virtual User User { get; set; }
 
-        public Event(string description, DateTime date, string address, int id = 0)
+        public Event(string description, DateTime startTime, DateTime endTime, string address, DateTime date = default(DateTime), int id = 0)
         {
             Description = description;
-            Date = date;
+            StartTime = startTime;
+            EndTime = endTime;
             Address = address;
+            Date = date;
             Id = id;
         }
 

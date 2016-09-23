@@ -43,8 +43,15 @@
                     <h2>Create Event</h2>
                     <label for="description">Description</label>
                     <textarea type="text" name="newDescription"></textarea>
+
                     <label for="date">Date</label>
                     <input type="date" name="newDate" />
+
+                    <label for="startTime">Start Time</label>
+                    <input type="time" name="newStartTime" />
+                    <label for="endTime">End Time</label>
+                    <input type="time" name="newEndTime" />
+
                     <label for="address">Address</label>
                     <input type="text" name="newAddress" />
                     <button type="submit">Save</button>
@@ -56,8 +63,11 @@
                 <h2>Events List</h2>
                 <ul>
                     @foreach (var individualEvent in Model)
-                {
-                        <li>@individualEvent.Description: @individualEvent.Address | @individualEvent.Date</li>
+                    {
+                        <li>@individualEvent.Description: @individualEvent.Address | 
+                        @individualEvent.Date.Month/@individualEvent.Date.Day/@individualEvent.Date.Year | 
+                        @individualEvent.StartTime.Hour:@individualEvent.StartTime.Minute - @individualEvent.EndTime.Hour:@individualEvent.EndTime.Minute
+                        </li>
                     }
                 </ul>
             </div>

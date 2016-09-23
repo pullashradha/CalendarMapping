@@ -29,8 +29,8 @@ Sample users have been created by the developer for program testing use.
 
 Role | Username | Password
 ----- | ----- | -----
-UltimateAdmin | EpicodusAdmin | Epicodus1234!
-User | TestUser | Test1234!
+SiteBoss | EpicodusAdmin | Epicodus1234!
+Student | TestStudent | Student1234!
 
 ## Known Bugs
 
@@ -51,7 +51,7 @@ Allow users to CRUD events | --- | ---
 
 HTML | CSS | C#
 ----- | ----- | -----
---- | --- | ---
+Change time output on events list from military time to standard time format | --- | ---
 
 ## Support and Contact Details
 
