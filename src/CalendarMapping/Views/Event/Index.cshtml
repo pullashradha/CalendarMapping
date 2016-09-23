@@ -3,6 +3,7 @@
 
 @{ 
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,8 +12,10 @@
         <script>
             $(document).ready(function () {
                 $("#new-event-form").hide();
+                $("#close-event-form").hide();
                 $("#display-event-form").click(function () {
                     $("#new-event-form").show();
+                    $("#close-event-form").show();
                     $("#display-event-form").hide();
                 });
                 $("#new-event-form").submit(function (event) {
@@ -26,6 +29,11 @@
                             location.reload();
                         }
                     });
+                });
+                $("#close-event-form").click(function () {
+                    $("#new-event-form").hide();
+                    $("#close-event-form").hide();
+                    $("#display-event-form").show();
                 });
             });
         </script>
@@ -56,6 +64,8 @@
                     <input type="text" name="newAddress" />
                     <button type="submit">Save</button>
                 </form>
+
+                <button id="close-event-form">Close Event Form</button>
             </div>
             <hr />
 
