@@ -34,19 +34,26 @@
         <br />
         <hr />
 
-        <div>
+        @*<div>
             <h2>View Users By Role</h2>
             <div>
                 <h3 id="site-boss"><a>Site Boss</a></h3>
                 <ul id="site-boss-list">
-                    @*Actually only lists currently logged in user, not all...*@
-                    @if (User.IsInRole("SiteBoss"))
+                    Actually only lists currently logged in user, not all...
+                    @foreach (var user in Model)
                     {
-                        <li>@User.Identity.Name</li>
+                        @if (user.Roles.Equals("AccountHolder"))
+                        {
+                            <li>@user.UserName</li>
+                        }
+                        else
+                        {
+                            <li>Hello</li>
+                        }
                     }
                 </ul>
             </div>
-        </div>
+        </div>*@
     </body>
 </html>
 
