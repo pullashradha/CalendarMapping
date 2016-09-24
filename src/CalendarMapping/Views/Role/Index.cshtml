@@ -47,18 +47,6 @@
                         }
                     });
                 });
-                $("#delete-form").submit(function (event) {
-                    event.preventDefault();
-                    $.ajax({
-                        type: "POST",
-                        dataType: "html",
-                        data: $(this).serialize(),
-                        url: '@Url.Action("Delete")',
-                        success: function (result) {
-                            location.reload();
-                        }
-                    });
-                });
             });
         </script>
     </head>
@@ -87,12 +75,9 @@
             <ul class="row">
                 @foreach (var role in Model)
                 {
-                    <li class="col-xs-3 col-xs-offset-3">@role.Name</li>
-                    @*<button class="col-xs-1" value=@role.Id>Edit</button>*@
-                    <form action="Delete" method="post" class="delete-form">
-                        <input type="hidden" value=@role.Name name="roleName"/>
-                        <button class="col-xs-1" type="submit">Delete</button>
-                    </form>
+                    <li>@role.Name</li>
+                    <span class="glyphicon glyphicon-remove">@Html.ActionLink("Delete", "Delete", new { roleId = role.Id })</span>
+                    <span class="glyphicon glyphicon-edit">@Html.ActionLink("Edit", "Edit", new { roleId = role.Id })</span>
                 }
             </ul>
         </div>

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace CalendarMapping.Controllers
 {
@@ -73,14 +74,35 @@ namespace CalendarMapping.Controllers
             }
         }
 
+        //Edit A Role
+        //public IActionResult Edit(string roleId)
+        //{
+        //    var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
+        //    return View(selectedRole);
+        //}
+
+        //[HttpPost]
+        //public IActionResult Edit(Role role)
+        //{
+        //    _db.Entry(role).State = EntityState.Modified;
+        //    _db.SaveChanges();
+
+        //    return RedirectToAction("Index");
+        //}
+
         //Delete A Role
-        [HttpPost]
-        public IActionResult Delete(string roleName)
+        public IActionResult Delete(string roleId)
         {
-            var selectedRole = _db.Roles.FirstOrDefault(r => r.Name == roleName);
+            var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
+            return View(selectedRole);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(string roleId)
+        {
+            var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
             _db.Roles.Remove(selectedRole);
             _db.SaveChanges();
-
             return RedirectToAction("Index");
         }
     }
