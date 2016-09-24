@@ -75,9 +75,7 @@
             <ul class="row">
                 @foreach (var role in Model)
                 {
-                    <li>@role.Name</li>
-                    <span class="glyphicon glyphicon-remove">@Html.ActionLink("Delete", "Delete", new { roleId = role.Id })</span>
-                    <span class="glyphicon glyphicon-edit">@Html.ActionLink("Edit", "Edit", new { roleId = role.Id })</span>
+                    <li>@role.Name | @Html.ActionLink("Delete", "Delete", new { roleId = role.Id }) | @Html.ActionLink("Edit", "Edit", new { roleId = role.Id })</li>
                 }
             </ul>
         </div>

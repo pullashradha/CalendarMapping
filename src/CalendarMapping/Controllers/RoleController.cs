@@ -75,20 +75,20 @@ namespace CalendarMapping.Controllers
         }
 
         //Edit A Role
-        //public IActionResult Edit(string roleId)
-        //{
-        //    var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
-        //    return View(selectedRole);
-        //}
+        public IActionResult Edit(string roleId)
+        {
+            var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
+            return View(selectedRole);
+        }
 
-        //[HttpPost]
-        //public IActionResult Edit(Role role)
-        //{
-        //    _db.Entry(role).State = EntityState.Modified;
-        //    _db.SaveChanges();
+        [HttpPost]
+        public IActionResult Edit(IdentityRole role)
+        {
+            _db.Entry(role).State = EntityState.Modified;
+            _db.SaveChanges();
 
-        //    return RedirectToAction("Index");
-        //}
+            return RedirectToAction("Index");
+        }
 
         //Delete A Role
         public IActionResult Delete(string roleId)
