@@ -32,7 +32,7 @@ namespace CalendarMapping.Controllers
             return View(_db.Events.Where(x => x.User.Id == currentUser.Id));
         }
 
-        //Create a New Event
+        //Create New Event
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public async Task<IActionResult> Create(string newDescription, DateTime newDate, DateTime newStartTime, DateTime newEndTime, string newAddress)
@@ -44,6 +44,17 @@ namespace CalendarMapping.Controllers
             _db.Events.Add(newEvent);
             _db.SaveChanges();
 
+            return RedirectToAction("Index");
+        }
+
+        //Delete An Event
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        [HttpPost]
+        public IActionResult Delete(int eventId)
+        {
+            var selectedEvent = _db.Events.FirstOrDefault(e => e.Id == eventId);
+            _db.Events.Remove(selectedEvent);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
     }

@@ -3,11 +3,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if (User.Identity.IsAuthenticated)
-{
-    <h2>Welcome @(ViewData["FullName"])!</h2>
-    @using (Html.BeginForm("LogOut", "Account"))
-    {
-        <input type="submit" value="Log Out" />
-    }
-}
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#delete-user").submit(function (event) {
+                    event.preventDefault();
+                    if (confirm("Are you sure you want to delete this user?")) {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "html",
+                            data: $(this).serialize(),
+                            url: '@Url.Action("Delete")',
+                            success: function (result) {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h1>Welcome @(ViewData["FullName"])!</h1>
+
+            @using (Html.BeginForm("LogOut", "Account"))
+            {
+                <input type="submit" value="Log Out" />
+            }
+
+            <div>
+                <form action="Delete" method="post" id="delete-user" class="col-xs-6">
+                    <input type="hidden" value=@(ViewData["Id"]) name="userId" />
+                    <button>Delete</button>
+                </form>
+            </div>
+        }
+        else
+        {
+            <h2>@Html.ActionLink("Log In", "Login", "Account")</h2>
+        }
+    </body>
+</html>
