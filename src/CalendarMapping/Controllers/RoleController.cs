@@ -91,14 +91,9 @@ namespace CalendarMapping.Controllers
         }
 
         //Delete A Role
+        [Authorize(Roles = "SiteBoss")]
+        [HttpPost]
         public IActionResult Delete(string roleId)
-        {
-            var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
-            return View(selectedRole);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(string roleId)
         {
             var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
             _db.Roles.Remove(selectedRole);

@@ -34,7 +34,7 @@ Student | TestStudent | Student1234!
 
 ## Known Bugs
 
-No known bugs.
+* Edit() method in RoleController - SaveChanges() is not working
 
 ## Specifications
 
