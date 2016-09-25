@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using CalendarMapping.Models;
 using Xunit;
 
@@ -10,7 +11,7 @@ namespace CalendarMapping.Tests
     public class EventTest
     {
         [Fact]
-        public void GetDescription_Event_Test()
+        public void Test_Get_Description()
         {
             var newEvent = new Event();
             newEvent.Description = "OHS Volunteer Party";

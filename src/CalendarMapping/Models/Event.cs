@@ -38,5 +38,23 @@ namespace CalendarMapping.Models
         }
 
         public Event () { }
+
+        public override bool Equals (System.Object otherEvent)
+        {
+            if (otherEvent is Event)
+            {
+                Event newEvent = (Event)otherEvent;
+                return this.Id.Equals(newEvent.Id);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
     }
 }

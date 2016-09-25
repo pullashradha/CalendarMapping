@@ -24,6 +24,9 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
+        //Empty constructor for EventControllerTest
+        public EventController() { }
+
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         public async Task<IActionResult> Index()
         {

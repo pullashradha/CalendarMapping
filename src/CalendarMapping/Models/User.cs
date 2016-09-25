@@ -12,5 +12,24 @@ namespace CalendarMapping.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public User() { }
+        public override bool Equals(System.Object otherUser)
+        {
+            if (otherUser is User)
+            {
+                User newUser = (User)otherUser;
+                return this.Id.Equals(newUser.Id);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
     }
 }
