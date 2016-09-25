@@ -14,6 +14,20 @@
                 $("#site-boss").click(function () {
                     $("#site-boss-list").toggle();
                 });
+                $(".delete-user").submit(function (event) {
+                    event.preventDefault();
+                    if (confirm("Are you sure you want to delete this user?")) {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "html",
+                            data: $(this).serialize(),
+                            url: '@Url.Action("DeleteUser")',
+                            success: function (result) {
+                                location.reload();
+                            }
+                        });
+                    }
+                });
             });
         </script>
     </head>
@@ -24,10 +38,14 @@
 
         <div>
             <h2>Users List</h2>
-            <div>
+            <div class="row">
                 @foreach (var user in Model)
                 {
-                    <h5>@user.UserName</h5>
+                    <h5 class="col-xs-6">@user.UserName</h5>
+                    <form action="DeleteUser" method="post" class="col-xs-6 delete-user">
+                        <input type="hidden" value=@user.Id name="userId" />
+                        <button type="submit">Delete</button>
+                    </form>
                 }
             </div>
         </div>

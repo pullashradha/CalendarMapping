@@ -50,6 +50,7 @@ namespace CalendarMapping.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(string userId)
         {
+            //Logs out current user before deleting account
             await _signInManager.SignOutAsync();
 
             var currentUser = _db.Users.FirstOrDefault(u => u.Id == userId);
@@ -57,6 +58,26 @@ namespace CalendarMapping.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        //Delete User
+        [Authorize(Roles = "SiteBoss")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+            var currentUser = _db.Users.FirstOrDefault(u => u.Id == userId);
+            if (currentUser.Id == "1e24830b-22d4-48f3-aa09-b3311e552e72")
+            {
+                //Can't allow SiteBoss to delete own account without logging out
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _db.Users.Remove(currentUser);
+                _db.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
