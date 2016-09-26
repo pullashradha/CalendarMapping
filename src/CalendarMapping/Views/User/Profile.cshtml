@@ -8,54 +8,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script>
-                $(document).ready(function () {
-                    $(".edit-user").hide();
-                    $("#edit-user-btn").click(function () {
-                        $(".edit-user").toggle();
-                    });
-                    $("#edit-user-form").submit(function (event) {
-                        event.preventDefault();
-                        $.ajax({
-                            type: "POST",
-                            dataType: "html",
-                            data: $(this).serialize(),
-                            url: '@Url.Action("Edit")',
-                            success: function (result) {
-                                location.reload();
-                            }
-                        });
-                    });
-                    $("#edit-username").submit(function (event) {
-                        event.preventDefault();
-                        $.ajax({
-                            type: "POST",
-                            dataType: "html",
-                            data: $(this).serialize(),
-                            url: '@Url.Action("EditUsername")',
-                            success: function (result) {
-                                location.reload();
-                            }
-                        });
-                    });
-                    $("#delete-user").submit(function (event) {
-                        event.preventDefault();
-                        if (confirm("Are you sure you want to delete your account?")) {
-                            $.ajax({
-                                type: "POST",
-                                dataType: "html",
-                                data: $(this).serialize(),
-                                url: '@Url.Action("Delete")',
-                                success: function (result) {
-                                    location.reload();
-                                }
-                            });
-                        }
-                    });
-                });
-        </script>
+        <script src="~/Content/js/UserScripts.js" type="text/javascript"></script>
     </head>
     <body>
+        @*Link to url actions in ajax request in UserScripts.js*@
+        <div>
+            @Html.Hidden("EditUrl", Url.Action("Edit"))
+            @Html.Hidden("EditUsernameUrl", Url.Action("EditUsername"))
+            @Html.Hidden("DeleteCurrentUserUrl", Url.Action("Delete"))
+        </div>
+
         <h1>Manage Profile</h1>
         <br />
         <hr />
