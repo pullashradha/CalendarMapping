@@ -24,14 +24,15 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
-        //Empty constructor for EventControllerTest
-        public EventController() { }
+        //Empty constructor for EventControllerTest BUT needs to be commented out when running program otherwise Event/Index is a blank page
+        //public EventController() { }
 
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
+
             return View(_db.Events.Where(x => x.User.Id == currentUser.Id));
         }
 

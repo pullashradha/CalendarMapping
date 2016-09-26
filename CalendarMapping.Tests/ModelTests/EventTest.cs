@@ -10,6 +10,7 @@ namespace CalendarMapping.Tests
 {
     public class EventTest
     {
+        //Uncomment empty constructor in EventController to pass this test
         [Fact]
         public void Test_Get_Description()
         {

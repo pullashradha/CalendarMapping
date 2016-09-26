@@ -49,8 +49,7 @@
                 });
                 $(".delete-role").submit(function (event) {
                     event.preventDefault();
-                    if (confirm("Are you sure you want to delete this role?"))
-                    {
+                    if (confirm("Are you sure you want to delete this role?")) {
                         $.ajax({
                             type: "POST",
                             dataType: "html",
@@ -61,6 +60,18 @@
                             }
                         });
                     }
+                });
+                $(".edit-role").submit(function (event) {
+                    event.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        dataType: "html",
+                        data: $(this).serialize(),
+                        url: '@Url.Action("Edit")',
+                        success: function (result) {
+                            location.reload();
+                        }
+                    });
                 });
             });
         </script>
@@ -90,9 +101,15 @@
             <div class="row">
                 @foreach (var role in Model)
                 {
-                    <h5 class="col-xs-6">@role.Name | @Html.ActionLink("Edit", "Edit", new { roleId = role.Id })</h5>
+                    <h5 class="col-xs-4">@role.Name</h5>
                     //Form should have a class not an id when inside a loop otherwise only the first value in the loop inherits the id & resulting function/request
-                    <form action="Delete" method="post" class="col-xs-6 delete-role">
+                    <form action="Edit" method="post" class="col-xs-5 edit-role">
+                        <label for="roleName"> Name</label>
+                        <input value=@role.Name name="roleName" />
+                        <input type="hidden" value=@role.Id name="roleId" />
+                        <button type="submit">Edit</button>
+                    </form>
+                    <form action="Delete" method="post" class="col-xs-3 delete-role">
                         <input type="hidden" value=@role.Id name="roleId" />
                         <button type="submit">Delete</button>
                     </form>

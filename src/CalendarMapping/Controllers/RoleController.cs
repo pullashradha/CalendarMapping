@@ -26,7 +26,7 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
-        //[Authorize(Roles = "SiteBoss")]
+        [Authorize(Roles = "SiteBoss")]
         public IActionResult Index()
         {
             var rolesList = _db.Roles.ToList();
@@ -75,20 +75,18 @@ namespace CalendarMapping.Controllers
         }
 
         //Edit A Role
-        //public IActionResult Edit(string roleId)
-        //{
-        //    var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
-        //    return View(selectedRole);
-        //}
+        [Authorize(Roles = "SiteBoss")]
+        [HttpPost]
+        public IActionResult Edit(string roleName, string roleId)
+        {
+            //EntityState.Modified & SaveChanges weren't working
+            var editedRole = _db.Roles.Where(r => r.Id == roleId).FirstOrDefault();
+            editedRole.Name = roleName;
+            editedRole.NormalizedName = roleName.ToUpper();
+            _db.SaveChanges();
 
-        //[HttpPost]
-        //public IActionResult Edit(IdentityRole role)
-        //{
-        //    _db.Entry(role).State = EntityState.Modified;
-        //    _db.SaveChanges();
-
-        //    return RedirectToAction("Index");
-        //}
+            return RedirectToAction("Index");
+        }
 
         //Delete A Role
         [Authorize(Roles = "SiteBoss")]
@@ -98,6 +96,7 @@ namespace CalendarMapping.Controllers
             var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
             _db.Roles.Remove(selectedRole);
             _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }
