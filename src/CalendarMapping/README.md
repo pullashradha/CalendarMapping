@@ -54,9 +54,9 @@ Allow users to CRUD events | --- | ---
 
 ## Future Features
 
-HTML | CSS | C#
------ | ----- | -----
-Change time output on events list from military time to standard time format | --- | ---
+HTML | CSS | Ajax | C#
+----- | ----- | ----- | -----
+Change time output on events list from military time to standard time format | --- | Set up alerts for completing CRUD | ---
 
 ## Support and Contact Details
 
