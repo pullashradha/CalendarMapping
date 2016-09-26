@@ -64,14 +64,5 @@ namespace CalendarMapping.Controllers
         {
             return View();
         }
-
-        //Log Out User
-        [Authorize(Roles = "SiteBoss, AccountHolder")]
-        [HttpPost]
-        public async Task<IActionResult> LogOut()
-        {
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
-        }
     }
 }

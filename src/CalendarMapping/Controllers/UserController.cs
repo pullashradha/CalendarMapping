@@ -30,12 +30,25 @@ namespace CalendarMapping.Controllers
             var currentUser = _db.Users.SingleOrDefault(u => u.UserName == username);
 
             string fullName = currentUser.FirstName + " " + currentUser.LastName;
+            string currentUserId = currentUser.Id;
 
             ViewData.Add("FullName", fullName);
+            ViewData.Add("Id", currentUserId);
 
             return View();
         }
 
+        //Log Out User
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            //Actually redirects to Login page - probaly because of Ajax location.reload
+            return RedirectToAction("Index", "Home");
+        }
+
+        //List of All Users
         [Authorize(Roles = "SiteBoss")]
         public IActionResult List()
         {

@@ -8,7 +8,17 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script>
             $(document).ready(function () {
-
+                $("#log-out").click(function () {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "html",
+                        data: $(this).serialize(),
+                        url: '@Url.Action("Logout")',
+                        success: function (result) {
+                            location.reload();
+                        }
+                    });
+                });
             });
         </script>
     </head>
@@ -19,10 +29,7 @@
             <br />
             <hr />
 
-            @using (Html.BeginForm("LogOut", "Account"))
-            {
-                <input type="submit" value="Log Out" />
-            }
+            <button type="submit" formaction="Logout" formmethod="post" id="log-out">Log Out</button>
         }
         else
         {
