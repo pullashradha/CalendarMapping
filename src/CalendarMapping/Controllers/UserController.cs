@@ -30,10 +30,8 @@ namespace CalendarMapping.Controllers
             var currentUser = _db.Users.SingleOrDefault(u => u.UserName == username);
 
             string fullName = currentUser.FirstName + " " + currentUser.LastName;
-            string userId = currentUser.Id;
 
             ViewData.Add("FullName", fullName);
-            ViewData.Add("Id", userId);
 
             return View();
         }
@@ -108,7 +106,7 @@ namespace CalendarMapping.Controllers
         [HttpPost]
         public async Task<IActionResult> EditUsername(string username, string userId)
         {
-            //Logs out current user before changin username
+            //Logs out current user before changing username
             await _signInManager.SignOutAsync();
 
             var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
@@ -119,5 +117,26 @@ namespace CalendarMapping.Controllers
             return RedirectToAction("Login", "Account");
 
         }
+
+        //Reset Password
+        //[Authorize(Roles = "SiteBoss, AccountHolder")]
+        //[HttpPost]
+        //public async Task<IActionResult> ResetPassword(string password, string confirmPassword, string userId)
+        //{
+        //    if (password == confirmPassword)
+        //    {
+        //        await _signInManager.SignOutAsync();
+
+        //        var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
+        //        editedUser.PasswordHash = password; //Need to Hash password
+        //        _db.SaveChanges();
+
+        //        return RedirectToAction("Login", "Account");
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Profile");
+        //    }
+        //}
     }
 }
