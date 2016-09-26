@@ -1,5 +1,4 @@
 ﻿@using System.Security.Claims
-@*@model IEnumerable<CalendarMapping.Models.Event>*@
 
 @{ 
     ViewData["Title"] = "Index";
@@ -12,11 +11,8 @@
         <script>
             $(document).ready(function () {
                 $("#new-event-form").hide();
-                $("#close-event-form").hide();
-                $("#display-event-form").click(function () {
-                    $("#new-event-form").show();
-                    $("#close-event-form").show();
-                    $("#display-event-form").hide();
+                $("#new-event-btn").click(function () {
+                    $("#new-event-form").toggle();
                 });
                 $("#new-event-form").submit(function (event) {
                     event.preventDefault();
@@ -59,7 +55,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <div>
-                <button id="display-event-form">Create a New Event</button>
+                <button id="new-event-btn">Open/Close New Event form</button>
 
                 <form action="Create" method="post" id="new-event-form">
                     <h2>Create Event</h2>
@@ -78,8 +74,6 @@
                     <input type="text" name="newAddress" />
                     <button type="submit">Save</button>
                 </form>
-
-                <button id="close-event-form">Close Event Form</button>
             </div>
             <hr />
 
@@ -88,10 +82,7 @@
                 <div>
                     @foreach (var individualEvent in Model)
                     {
-                        <h5>@individualEvent.Description: @individualEvent.Address | 
-                        @individualEvent.Date.Month/@individualEvent.Date.Day/@individualEvent.Date.Year | 
-                        @individualEvent.StartTime.Hour:@individualEvent.StartTime.Minute - @individualEvent.EndTime.Hour:@individualEvent.EndTime.Minute
-                        </h5>
+                        <h5 class="col-xs-6">@individualEvent.Description | @Html.ActionLink("Details", "Detail", new { eventId = individualEvent.Id })</h5>
                         <form action="Delete" method="post" class="col-xs-6 delete-event">
                             <input type="hidden" value=@individualEvent.Id name="eventId" />
                             <button type="submit">Delete</button>

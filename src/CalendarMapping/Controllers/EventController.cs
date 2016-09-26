@@ -61,5 +61,29 @@ namespace CalendarMapping.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //Event Details
+        public IActionResult Detail(int eventId)
+        {
+            var currentEvent = _db.Events.FirstOrDefault(e => e.Id == eventId);
+            return View(currentEvent);
+        }
+
+        //Edit A Role
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        [HttpPost]
+        public IActionResult Edit(string description, DateTime date, DateTime startTime, DateTime endTime, string address, int eventId)
+        {
+            var editedEvent = _db.Events.Where(e => e.Id == eventId).FirstOrDefault();
+            editedEvent.Description = description;
+            editedEvent.Date = date;
+            editedEvent.StartTime = startTime;
+            editedEvent.EndTime = endTime;
+            editedEvent.Address = address;
+
+            _db.SaveChanges();
+
+            return RedirectToAction("Detail");
+        }
     }
 }
