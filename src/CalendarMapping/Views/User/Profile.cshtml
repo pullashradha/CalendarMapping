@@ -1,0 +1,92 @@
+﻿@model CalendarMapping.Models.User
+
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script>
+                $(document).ready(function () {
+                    $(".edit-user").hide();
+                    $("#edit-form-btn").click(function () {
+                        $(".edit-user").toggle();
+                    });
+                    $("#edit-user-form").submit(function (event) {
+                        event.preventDefault();
+                        $.ajax({
+                            type: "POST",
+                            dataType: "html",
+                            data: $(this).serialize(),
+                            url: '@Url.Action("Edit")',
+                            success: function (result) {
+                                location.reload();
+                            }
+                        });
+                    });
+                    $("#edit-username").submit(function (event) {
+                        event.preventDefault();
+                        $.ajax({
+                            type: "POST",
+                            dataType: "html",
+                            data: $(this).serialize(),
+                            url: '@Url.Action("EditUsername")',
+                            success: function (result) {
+                                location.reload();
+                            }
+                        });
+                    });
+                });
+        </script>
+    </head>
+    <body>
+        <h1>Manage Profile</h1>
+        <br />
+        <hr />
+
+        <div>
+            <h2>First Name: @Model.FirstName</h2>
+            <h2>Last Name: @Model.LastName</h2>
+            <h2>Username: @Model.UserName</h2>
+        </div>
+        <br />
+        <hr />
+
+        <div>
+            <h2>Edit Profile</h2>
+            <button id="edit-form-btn">Open/Close Edit Profile Form</button>
+            <form action="Edit" method="post" id="edit-user-form" class="edit-user">
+                <label for="newFirstName">First Name</label>
+                <input placeholder=@Model.FirstName value=@Model.FirstName name="firstName" />
+                <label for="newLastName">Last Name</label>
+                <input placeholder=@Model.LastName value=@Model.LastName name="lastName" />
+                <input type="hidden" value=@Model.Id name="userId" />
+                <button type="submit">Save</button>
+            </form>
+            <br />
+            <h2>Edit Username</h2>
+            <form action="EditUsername" method="post" id="edit-username" class="edit-user">
+                <label for="newUsername">Username</label>
+                <input placeholder=@Model.UserName value=@Model.UserName name="username" />
+                <input type="hidden" value=@Model.Id name="userId" />
+                <button type="submit">Save</button>
+            </form>
+        </div>
+        <br />
+        <hr />
+
+        <div>
+            <h2>Reset Password</h2>
+            <form action="ResetPassword" method="post" id="reset-password-form">
+                <label>New Password</label>
+                <input name="newPassword" />
+                <label>Confirm Password</label>
+                <input name="confirmNewPassword" />
+                <button type="submit">Change Password</button>
+            </form>
+        </div>
+    </body>
+</html>
+

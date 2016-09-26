@@ -79,5 +79,44 @@ namespace CalendarMapping.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+        //User Profile
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        public IActionResult Profile()
+        {
+            var username = User.Identity.Name;
+            var currentUser = _db.Users.SingleOrDefault(u => u.UserName == username);
+
+            return View(currentUser);
+        }
+
+        //Edit User Info
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        [HttpPost]
+        public IActionResult Edit(string firstName, string lastName, string userId)
+        {
+            var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
+            editedUser.FirstName = firstName;
+            editedUser.LastName = lastName;
+            _db.SaveChanges();
+
+            return RedirectToAction("Profile");
+        }
+
+        //Edit Username
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        [HttpPost]
+        public async Task<IActionResult> EditUsername(string username, string userId)
+        {
+            //Logs out current user before changin username
+            await _signInManager.SignOutAsync();
+
+            var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
+            editedUser.UserName = username;
+            editedUser.NormalizedUserName = username.ToUpper();
+            _db.SaveChanges();
+
+            return RedirectToAction("Profile");
+        }
     }
 }
