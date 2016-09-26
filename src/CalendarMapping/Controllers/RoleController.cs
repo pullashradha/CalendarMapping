@@ -79,6 +79,8 @@ namespace CalendarMapping.Controllers
         [HttpPost]
         public IActionResult Edit(string roleName, string roleId)
         {
+            //_db.Entry(role).State = EntityState.Modified;
+            //_db.SaveChanges;
             //EntityState.Modified & SaveChanges weren't working
             var editedRole = _db.Roles.Where(r => r.Id == roleId).FirstOrDefault();
             editedRole.Name = roleName;
