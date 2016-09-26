@@ -74,13 +74,13 @@
         <hr />
 
         <div>
-            <button id="new-role-btn">Open/Close New Role Form</button>
+            <button id="new-role-btn" class="btn btn-primary">Open/Close New Role Form</button>
 
-            <form action="Create" method="post" id="new-role-form">
+            <form action="Create" method="post" id="new-role-form" class="form-group">
                 <h2>Create Role</h2>
                 <label for="roleName">Role Name</label>
-                <input type="text" name="newName" />
-                <button type="submit">Save</button>
+                <input type="text" name="newName" class="form-control"/>
+                <button type="submit" class="btn btn-success">Save</button>
             </form>
         </div>
         <br />
@@ -93,15 +93,15 @@
                 {
                     <h5 class="col-xs-4">@role.Name</h5>
                     //Form should have a class not an id when inside a loop otherwise only the first value in the loop inherits the id & resulting function/request
-                    <form action="Edit" method="post" class="col-xs-5 edit-role">
+                    <form action="Edit" method="post" class="col-xs-5 form-group edit-role">
                         <label for="roleName"> Name</label>
-                        <input placeholder=@role.Name value=@role.Name name="roleName" />
-                        <input type="hidden" value=@role.Id name="roleId" />
-                        <button type="submit">Edit</button>
+                        <input placeholder=@role.Name value=@role.Name name="roleName" class="form-control"/>
+                        <input type="hidden" value=@role.Id name="roleId" class="form-control"/>
+                        <button type="submit" class="btn btn-success">Edit</button>
                     </form>
-                    <form action="Delete" method="post" class="col-xs-3 delete-role">
-                        <input type="hidden" value=@role.Id name="roleId" />
-                        <button type="submit">Delete</button>
+                    <form action="Delete" method="post" class="col-xs-3 form-group delete-role">
+                        <input type="hidden" value=@role.Id name="roleId" class="form-control"/>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 }
             </div>
@@ -111,12 +111,12 @@
 
         <div>
             <h2>Add User to Role</h2>
-            <form action="AddUser" method="post" id="add-user-form">
+            <form action="AddUser" method="post" id="add-user-form" class="form-group">
                 <label>Username</label>
-                <input name="username" />
+                <input name="username" class="form-control"/>
                 <label>Roles</label>
                 @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
-                <button type="submit">Save</button>
+                <button type="submit" class="btn btn-success">Save</button>
             </form>
         </div>
     </body>

@@ -23,7 +23,7 @@ This program can only be accessed on a PC with Windows 10, and with Git, Visual 
   * Open the project solution in Visual Studio
   * Click the IIS Express play button on the top navbar in Visual Studio. The web page will automatically launch in Google Chrome
 
-##IMPORTANT
+##IMPORTANT Notes
 
 * Do not delete SiteBoss & AccountHolder roles
 * Do not delete EpicodusAdmin user
@@ -60,9 +60,10 @@ View details of one event on separate page | --- | ---
 
 ## Future Features
 
-HTML | CSS | Ajax | C#
+HTML | CSS | AJAX C#
 ----- | ----- | ----- | -----
 Change time output on events list from military time to standard time format | Design site | Set up alerts after user completes a CRUD function | Log in new user automatically upon registration
+--- | --- | --- | Email confirmation for new accounts
 
 ## Support and Contact Details
 

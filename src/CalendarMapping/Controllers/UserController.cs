@@ -30,10 +30,8 @@ namespace CalendarMapping.Controllers
             var currentUser = _db.Users.SingleOrDefault(u => u.UserName == username);
 
             string fullName = currentUser.FirstName + " " + currentUser.LastName;
-            string currentUserId = currentUser.Id;
 
             ViewData.Add("FullName", fullName);
-            ViewData.Add("Id", currentUserId);
 
             return View();
         }
@@ -138,7 +136,7 @@ namespace CalendarMapping.Controllers
         //Delete User
         [Authorize(Roles = "SiteBoss")]
         [HttpPost]
-        public async Task<IActionResult> DeleteUser(string userId)
+        public IActionResult DeleteUser(string userId)
         {
             var currentUser = _db.Users.FirstOrDefault(u => u.Id == userId);
             if (currentUser.Id == "1e24830b-22d4-48f3-aa09-b3311e552e72")

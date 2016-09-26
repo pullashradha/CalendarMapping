@@ -42,9 +42,9 @@
                 @foreach (var user in Model)
                 {
                     <h5 class="col-xs-6">@user.UserName</h5>
-                    <form action="DeleteUser" method="post" class="col-xs-6 delete-user">
-                        <input type="hidden" value=@user.Id name="userId" />
-                        <button type="submit">Delete</button>
+                    <form action="DeleteUser" method="post" class="col-xs-6 form-group delete-user">
+                        <input type="hidden" value=@user.Id name="userId" class="form-control"/>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 }
             </div>

@@ -71,29 +71,29 @@
         <hr />
 
         <div>
-            <button id="edit-user-btn">Open/Close Edit Profile Form</button>
+            <button id="edit-user-btn" class="btn btn-primary">Open/Close Edit Profile Form</button>
             <h2>Edit Profile</h2>
-            <form action="Edit" method="post" id="edit-user-form" class="edit-user">
+            <form action="Edit" method="post" id="edit-user-form" class="edit-user form-group">
                 <label for="firstName">First Name</label>
-                <input placeholder=@Model.FirstName value=@Model.FirstName name="firstName" />
+                <input placeholder=@Model.FirstName value=@Model.FirstName name="firstName" class="form-control"/>
                 <label for="lastName">Last Name</label>
-                <input placeholder=@Model.LastName value=@Model.LastName name="lastName" />
+                <input placeholder=@Model.LastName value=@Model.LastName name="lastName" class="form-control"/>
 
                 <label for="email">Email</label>
-                <input placeholder=@Model.Email value=@Model.Email name="email" />
+                <input placeholder=@Model.Email value=@Model.Email name="email" class="form-control"/>
                 <label for="phoneNumber">Phone Number</label>
-                <input placeholder=@Model.PhoneNumber value=@Model.PhoneNumber name="phoneNumber" />
+                <input placeholder=@Model.PhoneNumber value=@Model.PhoneNumber name="phoneNumber" class="form-control"/>
 
-                <input type="hidden" value=@Model.Id name="userId" />
-                <button type="submit">Save</button>
+                <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
+                <button type="submit" class="btn btn-success">Save</button>
             </form>
             <br />
             <h2>Edit Username</h2>
-            <form action="EditUsername" method="post" id="edit-username" class="edit-user">
+            <form action="EditUsername" method="post" id="edit-username" class="edit-user form-group">
                 <label for="username">Username</label>
-                <input placeholder=@Model.UserName value=@Model.UserName name="username" />
-                <input type="hidden" value=@Model.Id name="userId" />
-                <button type="submit">Save</button>
+                <input placeholder=@Model.UserName value=@Model.UserName name="username" class="form-control"/>
+                <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
+                <button type="submit" class="btn btn-success">Save</button>
             </form>
         </div>
         <br />
@@ -114,9 +114,9 @@
         <hr />*@
 
         <div>
-            <form action="Delete" method="post" id="delete-user" class="col-xs-6">
-                <input type="hidden" value=@Model.Id name="userId" />
-                <button type="submit">Delete Account</button>
+            <form action="Delete" method="post" id="delete-user" class="col-xs-6 form-group">
+                <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
+                <button type="submit" class="btn btn-danger">Delete Account</button>
             </form>
         </div>
     </body>
