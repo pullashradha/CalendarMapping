@@ -16,6 +16,8 @@
         @if (User.Identity.IsAuthenticated)
         {
             <h1>Welcome @(ViewData["FullName"])!</h1>
+            <br />
+            <hr />
 
             @using (Html.BeginForm("LogOut", "Account"))
             {

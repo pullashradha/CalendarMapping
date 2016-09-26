@@ -40,6 +40,7 @@ AccountHolder | TestUser | Test1234!
 ## Known Bugs
 
 * Have to refresh the page after editting an event for the changes to display
+* Edit forms occasionally don't show the complete placeholder value
 
 ## Specifications
 
@@ -51,12 +52,14 @@ Have CRUD functionality for an event | --- | ---
 Have CRUD functionality for a role | --- | ---
 Allow SiteBoss to CRUD roles | --- | ---
 Allow users to CRUD events | --- | ---
+Remove user from a role | --- | ---
+View all users by roles | --- | ---
 
 ## Future Features
 
 HTML | CSS | Ajax | C#
 ----- | ----- | ----- | -----
-Change time output on events list from military time to standard time format | --- | Set up alerts for completing CRUD | ---
+Change time output on events list from military time to standard time format | Design site | Set up alerts after user completes a CRUD function | Log in new user automatically upon registration
 
 ## Support and Contact Details
 

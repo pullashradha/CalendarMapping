@@ -27,7 +27,7 @@ namespace CalendarMapping.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var newUser = new User { FirstName = model.FirstName, LastName = model.LastName, UserName = model.Username };
+            var newUser = new User { FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, PhoneNumber = model.PhoneNumber, UserName = model.Username };
             IdentityResult registeredUser = await _userManager.CreateAsync(newUser, model.Password);
             IdentityResult userAddedToRole = await _userManager.AddToRoleAsync(newUser, "AccountHolder");
             if (registeredUser.Succeeded && userAddedToRole.Succeeded)

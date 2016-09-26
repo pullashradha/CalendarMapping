@@ -56,11 +56,14 @@ namespace CalendarMapping.Controllers
         //Edit User Info
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public IActionResult Edit(string firstName, string lastName, string userId)
+        public IActionResult Edit(string firstName, string lastName, string email, string phoneNumber, string userId)
         {
             var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
             editedUser.FirstName = firstName;
             editedUser.LastName = lastName;
+            editedUser.Email = email;
+            editedUser.NormalizedEmail = email.ToUpper();
+            editedUser.PhoneNumber = phoneNumber;
             _db.SaveChanges();
 
             return RedirectToAction("Profile");

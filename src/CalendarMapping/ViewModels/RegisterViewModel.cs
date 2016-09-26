@@ -19,6 +19,16 @@ namespace CalendarMapping.ViewModels
         public string LastName { get; set; }
 
         [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
         [DataType(DataType.Text)]
         [Display (Name = "Username")]
         public string Username { get; set; }

@@ -63,6 +63,8 @@
         <div>
             <h2>First Name: @Model.FirstName</h2>
             <h2>Last Name: @Model.LastName</h2>
+            <h2>Email: @Model.Email</h2>
+            <h2>Phone Number: @Model.PhoneNumber</h2>
             <h2>Username: @Model.UserName</h2>
         </div>
         <br />
@@ -76,6 +78,12 @@
                 <input placeholder=@Model.FirstName value=@Model.FirstName name="firstName" />
                 <label for="lastName">Last Name</label>
                 <input placeholder=@Model.LastName value=@Model.LastName name="lastName" />
+
+                <label for="email">Email</label>
+                <input placeholder=@Model.Email value=@Model.Email name="email" />
+                <label for="phoneNumber">Phone Number</label>
+                <input placeholder=@Model.PhoneNumber value=@Model.PhoneNumber name="phoneNumber" />
+
                 <input type="hidden" value=@Model.Id name="userId" />
                 <button type="submit">Save</button>
             </form>
