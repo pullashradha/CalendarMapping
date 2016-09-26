@@ -29,7 +29,7 @@
         <hr />
 
         <div>
-            <button id="edit-form-btn">Open/Close Edit Event Form</button>
+            <button id="edit-form-btn" class="btn btn-primary">Open/Close Edit Event Form</button>
             <h2>Edit Event</h2>
             <form action="Edit" method="post" id="edit-event" class="form-group">
                 <label for="description">Description</label>
@@ -46,15 +46,15 @@
                 <label for="address">Address</label>
                 <input type="text" placeholder=@Model.Address value=@Model.Address name="address" class="form-control"/>
 
-                <input type="hidden" value=@Model.Id name="eventId" class="form-control"/>
+                <input type="hidden" value=@Model.Id name="eventId"/>
                 <button type="submit" class="btn btn-success">Save</button>
             </form>
         </div>
         <br />
         <hr />
 
-        <form action="Delete" method="post" class="col-xs-6 form-control delete-event">
-            <input type="hidden" value=@Model.Id name="eventId" class="form-control"/>
+        <form action="Delete" method="post" class="col-xs-6 delete-event">
+            <input type="hidden" value=@Model.Id name="eventId"/>
             <button type="submit" class="btn btn-danger">Delete Event</button>
         </form>
     </body>
