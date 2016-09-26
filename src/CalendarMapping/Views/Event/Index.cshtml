@@ -26,11 +26,6 @@
                         }
                     });
                 });
-                $("#close-event-form").click(function () {
-                    $("#new-event-form").hide();
-                    $("#close-event-form").hide();
-                    $("#display-event-form").show();
-                });
                 $(".delete-event").submit(function (event) {
                     event.preventDefault();
                     if (confirm("Are you sure you want to delete this event?")) {
@@ -50,12 +45,13 @@
     </head>
     <body>
         <h1>Event Manager</h1>
+        <br />
         <hr />
 
         @if (User.Identity.IsAuthenticated)
         {
             <div>
-                <button id="new-event-btn">Open/Close New Event form</button>
+                <button id="new-event-btn">Open/Close New Event Form</button>
 
                 <form action="Create" method="post" id="new-event-form">
                     <h2>Create Event</h2>

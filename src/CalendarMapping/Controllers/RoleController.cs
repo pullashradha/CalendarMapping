@@ -55,25 +55,6 @@ namespace CalendarMapping.Controllers
             }
         }
 
-        //Add User to Role
-        [Authorize(Roles = "SiteBoss")]
-        [HttpPost]
-        public async Task<IActionResult> AddUser(string username, string roleName)
-        {
-            User user = _db.Users.Where(u => u.UserName.Equals(username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-            IdentityResult result = await _userManager.AddToRoleAsync(user, roleName);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                var rolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
-                ViewBag.Roles = rolesList;
-                return View();
-            }
-        }
-
         //Edit A Role
         [Authorize(Roles = "SiteBoss")]
         [HttpPost]
@@ -100,6 +81,25 @@ namespace CalendarMapping.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        //Add User to Role
+        [Authorize(Roles = "SiteBoss")]
+        [HttpPost]
+        public async Task<IActionResult> AddUser(string username, string roleName)
+        {
+            User user = _db.Users.Where(u => u.UserName.Equals(username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            IdentityResult result = await _userManager.AddToRoleAsync(user, roleName);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                var rolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+                ViewBag.Roles = rolesList;
+                return View();
+            }
         }
     }
 }

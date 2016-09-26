@@ -11,7 +11,7 @@
         <script>
                 $(document).ready(function () {
                     $(".edit-user").hide();
-                    $("#edit-form-btn").click(function () {
+                    $("#edit-user-btn").click(function () {
                         $(".edit-user").toggle();
                     });
                     $("#edit-user-form").submit(function (event) {
@@ -69,7 +69,7 @@
         <hr />
 
         <div>
-            <button id="edit-form-btn">Open/Close Edit Profile Form</button>
+            <button id="edit-user-btn">Open/Close Edit Profile Form</button>
             <h2>Edit Profile</h2>
             <form action="Edit" method="post" id="edit-user-form" class="edit-user">
                 <label for="firstName">First Name</label>
@@ -91,7 +91,7 @@
         <br />
         <hr />
 
-        <div>
+        @*<div>
             <h2>Reset Password</h2>
             <form action="ResetPassword" method="post" id="reset-password-form">
                 <label>New Password</label>
@@ -103,7 +103,7 @@
             </form>
         </div>
         <br />
-        <hr />
+        <hr />*@
 
         <div>
             <form action="Delete" method="post" id="delete-user" class="col-xs-6">

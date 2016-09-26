@@ -14,18 +14,14 @@ namespace CalendarMapping.Models
     {
         [Key]
         public int Id { get; set; }
-
         public string Description { get; set; }
-
         public DateTime Date { get; set; }
-
         public DateTime StartTime { get; set; }
-
         public DateTime EndTime { get; set; }
-
         public string Address { get; set; }
-
         public virtual User User { get; set; }
+
+        public Event() { }
 
         public Event(string description, DateTime startTime, DateTime endTime, string address, DateTime date = default(DateTime), int id = 0)
         {
@@ -36,8 +32,6 @@ namespace CalendarMapping.Models
             Date = date;
             Id = id;
         }
-
-        public Event () { }
 
         public override bool Equals (System.Object otherEvent)
         {

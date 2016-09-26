@@ -51,17 +51,6 @@ namespace CalendarMapping.Controllers
             return RedirectToAction("Index");
         }
 
-        //Delete An Event
-        [Authorize(Roles = "SiteBoss, AccountHolder")]
-        [HttpPost]
-        public IActionResult Delete(int eventId)
-        {
-            var selectedEvent = _db.Events.FirstOrDefault(e => e.Id == eventId);
-            _db.Events.Remove(selectedEvent);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         //Event Details
         public IActionResult Detail(int eventId)
         {
@@ -69,7 +58,7 @@ namespace CalendarMapping.Controllers
             return View(currentEvent);
         }
 
-        //Edit A Role
+        //Edit An Event
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public IActionResult Edit(string description, DateTime date, DateTime startTime, DateTime endTime, string address, int eventId)
@@ -84,6 +73,17 @@ namespace CalendarMapping.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Detail");
+        }
+
+        //Delete An Event
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        [HttpPost]
+        public IActionResult Delete(int eventId)
+        {
+            var selectedEvent = _db.Events.FirstOrDefault(e => e.Id == eventId);
+            _db.Events.Remove(selectedEvent);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

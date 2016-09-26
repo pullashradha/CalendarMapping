@@ -12,11 +12,8 @@
         <script>
             $(document).ready(function () {
                 $("#new-role-form").hide();
-                $("#close-role-form").hide();
-                $("#display-role-form").click(function () {
-                    $("#new-role-form").show();
-                    $("#close-role-form").show();
-                    $("#display-role-form").hide();
+                $("#new-role-btn").click(function () {
+                    $("#new-role-form").toggle();
                 });
                 $("#new-role-form").submit(function (event) {
                     event.preventDefault();
@@ -29,11 +26,6 @@
                             location.reload();
                         }
                     });
-                });
-                $("#close-role-form").click(function () {
-                    $("#new-role-form").hide();
-                    $("#close-role-form").hide();
-                    $("#display-role-form").show();
                 });
                 $("#add-user-form").submit(function (event) {
                     event.preventDefault();
@@ -82,7 +74,7 @@
         <hr />
 
         <div>
-            <button id="display-role-form">Create a New Role</button>
+            <button id="new-role-btn">Open/Close New Role Form</button>
 
             <form action="Create" method="post" id="new-role-form">
                 <h2>Create Role</h2>
@@ -90,8 +82,6 @@
                 <input type="text" name="newName" />
                 <button type="submit">Save</button>
             </form>
-
-            <button id="close-role-form">Close Role Form</button>
         </div>
         <br />
         <hr />
