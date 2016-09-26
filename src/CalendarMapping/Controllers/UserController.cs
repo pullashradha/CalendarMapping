@@ -116,7 +116,8 @@ namespace CalendarMapping.Controllers
             editedUser.NormalizedUserName = username.ToUpper();
             _db.SaveChanges();
 
-            return RedirectToAction("Profile");
+            return RedirectToAction("Login", "Account");
+
         }
     }
 }
