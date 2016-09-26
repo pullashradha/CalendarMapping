@@ -1,6 +1,6 @@
 ﻿# Calendar Mapping
 
-#### .NET Independent Project for Epicodus, 09/09/2016 - 09/30/2016
+#### .NET Independent Project for Epicodus, 09/09/2016 - 10/07/2016
 
 #### By Shradha Pulla
 
@@ -32,7 +32,7 @@ This program can only be accessed on a PC with Windows 10, and with Git, Visual 
 
 Sample users have been created by the developer for program testing use.
 
-Role | Username | Password
+Role(s) | Username | Password
 ----- | ----- | -----
 SiteBoss, AccountHolder | EpicodusAdmin | Epicodus1234!
 AccountHolder | TestUser | Test1234!
@@ -47,13 +47,16 @@ AccountHolder | TestUser | Test1234!
 The program should... | Example Input | Example Output
 ----- | ----- | -----
 Have CRUD functionality for a user account | --- | ---
+Allow SiteBoss to delete any account | --- | ---
 Have authentication capabilities to allow users to access personal accounts | --- | ---
-Have CRUD functionality for an event | --- | ---
-Have CRUD functionality for a role | --- | ---
-Allow SiteBoss to CRUD roles | --- | ---
-Allow users to CRUD events | --- | ---
+Have CRUD functionality for a role (only accessible by SiteBoss role) | --- | ---
+Add user to AccountHolder role upon initial registration | --- | ---
+Add user to a role (many-to-many relationship) | --- | ---
 Remove user from a role | --- | ---
 View all users by roles | --- | ---
+Have CRUD functionality for an event | --- | ---
+Allow users to CRUD events (one-to-many-relationship) | --- | ---
+View details of one event on separate page | --- | ---
 
 ## Future Features
 
