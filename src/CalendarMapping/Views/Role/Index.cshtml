@@ -17,6 +17,7 @@
             @Html.Hidden("EditUrl", Url.Action("Edit"))
             @Html.Hidden("DeleteUrl", Url.Action("Delete"))
             @Html.Hidden("AddUserUrl", Url.Action("AddUser"))
+            @Html.Hidden("RemoveUserUrl", Url.Action("RemoveUser"))
         </div>
 
         <h1>Role Manager</h1>
@@ -64,6 +65,19 @@
             <form action="AddUser" method="post" id="add-user-form" class="form-group">
                 <label>Username</label>
                 <input name="username" class="form-control"/>
+                <label>Roles</label>
+                @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+        <br />
+        <hr />
+
+        <div>
+            <h2>Remove User From Role</h2>
+            <form action="RemoveUser" method="post" id="remove-user-form" class="form-group">
+                <label>Username</label>
+                <input name="username" class="form-control" />
                 <label>Roles</label>
                 @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
                 <button type="submit" class="btn btn-success">Save</button>

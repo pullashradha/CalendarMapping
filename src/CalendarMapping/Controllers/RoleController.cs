@@ -18,8 +18,9 @@ namespace CalendarMapping.Controllers
         private readonly DBContext _db;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public RoleController (RoleManager<IdentityRole> roleManager, UserManager<User> userManager, DBContext db)
+        public RoleController (RoleManager<IdentityRole> roleManager, UserManager<User> userManager, SignInManager<User> signInManager, DBContext db)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -60,9 +61,6 @@ namespace CalendarMapping.Controllers
         [HttpPost]
         public IActionResult Edit(string roleName, string roleId)
         {
-            //_db.Entry(role).State = EntityState.Modified;
-            //_db.SaveChanges;
-            //EntityState.Modified & SaveChanges weren't working
             var editedRole = _db.Roles.Where(r => r.Id == roleId).FirstOrDefault();
             editedRole.Name = roleName;
             editedRole.NormalizedName = roleName.ToUpper();
@@ -99,6 +97,39 @@ namespace CalendarMapping.Controllers
                 var rolesList = _db.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
                 ViewBag.Roles = rolesList;
                 return View();
+            }
+        }
+
+        //Remove User from Role
+        public async Task<IActionResult> RemoveUser(string username, string roleName)
+        {
+            User user = _db.Users.Where(u => u.UserName.Equals(username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+
+            if (roleName != "SiteBoss" || roleName != "AccountHolder")
+            {
+                IdentityResult result = await _userManager.RemoveFromRoleAsync(user, roleName);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            else
+            {
+                //Logs out SiteBoss before removing from role
+                await _signInManager.SignOutAsync();
+                IdentityResult result = await _userManager.RemoveFromRoleAsync(user, roleName);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
         }
     }
