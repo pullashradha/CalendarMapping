@@ -16,8 +16,7 @@ This program can only be accessed on a PC with Windows 10, and with Git, Visual 
 * Import the database:
   * Open SSMS
   * Select the following buttons from the top nav bar to open the database scripts file: File>Open>File>"Desktop\CalendarMapping\src\CalendarMapping\SqlScripts\CalendarMappingDB.sql"
-  * Save the CalendarMappingDB.sql file
-  * To create the database: click the "!Execute" button on the top nav bar
+  * Save the CalendarMappingDB.sql file to create the database
   * Refresh SSMS
 * View the web page: 
   * Open the project solution in Visual Studio
