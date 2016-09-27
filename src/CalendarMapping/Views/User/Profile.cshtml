@@ -18,58 +18,80 @@
             @Html.Hidden("DeleteCurrentUserUrl", Url.Action("Delete"))
         </div>
 
-        <h1>Manage Profile</h1>
+        <h1 class="page-header">Manage Profile</h1>
         <br />
-        <hr />
 
-        <div>
-            <h2>First Name: @Model.FirstName</h2>
-            <h2>Last Name: @Model.LastName</h2>
-            <h2>Email: @Model.Email</h2>
-            <h2>Phone Number: @Model.PhoneNumber</h2>
-            <h2>Username: @Model.UserName</h2>
+        <div class="profile-info">
+            <div class="row">
+                <h2 class="col-xs-6">First Name: @Model.FirstName</h2>
+                <h2 class="col-xs-6">Last Name: @Model.LastName</h2>
+            </div>
+            <div class="row">
+                <h2 class="col-xs-4">Email: @Model.Email</h2>
+                <h2 class="col-xs-4">Phone Number: @Model.PhoneNumber</h2>
+                <h2 class="col-xs-4">Username: @Model.UserName</h2>
+            </div>
         </div>
         <br />
         <hr />
+        <br />
 
         <div>
             <button id="edit-user-btn" class="btn btn-primary">Open/Close Edit Profile Form</button>
-            <h2>Edit Profile</h2>
             <form action="Edit" method="post" id="edit-user-form" class="edit-user form-group">
-                <label for="firstName">First Name</label>
-                <input placeholder=@Model.FirstName value=@Model.FirstName name="firstName" class="form-control"/>
-                <label for="lastName">Last Name</label>
-                <input placeholder=@Model.LastName value=@Model.LastName name="lastName" class="form-control"/>
-
-                <label for="email">Email</label>
-                <input placeholder=@Model.Email value=@Model.Email name="email" class="form-control"/>
-                <label for="phoneNumber">Phone Number</label>
-                <input placeholder=@Model.PhoneNumber value=@Model.PhoneNumber name="phoneNumber" class="form-control"/>
-
+                <h2>Edit Profile</h2>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="firstName">First Name</label>
+                        <input placeholder=@Model.FirstName value=@Model.FirstName name="firstName" class="form-control" />
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="lastName">Last Name</label>
+                        <input placeholder=@Model.LastName value=@Model.LastName name="lastName" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="email">Email</label>
+                        <input placeholder=@Model.Email value=@Model.Email name="email" class="form-control" />
+                    </div>
+                    <div class="col-xs-6">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input placeholder=@Model.PhoneNumber value=@Model.PhoneNumber name="phoneNumber" class="form-control" />
+                    </div>
+                </div>
                 <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
                 <button type="submit" class="btn btn-success">Save</button>
             </form>
             <br />
-            <h2>Edit Username</h2>
-            <form action="EditUsername" method="post" id="edit-username" class="edit-user form-group">
-                <label for="username">Username</label>
-                <input placeholder=@Model.UserName value=@Model.UserName name="username" class="form-control"/>
+            <form action="EditUsername" method="post" id="edit-username" class="edit-user form-group row">
+                <h2>Edit Username</h2>
+                <div class="col-xs-10">
+                    <label for="username">Username</label>
+                    <input placeholder=@Model.UserName value=@Model.UserName name="username" class="form-control" />
+                </div>
                 <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
-                <button type="submit" class="btn btn-success">Save</button>
+                <button type="submit" class="btn btn-success col-xs-2">Save</button>
             </form>
         </div>
         <br />
         <hr />
 
         <div>
-            <h2>Reset Password</h2>
-            <form action="ResetPassword" method="post" id="reset-password-form">
-                <label>New Password</label>
-                <input type="password" name="newPassword" />
-                <label>Confirm Password</label>
-                <input type="password" name="confirmPassword" />
+            <form action="ResetPassword" method="post" id="reset-password-form" class="form-group row">
+                <h2>Reset Password</h2>
+                <div class="col-xs-5">
+                    <label>New Password</label>
+                    <input type="password" name="newPassword" class="form-control" />
+                </div>
+                <div class="col-xs-5">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirmPassword" class="form-control" />
+                </div>
                 <input type="hidden" value=@Model.Id name="userId" />
-                <button type="submit" class="btn btn-success">Change Password</button>
+                <div class="col-xs-2">
+                    <button type="submit" class="btn btn-success">Change Password</button>
+                </div>
             </form>
         </div>
         <br />
@@ -78,7 +100,7 @@
         <div>
             <form action="Delete" method="post" id="delete-user" class="col-xs-6 form-group">
                 <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
-                <button type="submit" class="btn btn-danger">Delete Account</button>
+                <button type="submit" class="btn btn-danger delete-account-btn">Delete Account</button>
             </form>
         </div>
     </body>

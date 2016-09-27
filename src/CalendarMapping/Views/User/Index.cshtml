@@ -16,9 +16,8 @@
 
         @if (User.Identity.IsAuthenticated)
         {
-            <h1>Welcome @(ViewData["FullName"])!</h1>
+            <h1 class="page-header">Welcome @(ViewData["FullName"])!</h1>
             <br />
-            <hr />
 
             <button type="submit" formaction="Logout" formmethod="post" id="log-out" class="btn btn-warning">Log Out</button>
         }

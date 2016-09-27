@@ -49,6 +49,7 @@ AccountHolder | TestUser | Test1234!
 The program should... | Example Input | Example Output
 ----- | ----- | -----
 Have CRUD functionality for a user account | --- | ---
+Prevent users from registering an account with an already in use username &/or email | --- | ---
 Log in new user automatically upon registration | --- | ---
 Allow SiteBoss to delete any account | --- | ---
 Have authentication capabilities to allow users to access personal accounts | --- | ---
@@ -65,8 +66,8 @@ View details of one event on separate page | --- | ---
 
 HTML | CSS | AJAX C#
 ----- | ----- | ----- | -----
-Change time output on events list from military time to standard time format | Design site | Set up alerts after user completes a CRUD function | ---
---- | --- | --- | Email confirmation for new accounts
+Change time output on events list from military time to standard time format | Design site | Set up alerts after user completes a CRUD function | Email confirmation for new accounts
+--- | --- | --- | --- 
 
 ## Support and Contact Details
 

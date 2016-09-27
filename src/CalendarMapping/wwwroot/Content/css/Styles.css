@@ -1,3 +1,61 @@
 ﻿* {
     font-family: 'Times New Roman';
 }
+
+/*Navbar Styling*/
+nav .navbar-brand {
+    font-size: 18pt;
+}
+
+nav li {
+    font-size: 15pt;
+}
+
+/*Page Styling*/
+.page-header {
+    text-align: center;
+    font-size: 40pt;
+    padding-bottom: 30px;
+}
+
+.profile-info {
+    margin-left: 75px;
+    margin-right: 75px;
+}
+
+/*.div:last-child {
+    margin-bottom: 150px;
+}*/
+
+/*Form Styling*/
+.form-group {
+    margin-left: 75px;
+    margin-right: 75px;
+}
+
+label {
+    font-size: 15pt;
+    margin-top: 15px;
+}
+
+input {
+    font-size: 15pt;
+}
+
+/*Button Styling*/
+
+.btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 15pt;
+}
+
+.form-group .btn {
+    margin-top: 20px;
+}
+
+.delete-account-btn {
+    margin-right: 0%;
+    margin-bottom: 150px;
+}
