@@ -21,7 +21,7 @@
         <h1 class="page-header">Manage Profile</h1>
         <br />
 
-        <div class="profile-info">
+        <div class="main-content">
             <div class="row">
                 <h2 class="col-xs-6">First Name: @Model.FirstName</h2>
                 <h2 class="col-xs-6">Last Name: @Model.LastName</h2>
@@ -100,7 +100,7 @@
         <div>
             <form action="Delete" method="post" id="delete-user" class="col-xs-6 form-group">
                 <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
-                <button type="submit" class="btn btn-danger delete-account-btn">Delete Account</button>
+                <button type="submit" class="btn btn-danger delete-account-btn last-element">Delete Account</button>
             </form>
         </div>
     </body>

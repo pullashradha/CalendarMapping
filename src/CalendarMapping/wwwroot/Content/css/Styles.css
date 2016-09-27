@@ -18,9 +18,17 @@ nav li {
     padding-bottom: 30px;
 }
 
-.profile-info {
+.main-content {
     margin-left: 75px;
     margin-right: 75px;
+}
+
+h2 {
+    font-size: 25pt;
+}
+
+h5 {
+    font-size: 18pt;
 }
 
 /*.div:last-child {
@@ -52,10 +60,14 @@ input {
 }
 
 .form-group .btn {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .delete-account-btn {
     margin-right: 0%;
+}
+
+/*Last polymer-element Styling*/
+.last-element {
     margin-bottom: 150px;
 }

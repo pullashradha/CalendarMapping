@@ -26,60 +26,74 @@
         <div>
             <button id="new-role-btn" class="btn btn-primary">Open/Close New Role Form</button>
 
-            <form action="Create" method="post" id="new-role-form" class="form-group">
+            <form action="Create" method="post" id="new-role-form" class="form-group row">
                 <h2>Create Role</h2>
-                <label for="roleName">Role Name</label>
-                <input type="text" name="newName" class="form-control"/>
-                <button type="submit" class="btn btn-success">Save</button>
+                <div class="col-xs-10">
+                    <label for="roleName">Role Name</label>
+                    <input type="text" name="newName" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-success col-xs-2">Save</button>
             </form>
         </div>
         <br />
         <hr />
 
-        <div>
+        <div class="main-content">
             <h2>Roles List</h2>
-            <div class="row">
-                @foreach (var role in Model)
-                {
-                    <h5 class="col-xs-4">@role.Name</h5>
-                    //Form should have a class not an id when inside a loop otherwise only the first value in the loop inherits the id & resulting function/request
-                    <form action="Edit" method="post" class="col-xs-5 form-group edit-role">
-                        <label for="roleName"> Name</label>
-                        <input placeholder=@role.Name value=@role.Name name="roleName" class="form-control"/>
-                        <input type="hidden" value=@role.Id name="roleId" class="form-control"/>
-                        <button type="submit" class="btn btn-success">Edit</button>
+            @foreach (var role in Model)
+            {
+                <div class="row">
+                    <h5 class="col-xs-2">@role.Name</h5>
+                    @*Form should have a class not an id when inside a loop otherwise only the first value in the loop inherits the id & resulting function/request*@
+                    <form action="Edit" method="post" class="col-xs-4 form-group edit-role row">
+                        <div class="col-xs-9">
+                            <label for="roleName"> Name</label>
+                            <input placeholder=@role.Name value=@role.Name name="roleName" class="form-control" />
+                        </div>
+                        <input type="hidden" value=@role.Id name="roleId" class="form-control" />
+                        <button type="submit" class="btn btn-success col-xs-3">Edit</button>
                     </form>
-                    <form action="Delete" method="post" class="col-xs-3 form-group delete-role">
-                        <input type="hidden" value=@role.Id name="roleId" class="form-control"/>
+                    <form action="Delete" method="post" class="col-xs-2 form-group delete-role">
+                        <input type="hidden" value=@role.Id name="roleId" class="form-control" />
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
-                }
-            </div>
+                </div>
+            }
         </div>
         <br />
         <hr />
+        <br />
 
         <div>
-            <h2>Add User to Role</h2>
-            <form action="AddUser" method="post" id="add-user-form" class="form-group">
-                <label>Username</label>
-                <input name="username" class="form-control"/>
-                <label>Roles</label>
-                @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
-                <button type="submit" class="btn btn-success">Save</button>
+            <form action="AddUser" method="post" id="add-user-form" class="form-group row">
+                <h2>Add User to Role</h2>
+                <div class="col-xs-6">
+                    <label>Username</label>
+                    <input name="username" class="form-control" />
+                </div>
+                <div class="col-xs-4">
+                    <label>Roles</label>
+                    @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
+                </div>
+                <button type="submit" class="btn btn-success col-xs-2">Save</button>
             </form>
         </div>
         <br />
         <hr />
+        <br />
 
         <div>
-            <h2>Remove User From Role</h2>
-            <form action="RemoveUser" method="post" id="remove-user-form" class="form-group">
-                <label>Username</label>
-                <input name="username" class="form-control" />
-                <label>Roles</label>
-                @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
-                <button type="submit" class="btn btn-success">Save</button>
+            <form action="RemoveUser" method="post" id="remove-user-form" class="form-group row">
+                <h2>Remove User From Role</h2>
+                <div class="col-xs-6">
+                    <label>Username</label>
+                    <input name="username" class="form-control" />
+                </div>
+                <div class="col-xs-4">
+                    <label>Roles</label>
+                    @Html.DropDownList("roleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select...")
+                </div>
+                <button type="submit" class="btn btn-success col-xs-2 last-element">Save</button>
             </form>
         </div>
     </body>
