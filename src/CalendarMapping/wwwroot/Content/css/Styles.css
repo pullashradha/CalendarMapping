@@ -2,7 +2,7 @@
     font-family: 'Times New Roman';
 }
 
-/*Navbar Styling*/
+/*----------------------------------Navbar Styling----------------------------------*/
 nav .navbar-brand {
     font-size: 18pt;
 }
@@ -11,7 +11,7 @@ nav li {
     font-size: 15pt;
 }
 
-/*Page Styling*/
+/*----------------------------------Page Styling----------------------------------*/
 .page-header {
     text-align: center;
     font-size: 40pt;
@@ -23,6 +23,10 @@ nav li {
     margin-right: 75px;
 }
 
+.main-content-event {
+    text-align: center;
+}
+
 h2 {
     font-size: 25pt;
 }
@@ -31,11 +35,7 @@ h5 {
     font-size: 18pt;
 }
 
-/*.div:last-child {
-    margin-bottom: 150px;
-}*/
-
-/*Form Styling*/
+/*----------------------------------Form Styling----------------------------------*/
 .form-group {
     margin-left: 75px;
     margin-right: 75px;
@@ -50,7 +50,23 @@ input {
     font-size: 15pt;
 }
 
-/*Button Styling*/
+.delete-user {
+    margin-top: -30px;
+}
+
+.delete-role {
+    margin-top: -1px;
+}
+
+.delete-event {
+    margin-top: -35px;
+}
+
+.delete-event-details {
+    margin-top: 0px;
+}
+
+/*----------------------------------Button Styling----------------------------------*/
 
 .btn {
     display: block;
@@ -67,7 +83,11 @@ input {
     margin-right: 0%;
 }
 
-/*Last polymer-element Styling*/
+.delete-event-btn {
+    margin-right: -12%;
+}
+
+/*----------------------------------Last Element Styling----------------------------------*/
 .last-element {
     margin-bottom: 150px;
 }

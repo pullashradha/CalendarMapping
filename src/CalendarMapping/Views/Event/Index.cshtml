@@ -24,18 +24,23 @@
             <div>
                 <button id="new-event-btn" class="btn btn-primary">Open/Close New Event Form</button>
 
-                <form action="Create" method="post" id="new-event-form" class="form-group">
+                <form action="Create" method="post" id="new-event-form" class="form-group row">
                     <h2>Create Event</h2>
                     <label for="description">Description</label>
                     <textarea type="text" name="newDescription" class="form-control"></textarea>
 
-                    <label for="date">Date</label>
-                    <input type="date" name="newDate" class="form-control"/>
-
-                    <label for="startTime">Start Time</label>
-                    <input type="time" name="newStartTime" class="form-control"/>
-                    <label for="endTime">End Time</label>
-                    <input type="time" name="newEndTime" class="form-control"/>
+                    <div class="col-xs-4">
+                        <label for="date">Date</label>
+                        <input type="date" name="newDate" class="form-control" />
+                    </div>
+                    <div class="col-xs-4">
+                        <label for="startTime">Start Time</label>
+                        <input type="time" name="newStartTime" class="form-control" />
+                    </div>
+                    <div class="col-xs-4">
+                        <label for="endTime">End Time</label>
+                        <input type="time" name="newEndTime" class="form-control" />
+                    </div>
 
                     <label for="address">Address</label>
                     <input type="text" name="newAddress" class="form-control"/>
@@ -43,22 +48,21 @@
                 </form>
             </div>
             <hr />
+            <br />
 
-            <div>
+            <div class="main-content">
                 <h2>Events List</h2>
                 <div>
                     @foreach (var individualEvent in Model)
                     {
-                        <h5 class="col-xs-6">@individualEvent.Description | @Html.ActionLink("Details", "Detail", new { eventId = individualEvent.Id })</h5>
-                        <form action="Delete" method="post" class="col-xs-6 form-group delete-event">
+                        <h5 class="col-xs-8">@individualEvent.Description | @Html.ActionLink("Details", "Detail", new { eventId = individualEvent.Id })</h5>
+                        <form action="Delete" method="post" class="col-xs-2 form-group delete-event">
                             <input type="hidden" value=@individualEvent.Id name="eventId" class="form-control"/>
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     }
                 </div>
             </div>
-            <br />
-            <hr />
         }
     </body>
 </html>
