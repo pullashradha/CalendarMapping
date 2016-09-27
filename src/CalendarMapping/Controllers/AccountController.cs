@@ -32,7 +32,8 @@ namespace CalendarMapping.Controllers
             IdentityResult userAddedToRole = await _userManager.AddToRoleAsync(newUser, "AccountHolder");
             if (registeredUser.Succeeded && userAddedToRole.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: true, lockoutOnFailure: false);
+                return RedirectToAction("Index", "User");
             }
             else
             {
