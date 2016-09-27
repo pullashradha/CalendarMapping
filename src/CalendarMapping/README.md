@@ -42,6 +42,7 @@ AccountHolder | TestUser | Test1234!
 * Have to refresh the page after editting an event for the changes to display
 * Need to fill in all information in edit event form otherwise will be null
 * Edit forms occasionally don't show the complete placeholder value
+* ResetPassword() method in UserController not working (SaveChanges specifically)
 
 ## Specifications
 

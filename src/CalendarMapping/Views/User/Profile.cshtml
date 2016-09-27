@@ -14,6 +14,7 @@
         <div>
             @Html.Hidden("EditUrl", Url.Action("Edit"))
             @Html.Hidden("EditUsernameUrl", Url.Action("EditUsername"))
+            @Html.Hidden("ResetPasswordUrl", Url.Action("ResetPassword"))
             @Html.Hidden("DeleteCurrentUserUrl", Url.Action("Delete"))
         </div>
 
@@ -60,19 +61,19 @@
         <br />
         <hr />
 
-        @*<div>
+        <div>
             <h2>Reset Password</h2>
             <form action="ResetPassword" method="post" id="reset-password-form">
                 <label>New Password</label>
-                <input name="password" />
+                <input type="password" name="newPassword" />
                 <label>Confirm Password</label>
-                <input name="confirmPassword" />
+                <input type="password" name="confirmPassword" />
                 <input type="hidden" value=@Model.Id name="userId" />
-                <button type="submit">Change Password</button>
+                <button type="submit" class="btn btn-success">Change Password</button>
             </form>
         </div>
         <br />
-        <hr />*@
+        <hr />
 
         <div>
             <form action="Delete" method="post" id="delete-user" class="col-xs-6 form-group">

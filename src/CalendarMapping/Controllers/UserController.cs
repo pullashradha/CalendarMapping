@@ -16,10 +16,12 @@ namespace CalendarMapping.Controllers
     {
         private readonly DBContext _db;
         private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
 
-        public UserController(SignInManager<User> signInManager, DBContext db)
+        public UserController(SignInManager<User> signInManager, UserManager<User> userManager, DBContext db)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
             _db = db;
         }
 
@@ -98,25 +100,25 @@ namespace CalendarMapping.Controllers
         }
 
         //Reset Password
-        //[Authorize(Roles = "SiteBoss, AccountHolder")]
-        //[HttpPost]
-        //public async Task<IActionResult> ResetPassword(string password, string confirmPassword, string userId)
-        //{
-        //    if (password == confirmPassword)
-        //    {
-        //        await _signInManager.SignOutAsync();
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        [HttpPost]
+        public IActionResult ResetPassword(string newPassword, string confirmPassword, string userId)
+        {
+            var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
+            if (newPassword == confirmPassword)
+            {
+                _userManager.RemovePasswordAsync(editedUser);
+                _userManager.AddPasswordAsync(editedUser, newPassword);
 
-        //        var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
-        //        editedUser.PasswordHash = password; //Need to Hash password
-        //        _db.SaveChanges();
+                _db.SaveChanges(); //Not working...
 
-        //        return RedirectToAction("Login", "Account");
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Profile");
-        //    }
-        //}
+                return RedirectToAction("Profile");
+            }
+            else
+            {
+                return RedirectToAction("Profile");
+            }
+        }
 
         //Delete Current User
         [Authorize(Roles = "SiteBoss, AccountHolder")]

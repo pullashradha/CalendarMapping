@@ -55,6 +55,18 @@
             }
         });
     });
+    $("#reset-password-form").submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            dataType: "html",
+            data: $(this).serialize(),
+            url: $("#ResetPasswordUrl").val(),
+            success: function (result) {
+                location.reload();
+            }
+        });
+    });
     $("#delete-user").submit(function (event) {
         event.preventDefault();
         if (confirm("Are you sure you want to delete your account?")) {
