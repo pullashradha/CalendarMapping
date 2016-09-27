@@ -23,7 +23,7 @@ nav li {
     margin-right: 75px;
 }
 
-.main-content-event {
+.more-content {
     text-align: center;
 }
 
@@ -85,6 +85,10 @@ input {
 
 .delete-event-btn {
     margin-right: -12%;
+}
+
+.account-btn {
+    margin-top: 40px;
 }
 
 /*----------------------------------Last Element Styling----------------------------------*/

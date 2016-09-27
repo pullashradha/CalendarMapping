@@ -11,14 +11,16 @@
 
 @using (Html.BeginForm())
 {
-    <form class="form-group">
-        <label>Username</label>
-        @Html.TextBoxFor(m => m.Username)
+    <div class="more-content">
+        <form class="form-group">
+            <label>Username</label>
+            @Html.TextBoxFor(m => m.Username)
 
 
-        <label>Password</label>
-        @Html.PasswordFor(m => m.Password)
+            <label>Password</label>
+            @Html.PasswordFor(m => m.Password)
 
-        <button type="submit" class="btn btn-success">Log In</button>
-    </form>
+            <button type="submit" class="btn btn-success account-btn">Log In</button>
+        </form>
+    </div>
 }

@@ -66,7 +66,7 @@ View details of one event on separate page | --- | ---
 
 HTML | CSS | AJAX C#
 ----- | ----- | ----- | -----
-Change time output on events list from military time to standard time format | Design site | Set up alerts after user completes a CRUD function | Email confirmation for new accounts
+Change time output on events list from military time to standard time format | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Email confirmation for new accounts
 --- | --- | --- | --- 
 
 ## Support and Contact Details

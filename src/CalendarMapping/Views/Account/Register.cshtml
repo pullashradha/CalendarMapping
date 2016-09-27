@@ -11,28 +11,43 @@
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post))
 {
-    <form class="form-group">
-        <label>First Name</label>
-        @Html.TextBoxFor(m => m.FirstName)
-
-        <label>Last Name</label>
-        @Html.TextBoxFor(m => m.LastName)
-
-        <label>Email</label>
-        @Html.TextBoxFor(m => m.Email)
-
-        <label>Phone Number</label>
-        @Html.TextBoxFor(m => m.PhoneNumber)
-
-        <label>Username</label>
-        @Html.TextBoxFor(m => m.Username)
-
-        <label>Password</label>
-        @Html.PasswordFor(m => m.Password)
-
-        <label>Confirm Password</label>
-        @Html.PasswordFor(m => m.ConfirmPassword)
-
-        <button type="submit" class="btn btn-success">Register</button>
-    </form>
+    <div class="more-content">
+        <form class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>First Name</label>
+                    @Html.TextBoxFor(m => m.FirstName)
+                </div>
+                <div class="col-xs-6">
+                    <label>Last Name</label>
+                    @Html.TextBoxFor(m => m.LastName)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <label>Email</label>
+                    @Html.TextBoxFor(m => m.Email)
+                </div>
+                <div class="col-xs-6">
+                    <label>Phone Number</label>
+                    @Html.TextBoxFor(m => m.PhoneNumber)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label>Username</label>
+                    @Html.TextBoxFor(m => m.Username)
+                </div>
+                <div class="col-xs-4">
+                    <label>Password</label>
+                    @Html.PasswordFor(m => m.Password)
+                </div>
+                <div class="col-xs-4">
+                    <label>Confirm Password</label>
+                    @Html.PasswordFor(m => m.ConfirmPassword)
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success account-btn">Register</button>
+        </form>
+    </div>
 }
