@@ -35,6 +35,10 @@ h5 {
     font-size: 18pt;
 }
 
+p {
+    text-align: center;
+}
+
 /*----------------------------------Form Styling----------------------------------*/
 .form-group {
     margin-left: 75px;

@@ -32,7 +32,16 @@ namespace CalendarMapping
             services.AddEntityFramework()
                 .AddDbContext<DBContext>(options =>
                     options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                //Configure password requirements
+                options.Password.RequiredLength = 6;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                //Need to specify non-required options as false
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+            })
                 .AddEntityFrameworkStores<DBContext>()
                 .AddDefaultTokenProviders();
         }
