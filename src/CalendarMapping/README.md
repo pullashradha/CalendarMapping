@@ -50,6 +50,7 @@ The program should... | Example Input | Example Output
 Have CRUD functionality for a user account | --- | ---
 Prevent users from registering an account with an already in use username &/or email | --- | ---
 Log in new user automatically upon registration | --- | ---
+Create a new private calendar for user upon registration | --- | ---
 Allow SiteBoss to delete any account | --- | ---
 Have authentication capabilities to allow users to access personal accounts | --- | ---
 Have CRUD functionality for a role (only accessible by SiteBoss role) | --- | ---

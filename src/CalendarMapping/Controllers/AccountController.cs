@@ -27,13 +27,22 @@ namespace CalendarMapping.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            var newUser = new User { FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, PhoneNumber = model.PhoneNumber, UserName = model.Username };
-            IdentityResult registeredUser = await _userManager.CreateAsync(newUser, model.Password);
-            IdentityResult userAddedToRole = await _userManager.AddToRoleAsync(newUser, "AccountHolder");
-            if (registeredUser.Succeeded && userAddedToRole.Succeeded)
+            if (!(_db.Users.Any(u => u.UserName == model.Username)) && !(_db.Users.Any(u => u.Email == model.Email)))
             {
-                Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: true, lockoutOnFailure: false);
-                return RedirectToAction("Index", "User");
+                var newUser = new User { FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, PhoneNumber = model.PhoneNumber, UserName = model.Username };
+                IdentityResult registeredUser = await _userManager.CreateAsync(newUser, model.Password);
+                IdentityResult userAddedToRole = await _userManager.AddToRoleAsync(newUser, "AccountHolder");
+                //Calendar firstCalendar = new Calendar();
+                //firstCalendar.User = newUser;
+                if (registeredUser.Succeeded && userAddedToRole.Succeeded)
+                {
+                    Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: true, lockoutOnFailure: false);
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    return View();
+                }
             }
             else
             {
