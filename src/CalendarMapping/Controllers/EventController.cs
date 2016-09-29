@@ -36,15 +36,24 @@ namespace CalendarMapping.Controllers
             return View(_db.Events.Where(e => e.User.Id == currentUser.Id));
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         //Create New Event
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public async Task<IActionResult> Create(string newDescription, DateTime newDate, DateTime newStartTime, DateTime newEndTime, string newAddress)
+        public async Task<IActionResult> Create(string newDescription, DateTime newDate, DateTime newStartTime, DateTime newEndTime, string newAddress, int calendarId)
         {
             Event newEvent = new Event(newDescription, newStartTime, newEndTime, newAddress, newDate);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
             newEvent.User = currentUser;
+
+            var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
+            newEvent.Calendar = currentCalendar;
+
             _db.Events.Add(newEvent);
             _db.SaveChanges();
 

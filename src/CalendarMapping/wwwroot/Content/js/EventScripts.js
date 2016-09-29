@@ -1,9 +1,5 @@
 ﻿$(document).ready(function () {
-//Index
-    $("#new-event-form").hide();
-    $("#new-event-btn").click(function () {
-        $("#new-event-form").toggle();
-    });
+//Create
     $("#new-event-form").submit(function (event) {
         event.preventDefault();
         $.ajax({
@@ -16,6 +12,7 @@
             }
         });
     });
+//Index
     $(".delete-event").submit(function (event) {
         event.preventDefault();
         if (confirm("Are you sure you want to delete this event?")) {

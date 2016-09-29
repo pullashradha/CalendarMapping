@@ -11,7 +11,19 @@
         <script src="~/Content/js/CalendarScripts.js" type="text/javascript"></script>
     </head>
     <body>
+        <div>
+            @Html.Hidden("CreateEventUrl", Url.Action("Create", "Event"))
+        </div>
+
         <h1 class="page-header">@Model.Name</h1>
         <br />
+
+        <button class="btn btn-primary" id="create-event-view">Create New Event</button>
+        <button class="btn btn-primary" id="close-event-view">Close New Event Form</button>
+        <div id="show-new-event-form">
+            <input type="hidden" value=@Model.Id name="calendarId"/>
+        </div>
+        <br />
+        <hr />
     </body>
 </html>

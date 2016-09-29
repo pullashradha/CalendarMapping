@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    //Index
+//Index
     $("#new-calendar-form").hide();
     $("#new-calendar-btn").click(function () {
         $("#new-calendar-form").toggle();
@@ -41,5 +41,25 @@
                 }
             });
         }
+    });
+//Detail
+    $("#close-event-view").hide();
+    $("#create-event-view").click(function () {
+        $.ajax({
+            type: "GET",
+            dataType: "html",
+            url: $("#CreateEventUrl").val(),
+            success: function (result) {
+                $("#create-event-view").hide();
+                $("#close-event-view").show();
+                $("#show-new-event-form").show();
+                $("#show-new-event-form").html(result);
+            }
+        });
+    });
+    $("#close-event-view").click(function () {
+        $("#show-new-event-form").hide();
+        $("#close-event-view").hide();
+        $("#create-event-view").show();
     });
 });

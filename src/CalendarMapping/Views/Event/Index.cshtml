@@ -12,7 +12,6 @@
     </head>
     <body>
         <div>
-            @Html.Hidden("CreateUrl", Url.Action("Create"))
             @Html.Hidden("DeleteUrl", Url.Action("Delete"))
         </div>
 
@@ -21,35 +20,6 @@
 
         @if (User.Identity.IsAuthenticated)
         {
-            <div>
-                <button id="new-event-btn" class="btn btn-primary">Open/Close New Event Form</button>
-
-                <form action="Create" method="post" id="new-event-form" class="form-group row">
-                    <h2>Create Event</h2>
-                    <label for="description">Description</label>
-                    <textarea type="text" name="newDescription" class="form-control"></textarea>
-
-                    <div class="col-xs-4">
-                        <label for="date">Date</label>
-                        <input type="date" name="newDate" class="form-control" />
-                    </div>
-                    <div class="col-xs-4">
-                        <label for="startTime">Start Time</label>
-                        <input type="time" name="newStartTime" class="form-control" />
-                    </div>
-                    <div class="col-xs-4">
-                        <label for="endTime">End Time</label>
-                        <input type="time" name="newEndTime" class="form-control" />
-                    </div>
-
-                    <label for="address">Address</label>
-                    <input type="text" name="newAddress" class="form-control"/>
-                    <button type="submit" class="btn btn-success">Save</button>
-                </form>
-            </div>
-            <hr />
-            <br />
-
             <div class="main-content">
                 <h2>Events List</h2>
                 <div>

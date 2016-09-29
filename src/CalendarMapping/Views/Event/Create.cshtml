@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="~/Content/js/EventScripts.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div>
+            @Html.Hidden("CreateUrl", Url.Action("Create"))
+        </div>
+
+        <div>
+            <form action="Create" method="post" id="new-event-form" class="form-group row">
+                <h2>Create Event</h2>
+                <label for="description">Description</label>
+                <textarea type="text" name="newDescription" class="form-control"></textarea>
+
+                <div class="col-xs-4">
+                    <label for="date">Date</label>
+                    <input type="date" name="newDate" class="form-control" />
+                </div>
+                <div class="col-xs-4">
+                    <label for="startTime">Start Time</label>
+                    <input type="time" name="newStartTime" class="form-control" />
+                </div>
+                <div class="col-xs-4">
+                    <label for="endTime">End Time</label>
+                    <input type="time" name="newEndTime" class="form-control" />
+                </div>
+
+                <label for="address">Address</label>
+                <input type="text" name="newAddress" class="form-control" />
+                <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+    </body>
+</html>
+
