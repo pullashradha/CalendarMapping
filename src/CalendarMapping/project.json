@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
@@ -17,7 +17,9 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.EntityFrameworkCore.Design": "1.0.0-preview2-final",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
-    "Microsoft.AspNetCore.Identity": "1.0.0"
+    "Microsoft.AspNetCore.Identity": "1.0.0",
+    "Google.Apis": "1.16.0",
+    "RestSharp.NetCore": "105.2.3"
   },
 
   "tools": {

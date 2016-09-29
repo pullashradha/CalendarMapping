@@ -100,6 +100,14 @@ input {
     margin-top: 40px;
 }
 
+/*----------------------------------Maps Styling----------------------------------*/
+
+#show-events-map {
+    width: 500px;
+    height: 500px;
+    background-color: grey;
+}
+
 /*----------------------------------Last Element Styling----------------------------------*/
 .last-element {
     margin-bottom: 150px;
