@@ -9,32 +9,25 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CalendarMapping.Models
 {
-    [Table("Events")]
-    public class Event
+    [Table("Calendars")]
+    public class Calendar
     {
         [Key]
         public int Id { get; set; }
-        public string Description { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-        public string Address { get; set; }
+        public string Name { get; set; }
+        public bool PrivacyStatus { get; set; }
         public virtual User User { get; set; }
-        public virtual Calendar Calendar { get; set; }
 
-        public Event() { }
+        public Calendar() { }
 
-        public Event(string description, DateTime startTime, DateTime endTime, string address, DateTime date = default(DateTime), int id = 0)
+        public Calendar(string name, bool privacyStatus, int id = 0)
         {
-            Description = description;
-            StartTime = startTime;
-            EndTime = endTime;
-            Address = address;
-            Date = date;
+            Name = name;
+            PrivacyStatus = privacyStatus;
             Id = id;
         }
 
-        public override bool Equals (System.Object otherEvent)
+        public override bool Equals(System.Object otherEvent)
         {
             if (otherEvent is Event)
             {

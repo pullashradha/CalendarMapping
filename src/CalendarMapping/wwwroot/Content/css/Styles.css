@@ -11,6 +11,11 @@ nav li {
     font-size: 15pt;
 }
 
+/*----------------------------------Home/Index Styling----------------------------------*/
+.profiled-calendars {
+    text-align: center;
+}
+
 /*----------------------------------Page Styling----------------------------------*/
 .page-header {
     text-align: center;
