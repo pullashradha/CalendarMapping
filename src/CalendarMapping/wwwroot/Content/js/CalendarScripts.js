@@ -59,14 +59,14 @@
             }
         });
     });
-    $(".delete-calendar").submit(function (event) {
+    $("delete-calendar-details").submit(function (event) {
         event.preventDefault();
         if (confirm("Are you sure you want to delete this calendar?")) {
             $.ajax({
                 type: "POST",
                 dataType: "html",
                 data: $(this).serialize(),
-                url: $("#DeleteCurrentEventUrl").val(),
+                url: $("#DeleteCurrentCalendarUrl").val(),
                 success: function (result) {
                     location.reload();
                 }

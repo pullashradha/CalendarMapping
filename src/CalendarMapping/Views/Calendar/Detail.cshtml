@@ -13,7 +13,7 @@
     <body>
         <div>
             @Html.Hidden("CreateEventUrl", Url.Action("CreateEvent"))
-            @Html.Hidden("DeleteCalendarUrl", Url.Action("DeleteCalendar"))
+            @Html.Hidden("DeleteCurrentCalendarUrl", Url.Action("DeleteCalendar"))
         </div>
 
         <h1 class="page-header">@Model.Name</h1>
@@ -49,7 +49,7 @@
         <br />
         <hr />
 
-        <form action="DeleteCalendar" method="post" class="col-xs-6 delete-calendar delete-calendar-details">
+        <form action="DeleteCalendar" method="post" class="col-xs-6 delete-calendar-details">
             <input type="hidden" value=@Model.Id name="calendarId" />
             <button type="submit" class="btn btn-danger delete-calendar-btn last-element">Delete Calendar</button>
         </form>

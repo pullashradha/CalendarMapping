@@ -31,7 +31,7 @@
             }
         });
     });
-    $(".delete-event").submit(function (event) {
+    $(".delete-event-details").submit(function (event) {
         event.preventDefault();
         if (confirm("Are you sure you want to delete this event?")) {
             $.ajax({
