@@ -34,12 +34,19 @@ namespace CalendarMapping.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
 
-            return View(_db.Events.Where(e => e.User.Id == currentUser.Id));
+            var eventsList = _db.Events.Where(e => e.User.Id == currentUser.Id).ToList();
+
+            ViewData.Add("UserId", userId);
+
+            return View(eventsList);
         }
 
-        public IActionResult Create()
+        //Create Events Map
+        [HttpPost]
+        public IActionResult CreateMap(string userId)
         {
-            return View();
+            var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
+            return Json(eventsList);
         }
 
         //Event Details

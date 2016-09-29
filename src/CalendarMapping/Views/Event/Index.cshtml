@@ -43,8 +43,7 @@
         <div class="main-content">
             <h2>Map Events</h2>
             <form action="CreateMap" method="post" id="map-events" class="form-group">
-                <label for="address">Address</label>
-                <input name="address" id="address" class="form-control"/>
+                <input type="hidden" value=@(ViewData["UserId"]) name="userId" />
                 <button type="submit" class="btn btn-info">View Map</button>
             </form>
         </div>
