@@ -129,7 +129,19 @@ namespace CalendarMapping.Controllers
             await _signInManager.SignOutAsync();
 
             var currentUser = _db.Users.FirstOrDefault(u => u.Id == userId);
+            var userEvents = _db.Events.Where(e => e.User == currentUser);
+            var userCalendars = _db.Calendars.Where(c => c.User == currentUser);
+
             _db.Users.Remove(currentUser);
+            foreach (var individualEvent in userEvents)
+            {
+                _db.Events.Remove(individualEvent);
+            }
+            foreach (var calendar in userCalendars)
+            {
+                _db.Calendars.Remove(calendar);
+            }
+
             _db.SaveChanges();
 
             return RedirectToAction("Index", "Home");
