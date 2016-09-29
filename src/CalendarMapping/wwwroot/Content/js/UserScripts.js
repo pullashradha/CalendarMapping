@@ -7,7 +7,7 @@
             data: $(this).serialize(),
             url: $("#LogoutUrl").val(),
             success: function (result) {
-                location.reload();
+                location.replace("/");
             }
         });
     });

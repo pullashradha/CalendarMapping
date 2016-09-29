@@ -62,7 +62,8 @@ namespace CalendarMapping.Controllers
 
             _db.SaveChanges();
 
-            return RedirectToAction("Detail");
+            //Reloads current page not redirect to Event/Index
+            return RedirectToAction("Index");
         }
 
         //Delete An Event

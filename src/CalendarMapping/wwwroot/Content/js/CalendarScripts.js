@@ -68,7 +68,7 @@
                 data: $(this).serialize(),
                 url: $("#DeleteCurrentCalendarUrl").val(),
                 success: function (result) {
-                    location.reload();
+                    location.replace("Index");
                 }
             });
         }

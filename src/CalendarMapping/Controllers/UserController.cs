@@ -44,7 +44,6 @@ namespace CalendarMapping.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            //Actually redirects to Login page - probaly because of Ajax location.reload
             return RedirectToAction("Index", "Home");
         }
 

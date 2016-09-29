@@ -38,9 +38,7 @@ AccountHolder | TestUser | Test1234!
 
 ## Known Bugs
 
-* Have to refresh the page after editting an event for the changes to display
 * Need to fill in all information in edit event form otherwise will be null
-* Deleting an event or calendar from its detail view doesn't redirect back to Event/Index view
 
 ## Specifications
 

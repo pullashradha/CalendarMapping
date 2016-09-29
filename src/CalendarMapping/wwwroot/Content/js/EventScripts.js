@@ -40,7 +40,7 @@
                 data: $(this).serialize(),
                 url: $("#DeleteCurrentEventUrl").val(),
                 success: function (result) {
-                    location.reload();
+                    location.replace("Index");
                 }
             });
         }
