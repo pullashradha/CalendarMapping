@@ -35,23 +35,23 @@
             <form action="EditEvent" method="post" id="edit-event" class="form-group row">
                 <h2>Edit Event</h2>
                 <label for="description">Description</label>
-                <textarea type="text" placeholder=@Model.Description value=@Model.Description name="description" class="form-control"></textarea>
+                <textarea type="text" value=@Model.Description name="description" class="form-control"></textarea>
 
                 <div class="col-xs-4">
                     <label for="date">Date</label>
-                    <input type="date" placeholder=@Model.Date value=@Model.Date name="date" class="form-control" />
+                    <input type="date" value=@Model.Date name="date" class="form-control" />
                 </div>
                 <div class="col-xs-4">
                     <label for="startTime">Start Time</label>
-                    <input type="time" placeholder=@Model.StartTime value=@Model.StartTime name="startTime" class="form-control" />
+                    <input type="time" value=@Model.StartTime name="startTime" class="form-control" />
                 </div>
                 <div class="col-xs-4">
                     <label for="endTime">End Time</label>
-                    <input type="time" placeholder=@Model.EndTime value=@Model.EndTime name="endTime" class="form-control" />
+                    <input type="time" value=@Model.EndTime name="endTime" class="form-control" />
                 </div>
 
                 <label for="address">Address</label>
-                <input type="text" placeholder=@Model.Address value=@Model.Address name="address" class="form-control" />
+                <input type="text" value=@Model.Address name="address" class="form-control" />
 
                 <input type="hidden" value=@Model.Id name="eventId" />
                 <button type="submit" class="btn btn-success">Save</button>

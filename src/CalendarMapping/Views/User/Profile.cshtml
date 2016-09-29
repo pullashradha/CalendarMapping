@@ -43,21 +43,21 @@
                 <div class="row">
                     <div class="col-xs-6">
                         <label for="firstName">First Name</label>
-                        <input placeholder=@Model.FirstName value=@Model.FirstName name="firstName" class="form-control" />
+                        <input value=@Model.FirstName name="firstName" class="form-control" />
                     </div>
                     <div class="col-xs-6">
                         <label for="lastName">Last Name</label>
-                        <input placeholder=@Model.LastName value=@Model.LastName name="lastName" class="form-control" />
+                        <input value=@Model.LastName name="lastName" class="form-control" />
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
                         <label for="email">Email</label>
-                        <input placeholder=@Model.Email value=@Model.Email name="email" class="form-control" />
+                        <input value=@Model.Email name="email" class="form-control" />
                     </div>
                     <div class="col-xs-6">
                         <label for="phoneNumber">Phone Number</label>
-                        <input placeholder=@Model.PhoneNumber value=@Model.PhoneNumber name="phoneNumber" class="form-control" />
+                        <input value=@Model.PhoneNumber name="phoneNumber" class="form-control" />
                     </div>
                 </div>
                 <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
@@ -68,7 +68,7 @@
                 <h2>Edit Username</h2>
                 <div class="col-xs-10">
                     <label for="username">Username</label>
-                    <input placeholder=@Model.UserName value=@Model.UserName name="username" class="form-control" />
+                    <input placeholder="@Model.UserName" name="username" class="form-control" />
                 </div>
                 <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
                 <button type="submit" class="btn btn-success col-xs-2">Save</button>
