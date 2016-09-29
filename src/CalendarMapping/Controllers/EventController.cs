@@ -33,7 +33,7 @@ namespace CalendarMapping.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
 
-            return View(_db.Events.Where(x => x.User.Id == currentUser.Id));
+            return View(_db.Events.Where(e => e.User.Id == currentUser.Id));
         }
 
         //Create New Event

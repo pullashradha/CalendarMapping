@@ -15,9 +15,21 @@ namespace CalendarMapping.Controllers
 {
     public class CalendarController : Controller
     {
-        public IActionResult Index()
+        private readonly DBContext _db;
+        private readonly UserManager<User> _userManager;
+
+        public CalendarController(UserManager<User> userManager, DBContext db)
         {
-            return View();
+            _userManager = userManager;
+            _db = db;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+
+            return View(_db.Calendars.Where(c => c.User.Id == currentUser.Id));
         }
     }
 }

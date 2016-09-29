@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Security.Claims
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -11,5 +13,41 @@
     <body>
         <h1 class="page-header">Calendar Manager</h1>
         <br />
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            @*<div>
+                <button id="new-calendar-btn" class="btn btn-primary">Open/Close New Calendar Form</button>
+
+                <form action="Create" method="post" id="new-calendar-form" class="form-group row">
+                    <h2>Create Calendar</h2>
+                    <div class="col-xs-8">
+                        <label for="name">Name</label>
+                        <input name="newName" class="form-control" />
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="privacyStatus">Privacy Status</label>
+                        <input placeholder="True or False" name="newPrivacyStatus" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-success col-xs-2">Save</button>
+                </form>
+            </div>
+            <hr />
+            <br />*@
+
+            <div class="main-content">
+                <h2>Calendars List</h2>
+                <div>
+                    @foreach (var calendar in Model)
+                    {
+                        <h5 class="col-xs-8">@calendar.Name</h5>
+                        <form action="Delete" method="post" class="col-xs-2 form-group delete-calendar">
+                            <input type="hidden" value=@calendar.Id name="calendarId" class="form-control" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        }
     </body>
 </html>
