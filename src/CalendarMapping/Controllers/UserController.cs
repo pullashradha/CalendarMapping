@@ -102,17 +102,19 @@ namespace CalendarMapping.Controllers
         //Reset Password
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public IActionResult ResetPassword(string newPassword, string confirmPassword, string userId)
+        public async Task<IActionResult> ResetPassword(string newPassword, string confirmPassword, string userId)
         {
-            var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
+            await _signInManager.SignOutAsync();
+
+            var editedUser = _db.Users.FirstOrDefault(u => u.Id == userId);
             if (newPassword == confirmPassword)
             {
-                _userManager.RemovePasswordAsync(editedUser);
-                _userManager.AddPasswordAsync(editedUser, newPassword);
+                await _userManager.RemovePasswordAsync(editedUser);
+                await _userManager.AddPasswordAsync(editedUser, newPassword);
 
-                _db.SaveChanges(); //Not working...
+                _db.SaveChanges();
 
-                return RedirectToAction("Profile");
+                return RedirectToAction("Index", "Home");
             }
             else
             {
