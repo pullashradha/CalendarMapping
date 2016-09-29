@@ -31,5 +31,40 @@ namespace CalendarMapping.Controllers
 
             return View(_db.Calendars.Where(c => c.User.Id == currentUser.Id));
         }
+
+        //Create New Calendar
+        [HttpPost]
+        public async Task<IActionResult> Create(string newName, string newPrivacyStatus)
+        {
+            Calendar newCalendar = new Calendar();
+            newCalendar.Name = newName;
+
+            if (newPrivacyStatus == "True" || newPrivacyStatus == "true")
+            {
+                newCalendar.PrivacyStatus = true;
+            }
+            else if (newPrivacyStatus == "False" || newPrivacyStatus == "false")
+            {
+                newCalendar.PrivacyStatus = false;
+            }
+
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var currentUser = await _userManager.FindByIdAsync(userId);
+            newCalendar.User = currentUser;
+            _db.Calendars.Add(newCalendar);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        //Delete A Calendar
+        [HttpPost]
+        public IActionResult Delete(int calendarId)
+        {
+            var selectedCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
+            _db.Calendars.Remove(selectedCalendar);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
