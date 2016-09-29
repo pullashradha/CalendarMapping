@@ -121,5 +121,15 @@ namespace CalendarMapping.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //List All Calendar Events
+        [HttpGet]
+        public IActionResult EventsList(int calendarId)
+        {
+            var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
+            var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar).ToList();
+
+            return Json(eventsList);
+        }
     }
 }

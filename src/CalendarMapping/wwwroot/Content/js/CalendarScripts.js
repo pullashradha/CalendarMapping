@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-//Index
+    //Index
     $("#new-calendar-form").hide();
     $("#new-calendar-btn").click(function () {
         $("#new-calendar-form").toggle();
@@ -42,7 +42,7 @@
             });
         }
     });
-//Detail
+    //Detail
     $("#new-event-form").hide();
     $("#new-event-btn").click(function () {
         $("#new-event-form").toggle();
@@ -56,6 +56,21 @@
             url: $("#CreateEventUrl").val(),
             success: function (result) {
                 location.reload();
+            }
+        });
+    });
+    $("#events-list").submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            data: $(this).serialize(),
+            url: $("#EventsListUrl").val(),
+            success: function (result) {
+                for (var i = 0; i < result.length; i++)
+                {
+                    $("#individual-event").append("<h5>" + result[i].description + "--" + result[i].date + "</h5>");
+                }
             }
         });
     });

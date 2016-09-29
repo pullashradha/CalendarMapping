@@ -13,6 +13,7 @@
     <body>
         <div>
             @Html.Hidden("CreateEventUrl", Url.Action("CreateEvent"))
+            @Html.Hidden("EventsListUrl", Url.Action("EventsList"))
             @Html.Hidden("DeleteCurrentCalendarUrl", Url.Action("DeleteCalendar"))
         </div>
 
@@ -48,9 +49,15 @@
         </div>
         <br />
         <hr />
+        <br />
 
-        <div>
-            <button class="btn btn-info" id="events-list">Events List</button>
+        <div class="main-content">
+            <h2>Events List</h2>
+            <form action="EventsList" method="get" id="events-list">
+                <input type="hidden" value=@Model.Id name="calendarId"/>
+                <button class="btn btn-info">View All Events</button>
+            </form>
+            <br />
             <div id="individual-event"></div>
         </div>
         <br />
