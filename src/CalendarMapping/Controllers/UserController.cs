@@ -157,7 +157,7 @@ namespace CalendarMapping.Controllers
             var userCalendars = _db.Calendars.Where(c => c.User == currentUser);
             if (currentUser.Id == "1e24830b-22d4-48f3-aa09-b3311e552e72")
             {
-                //Can't allow SiteBoss to delete own account without logging out
+                //Can't allow SiteBoss to delete own account without logging out first
                 return RedirectToAction("List");
             }
             else
