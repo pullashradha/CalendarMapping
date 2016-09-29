@@ -10,7 +10,7 @@
             type: "POST",
             dataType: "html",
             data: $(this).serialize(),
-            url: $("#CreateUrl").val(),
+            url: $("#CreateCalendarUrl").val(),
             success: function (result) {
                 location.reload();
             }
@@ -22,7 +22,7 @@
             type: "POST",
             dataType: "html",
             data: $(this).serialize(),
-            url: $("#EditUrl").val(),
+            url: $("#EditCalendarUrl").val(),
             success: function (result) {
                 location.reload();
             }
@@ -35,7 +35,7 @@
                 type: "POST",
                 dataType: "html",
                 data: $(this).serialize(),
-                url: $("#DeleteUrl").val(),
+                url: $("#DeleteCalendarUrl").val(),
                 success: function (result) {
                     location.reload();
                 }
@@ -43,23 +43,34 @@
         }
     });
 //Detail
-    $("#close-event-view").hide();
-    $("#create-event-view").click(function () {
+    $("#new-event-form").hide();
+    $("#new-event-btn").click(function () {
+        $("#new-event-form").toggle();
+    });
+    $("#new-event-form").submit(function (event) {
+        event.preventDefault();
         $.ajax({
-            type: "GET",
+            type: "POST",
             dataType: "html",
+            data: $(this).serialize(),
             url: $("#CreateEventUrl").val(),
             success: function (result) {
-                $("#create-event-view").hide();
-                $("#close-event-view").show();
-                $("#show-new-event-form").show();
-                $("#show-new-event-form").html(result);
+                location.reload();
             }
         });
     });
-    $("#close-event-view").click(function () {
-        $("#show-new-event-form").hide();
-        $("#close-event-view").hide();
-        $("#create-event-view").show();
+    $(".delete-calendar").submit(function (event) {
+        event.preventDefault();
+        if (confirm("Are you sure you want to delete this calendar?")) {
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                data: $(this).serialize(),
+                url: $("#DeleteCurrentEventUrl").val(),
+                success: function (result) {
+                    location.reload();
+                }
+            });
+        }
     });
 });

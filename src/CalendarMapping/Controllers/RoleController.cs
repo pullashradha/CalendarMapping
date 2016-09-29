@@ -41,7 +41,7 @@ namespace CalendarMapping.Controllers
         //Create New Role
         [Authorize(Roles = "SiteBoss")]
         [HttpPost]
-        public async Task<IActionResult> Create(string newName)
+        public async Task<IActionResult> CreateRole(string newName)
         {
             var newRole = new IdentityRole();
             newRole.Name = newName;
@@ -59,7 +59,7 @@ namespace CalendarMapping.Controllers
         //Edit A Role
         [Authorize(Roles = "SiteBoss")]
         [HttpPost]
-        public IActionResult Edit(string roleName, string roleId)
+        public IActionResult EditRole(string roleName, string roleId)
         {
             var editedRole = _db.Roles.Where(r => r.Id == roleId).FirstOrDefault();
             editedRole.Name = roleName;
@@ -72,7 +72,7 @@ namespace CalendarMapping.Controllers
         //Delete A Role
         [Authorize(Roles = "SiteBoss")]
         [HttpPost]
-        public IActionResult Delete(string roleId)
+        public IActionResult DeleteRole(string roleId)
         {
             var selectedRole = _db.Roles.FirstOrDefault(r => r.Id == roleId);
             _db.Roles.Remove(selectedRole);

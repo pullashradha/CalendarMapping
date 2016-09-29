@@ -69,7 +69,7 @@ namespace CalendarMapping.Controllers
         //Edit User Info
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public IActionResult Edit(string firstName, string lastName, string email, string phoneNumber, string userId)
+        public IActionResult EditUser(string firstName, string lastName, string email, string phoneNumber, string userId)
         {
             var editedUser = _db.Users.Where(u => u.Id == userId).FirstOrDefault();
             editedUser.FirstName = firstName;
@@ -123,7 +123,7 @@ namespace CalendarMapping.Controllers
         //Delete Current User
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public async Task<IActionResult> Delete(string userId)
+        public async Task<IActionResult> DeleteCurrentUser(string userId)
         {
             //Logs out current user before deleting account
             await _signInManager.SignOutAsync();

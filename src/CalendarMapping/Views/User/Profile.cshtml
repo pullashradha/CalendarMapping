@@ -12,10 +12,10 @@
     </head>
     <body>
         <div>
-            @Html.Hidden("EditUrl", Url.Action("Edit"))
+            @Html.Hidden("EditUserUrl", Url.Action("EditUser"))
             @Html.Hidden("EditUsernameUrl", Url.Action("EditUsername"))
             @Html.Hidden("ResetPasswordUrl", Url.Action("ResetPassword"))
-            @Html.Hidden("DeleteCurrentUserUrl", Url.Action("Delete"))
+            @Html.Hidden("DeleteCurrentUserUrl", Url.Action("DeleteCurrentUser"))
         </div>
 
         <h1 class="page-header">Manage Profile</h1>
@@ -38,7 +38,7 @@
 
         <div>
             <button id="edit-user-btn" class="btn btn-primary">Open/Close Edit Profile Form</button>
-            <form action="Edit" method="post" id="edit-user-form" class="edit-user form-group">
+            <form action="EditUser" method="post" id="edit-user-form" class="edit-user form-group">
                 <h2>Edit Profile</h2>
                 <div class="row">
                     <div class="col-xs-6">
@@ -98,7 +98,7 @@
         <hr />
 
         <div>
-            <form action="Delete" method="post" id="delete-user" class="col-xs-6 form-group">
+            <form action="DeleteCurrentUser" method="post" id="delete-user" class="col-xs-6 form-group">
                 <input type="hidden" value=@Model.Id name="userId" class="form-control"/>
                 <button type="submit" class="btn btn-danger delete-account-btn last-element">Delete Account</button>
             </form>

@@ -1,17 +1,4 @@
 ﻿$(document).ready(function () {
-//Create
-    $("#new-event-form").submit(function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            dataType: "html",
-            data: $(this).serialize(),
-            url: $("#CreateUrl").val(),
-            success: function (result) {
-                location.reload();
-            }
-        });
-    });
 //Index
     $(".delete-event").submit(function (event) {
         event.preventDefault();
@@ -20,7 +7,7 @@
                 type: "POST",
                 dataType: "html",
                 data: $(this).serialize(),
-                url: $("#DeleteUrl").val(),
+                url: $("#DeleteEventUrl").val(),
                 success: function (result) {
                     location.reload();
                 }
@@ -38,7 +25,7 @@
             type: "POST",
             dataType: "html",
             data: $(this).serialize(),
-            url: $("#EditUrl").val(),
+            url: $("#EditEventUrl").val(),
             success: function (result) {
                 location.reload();
             }

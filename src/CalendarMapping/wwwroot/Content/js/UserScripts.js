@@ -37,7 +37,7 @@
             type: "POST",
             dataType: "html",
             data: $(this).serialize(),
-            url: $("#EditUrl").val(),
+            url: $("#EditUserUrl").val(),
             success: function (result) {
                 location.reload();
             }

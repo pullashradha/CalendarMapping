@@ -12,8 +12,8 @@
     </head>
     <body>
         <div>
-            @Html.Hidden("EditUrl", Url.Action("Edit"))
-            @Html.Hidden("DeleteCurrentEventUrl", Url.Action("Delete"))
+            @Html.Hidden("EditEventUrl", Url.Action("EditEvent"))
+            @Html.Hidden("DeleteCurrentEventUrl", Url.Action("DeleteEvent"))
         </div>
 
         <h1 class="page-header">@Model.Description</h1>
@@ -32,7 +32,7 @@
 
         <div>
             <button id="edit-form-btn" class="btn btn-primary">Open/Close Edit Event Form</button>
-            <form action="Edit" method="post" id="edit-event" class="form-group row">
+            <form action="EditEvent" method="post" id="edit-event" class="form-group row">
                 <h2>Edit Event</h2>
                 <label for="description">Description</label>
                 <textarea type="text" placeholder=@Model.Description value=@Model.Description name="description" class="form-control"></textarea>
@@ -61,7 +61,7 @@
         <hr />
         <br />
 
-        <form action="Delete" method="post" class="col-xs-6 delete-event delete-event-details">
+        <form action="DeleteEvent" method="post" class="col-xs-6 delete-event delete-event-details">
             <input type="hidden" value=@Model.Id name="eventId"/>
             <button type="submit" class="btn btn-danger delete-event-btn last-element">Delete Event</button>
         </form>

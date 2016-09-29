@@ -12,7 +12,7 @@
     </head>
     <body>
         <div>
-            @Html.Hidden("DeleteUrl", Url.Action("Delete"))
+            @Html.Hidden("DeleteEventUrl", Url.Action("DeleteEvent"))
         </div>
 
         <h1 class="page-header">Event Manager</h1>
@@ -26,7 +26,7 @@
                     @foreach (var individualEvent in Model)
                     {
                         <h5 class="col-xs-8">@individualEvent.Description | @Html.ActionLink("Details", "Detail", new { eventId = individualEvent.Id })</h5>
-                        <form action="Delete" method="post" class="col-xs-2 form-group delete-event">
+                        <form action="DeleteEvent" method="post" class="col-xs-2 form-group delete-event">
                             <input type="hidden" value=@individualEvent.Id name="eventId" class="form-control"/>
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>

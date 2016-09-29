@@ -10,7 +10,7 @@
             type: "POST",
             dataType: "html",
             data: $(this).serialize(),
-            url: $("#CreateUrl").val(),
+            url: $("#CreateRoleUrl").val(),
             success: function (result) {
                 location.reload();
             }
@@ -22,7 +22,7 @@
             type: "POST",
             dataType: "html",
             data: $(this).serialize(),
-            url: $("#EditUrl").val(),
+            url: $("#EditRoleUrl").val(),
             success: function (result) {
                 location.reload();
             }
@@ -35,7 +35,7 @@
                 type: "POST",
                 dataType: "html",
                 data: $(this).serialize(),
-                url: $("#DeleteUrl").val(),
+                url: $("#DeleteRoleUrl").val(),
                 success: function (result) {
                     location.reload();
                 }

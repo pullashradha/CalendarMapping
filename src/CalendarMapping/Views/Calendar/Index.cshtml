@@ -12,9 +12,9 @@
     </head>
     <body>
         <div>
-            @Html.Hidden("CreateUrl", Url.Action("Create"))
-            @Html.Hidden("EditUrl", Url.Action("Edit"))
-            @Html.Hidden("DeleteUrl", Url.Action("Delete"))
+            @Html.Hidden("CreateCalendarUrl", Url.Action("CreateCalendar"))
+            @Html.Hidden("EditCalendarUrl", Url.Action("EditCalendar"))
+            @Html.Hidden("DeleteCurrentCalendarUrl", Url.Action("DeleteCalendar"))
         </div>
 
         <h1 class="page-header">Calendar Manager</h1>
@@ -25,14 +25,14 @@
             <div>
                 <button id="new-calendar-btn" class="btn btn-primary">Open/Close New Calendar Form</button>
 
-                <form action="Create" method="post" id="new-calendar-form" class="form-group row">
+                <form action="CreateCalendar" method="post" id="new-calendar-form" class="form-group row">
                     <h2>Create Calendar</h2>
                     <div class="col-xs-7">
                         <label for="name">Name</label>
                         <input name="newName" class="form-control" />
                     </div>
                     <div class="col-xs-3">
-                        <label for="privacyStatus">Privacy Status</label>
+                        <label for="privacyStatus">Private?</label>
                         <input placeholder="True/False" name="newPrivacyStatus" class="form-control" />
                     </div>
                     <button type="submit" class="btn btn-success col-xs-2">Save</button>
@@ -47,11 +47,11 @@
                     @foreach (var calendar in Model)
                     {
                         <h5 class="col-xs-7">@calendar.Name | @Html.ActionLink("Details", "Detail", new { calendarId = calendar.Id })</h5>
-                        <form action="Delete" method="post" class="col-xs-2 form-group delete-calendar">
+                        <form action="DeleteCalendar" method="post" class="col-xs-2 form-group delete-calendar">
                             <input type="hidden" value=@calendar.Id name="calendarId" class="form-control" />
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
-                        <form action="Edit" method="post" class="form-group edit-calendar row">
+                        <form action="EditCalendar" method="post" class="form-group edit-calendar row">
                             <div class="col-xs-7">
                                 <label for="calendarName">Name</label>
                                 <input placeholder=@calendar.Name value=@calendar.Name name="calendarName" class="form-control" />

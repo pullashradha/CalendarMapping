@@ -41,25 +41,6 @@ namespace CalendarMapping.Controllers
             return View();
         }
 
-        //Create New Event
-        [Authorize(Roles = "SiteBoss, AccountHolder")]
-        [HttpPost]
-        public async Task<IActionResult> Create(string newDescription, DateTime newDate, DateTime newStartTime, DateTime newEndTime, string newAddress, int calendarId)
-        {
-            Event newEvent = new Event(newDescription, newStartTime, newEndTime, newAddress, newDate);
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var currentUser = await _userManager.FindByIdAsync(userId);
-            newEvent.User = currentUser;
-
-            var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
-            newEvent.Calendar = currentCalendar;
-
-            _db.Events.Add(newEvent);
-            _db.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
-
         //Event Details
         public IActionResult Detail(int eventId)
         {
@@ -70,7 +51,7 @@ namespace CalendarMapping.Controllers
         //Edit An Event
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public IActionResult Edit(string description, DateTime date, DateTime startTime, DateTime endTime, string address, int eventId)
+        public IActionResult EditEvent(string description, DateTime date, DateTime startTime, DateTime endTime, string address, int eventId)
         {
             var editedEvent = _db.Events.Where(e => e.Id == eventId).FirstOrDefault();
             editedEvent.Description = description;
@@ -87,7 +68,7 @@ namespace CalendarMapping.Controllers
         //Delete An Event
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public IActionResult Delete(int eventId)
+        public IActionResult DeleteEvent(int eventId)
         {
             var selectedEvent = _db.Events.FirstOrDefault(e => e.Id == eventId);
             _db.Events.Remove(selectedEvent);
