@@ -141,6 +141,8 @@ namespace CalendarMapping.Controllers
         public IActionResult DeleteUser(string userId)
         {
             var currentUser = _db.Users.FirstOrDefault(u => u.Id == userId);
+            var userEvents = _db.Events.Where(e => e.User == currentUser);
+            var userCalendars = _db.Calendars.Where(c => c.User == currentUser);
             if (currentUser.Id == "1e24830b-22d4-48f3-aa09-b3311e552e72")
             {
                 //Can't allow SiteBoss to delete own account without logging out
@@ -149,6 +151,14 @@ namespace CalendarMapping.Controllers
             else
             {
                 _db.Users.Remove(currentUser);
+                foreach (var individualEvent in userEvents)
+                {
+                    _db.Events.Remove(individualEvent);
+                }
+                foreach (var calendar in userCalendars)
+                {
+                    _db.Calendars.Remove(calendar);
+                }
                 _db.SaveChanges();
 
                 return RedirectToAction("Index", "Home");

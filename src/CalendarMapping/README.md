@@ -49,15 +49,15 @@ The program should... | Example Input | Example Output
 ----- | ----- | -----
 Have CRUD functionality for a user account | --- | ---
 Prevent users from registering an account with an already in use username &/or email | --- | ---
-Log in new user automatically upon registration | --- | ---
+Add user to AccountHolder role upon initial registration | --- | ---
 Create a new private calendar for user upon registration | --- | ---
+Log in new user automatically upon registration | --- | ---
 Allow SiteBoss to delete any account | --- | ---
 Have authentication capabilities to allow users to access personal accounts | --- | ---
 Have CRUD functionality for a role (only accessible by SiteBoss role) | --- | ---
-Add user to AccountHolder role upon initial registration | --- | ---
 Add user to a role (many-to-many relationship) | --- | ---
 Remove user from a role | --- | ---
-View all users by roles | --- | ---
+View all users by role | --- | ---
 Have CRUD functionality for an event | --- | ---
 Allow users to CRUD events (one-to-many-relationship) | --- | ---
 View details of one event on separate page | --- | ---

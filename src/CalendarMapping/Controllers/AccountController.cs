@@ -32,8 +32,14 @@ namespace CalendarMapping.Controllers
                 var newUser = new User { FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, PhoneNumber = model.PhoneNumber, UserName = model.Username };
                 IdentityResult registeredUser = await _userManager.CreateAsync(newUser, model.Password);
                 IdentityResult userAddedToRole = await _userManager.AddToRoleAsync(newUser, "AccountHolder");
-                //Calendar firstCalendar = new Calendar();
-                //firstCalendar.User = newUser;
+                //Create new private calendar
+                var calendarName = newUser.FirstName + "'s Calendar"; 
+                Calendar firstCalendar = new Calendar();
+                firstCalendar.Name = calendarName;
+                firstCalendar.PrivacyStatus = true;
+                firstCalendar.User = newUser;
+                _db.Calendars.Add(firstCalendar);
+                _db.SaveChanges();
                 if (registeredUser.Succeeded && userAddedToRole.Succeeded)
                 {
                     Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(model.Username, model.Password, isPersistent: true, lockoutOnFailure: false);
