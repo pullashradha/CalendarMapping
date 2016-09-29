@@ -60,7 +60,7 @@ Remove user from a role | --- | ---
 Have CRUD functionality for an event | --- | ---
 Allow users to CRUD events (one-to-many-relationship) | --- | ---
 View details for one event on separate page | --- | ---
-**Have CRUD functionality for a calendar | --- | ---
+Have CRUD functionality for a calendar | --- | ---
 Restrict site access through authorization | --- | ---
 
 ** = specs yet to be finished

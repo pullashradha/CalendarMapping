@@ -57,6 +57,13 @@ namespace CalendarMapping.Controllers
             return RedirectToAction("Index");
         }
 
+        //Calendar Details
+        public IActionResult Detail(int calendarId)
+        {
+            var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
+            return View(currentCalendar);
+        }
+
         //Edit A Calendar
         [HttpPost]
         public IActionResult Edit(string calendarName, string calendarPrivacyStatus, int calendarId)

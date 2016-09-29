@@ -46,7 +46,7 @@
                 <div class="row">
                     @foreach (var calendar in Model)
                     {
-                        <h5 class="col-xs-7">@calendar.Name</h5>
+                        <h5 class="col-xs-7">@calendar.Name | @Html.ActionLink("Details", "Detail", new { calendarId = calendar.Id })</h5>
                         <form action="Delete" method="post" class="col-xs-2 form-group delete-calendar">
                             <input type="hidden" value=@calendar.Id name="calendarId" class="form-control" />
                             <button type="submit" class="btn btn-danger">Delete</button>
