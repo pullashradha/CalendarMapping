@@ -57,6 +57,25 @@ namespace CalendarMapping.Controllers
             return RedirectToAction("Index");
         }
 
+        //Edit A Calendar
+        [HttpPost]
+        public IActionResult Edit(string calendarName, string calendarPrivacyStatus, int calendarId)
+        {
+            var editedCalendar = _db.Calendars.Where(c => c.Id == calendarId).FirstOrDefault();
+            editedCalendar.Name = calendarName;
+            if (calendarPrivacyStatus == "True" || calendarPrivacyStatus == "true")
+            {
+                editedCalendar.PrivacyStatus = true;
+            }
+            else if (calendarPrivacyStatus == "False" || calendarPrivacyStatus == "false")
+            {
+                editedCalendar.PrivacyStatus = false;
+            }
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
         //Delete A Calendar
         [HttpPost]
         public IActionResult Delete(int calendarId)

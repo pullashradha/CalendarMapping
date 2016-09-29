@@ -48,7 +48,7 @@
                     @*Form should have a class not an id when inside a loop otherwise only the first value in the loop inherits the id & resulting function/request*@
                     <form action="Edit" method="post" class="col-xs-4 form-group edit-role row">
                         <div class="col-xs-9">
-                            <label for="roleName"> Name</label>
+                            <label for="roleName">Name</label>
                             <input placeholder=@role.Name value=@role.Name name="roleName" class="form-control" />
                         </div>
                         <input type="hidden" value=@role.Id name="roleId" class="form-control" />

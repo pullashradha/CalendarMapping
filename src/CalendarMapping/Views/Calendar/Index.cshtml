@@ -13,6 +13,7 @@
     <body>
         <div>
             @Html.Hidden("CreateUrl", Url.Action("Create"))
+            @Html.Hidden("EditUrl", Url.Action("Edit"))
             @Html.Hidden("DeleteUrl", Url.Action("Delete"))
         </div>
 
@@ -32,7 +33,7 @@
                     </div>
                     <div class="col-xs-3">
                         <label for="privacyStatus">Privacy Status</label>
-                        <input placeholder="True or False" name="newPrivacyStatus" class="form-control" />
+                        <input placeholder="True/False" name="newPrivacyStatus" class="form-control" />
                     </div>
                     <button type="submit" class="btn btn-success col-xs-2">Save</button>
                 </form>
@@ -42,13 +43,25 @@
 
             <div class="main-content">
                 <h2>Calendars List</h2>
-                <div>
+                <div class="row">
                     @foreach (var calendar in Model)
                     {
-                        <h5 class="col-xs-8">@calendar.Name</h5>
+                        <h5 class="col-xs-7">@calendar.Name</h5>
                         <form action="Delete" method="post" class="col-xs-2 form-group delete-calendar">
                             <input type="hidden" value=@calendar.Id name="calendarId" class="form-control" />
                             <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        <form action="Edit" method="post" class="form-group edit-calendar row">
+                            <div class="col-xs-7">
+                                <label for="calendarName">Name</label>
+                                <input placeholder=@calendar.Name value=@calendar.Name name="calendarName" class="form-control" />
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="calendarPrivacyStatus">Privacy Status</label>
+                                <input placeholder="True/False" name="calendarPrivacyStatus" class="form-control" />
+                            </div>
+                            <input type="hidden" value=@calendar.Id name="calendarId" class="form-control" />
+                            <button type="submit" class="btn btn-success col-xs-2">Edit</button>
                         </form>
                     }
                 </div>
