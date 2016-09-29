@@ -42,6 +42,8 @@ AccountHolder | TestUser | Test1234!
 * Need to fill in all information in edit event form otherwise will be null
 * Edit forms occasionally don't show the complete placeholder value
 * ResetPassword() method in UserController not working (SaveChanges specifically)
+* Deleting a calendar from its detail view doesn't call the AJAX request & the confirm statement
+* Deleting an event from its detail view doesn't redirect back to Event/Index view
 
 ## Specifications
 

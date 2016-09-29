@@ -73,6 +73,7 @@ namespace CalendarMapping.Controllers
             var selectedEvent = _db.Events.FirstOrDefault(e => e.Id == eventId);
             _db.Events.Remove(selectedEvent);
             _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }
