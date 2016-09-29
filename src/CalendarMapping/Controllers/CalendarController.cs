@@ -61,6 +61,8 @@ namespace CalendarMapping.Controllers
         public IActionResult Detail(int calendarId)
         {
             var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
+            var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar);
+
             return View(currentCalendar);
         }
 

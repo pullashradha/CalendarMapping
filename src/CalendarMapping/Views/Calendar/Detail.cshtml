@@ -49,6 +49,13 @@
         <br />
         <hr />
 
+        <div>
+            <button class="btn btn-info" id="events-list">Events List</button>
+            <div id="individual-event"></div>
+        </div>
+        <br />
+        <hr />
+
         <form action="DeleteCalendar" method="post" class="col-xs-6 delete-calendar-details">
             <input type="hidden" value=@Model.Id name="calendarId" />
             <button type="submit" class="btn btn-danger delete-calendar-btn last-element">Delete Calendar</button>

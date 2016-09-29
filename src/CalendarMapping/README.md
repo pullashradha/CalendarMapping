@@ -40,8 +40,7 @@ AccountHolder | TestUser | Test1234!
 
 * Have to refresh the page after editting an event for the changes to display
 * Need to fill in all information in edit event form otherwise will be null
-* Deleting a calendar from its detail view doesn't call the AJAX request & the confirm statement
-* Deleting an event from its detail view doesn't redirect back to Event/Index view
+* Deleting an event or calendar from its detail view doesn't redirect back to Event/Index view
 
 ## Specifications
 
