@@ -25,6 +25,9 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
+        //-----------------------------------------------------------------------------------------------------//
+
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -34,6 +37,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Create New Calendar
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public async Task<IActionResult> CreateCalendar(string newName, string newPrivacyStatus)
         {
@@ -59,6 +63,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Calendar Details
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         public IActionResult Detail(int calendarId)
         {
             var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
@@ -68,6 +73,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Edit A Calendar
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public IActionResult EditCalendar(string calendarName, string calendarPrivacyStatus, int calendarId)
         {
@@ -87,6 +93,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Delete A Calendar
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public IActionResult DeleteCalendar(int calendarId)
         {
@@ -103,6 +110,8 @@ namespace CalendarMapping.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        //-----------------------------------------------------------------------------------------------------//
 
         //Create New Event
         [Authorize(Roles = "SiteBoss, AccountHolder")]
@@ -124,6 +133,7 @@ namespace CalendarMapping.Controllers
         }
 
         //List All Calendar Events
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpGet]
         public IActionResult EventsList(int calendarId)
         {
@@ -134,6 +144,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Create All Calendar Events Map
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public IActionResult CalendarEventsMap(int calendarId)
         {

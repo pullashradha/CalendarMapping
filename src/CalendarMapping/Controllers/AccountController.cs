@@ -23,6 +23,8 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
+        //-----------------------------------------------------------------------------------------------------//
+
         //Register New Account
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)

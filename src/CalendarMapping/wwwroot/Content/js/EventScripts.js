@@ -45,7 +45,7 @@
             });
         }
     });
-//All Events Map
+//User Events Map
     $("#map-user-events").submit(function (event) {
         event.preventDefault();
         $.ajax({

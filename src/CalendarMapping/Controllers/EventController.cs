@@ -28,6 +28,8 @@ namespace CalendarMapping.Controllers
         //Empty constructor for EventControllerTest BUT needs to be commented out when running program otherwise Event/Index is a blank page
         //public EventController() { }
 
+        //-----------------------------------------------------------------------------------------------------//
+
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         public async Task<IActionResult> Index()
         {
@@ -41,15 +43,8 @@ namespace CalendarMapping.Controllers
             return View(eventsList);
         }
 
-        //Create All User Events Map
-        [HttpPost]
-        public IActionResult UserEventsMap(string userId)
-        {
-            var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
-            return Json(eventsList);
-        }
-
         //Event Details
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
         public IActionResult Detail(int eventId)
         {
             var currentEvent = _db.Events.FirstOrDefault(e => e.Id == eventId);
@@ -83,6 +78,17 @@ namespace CalendarMapping.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        //-----------------------------------------------------------------------------------------------------//
+
+        //Create All User Events Map
+        [Authorize(Roles = "SiteBoss, AccountHolder")]
+        [HttpPost]
+        public IActionResult UserEventsMap(string userId)
+        {
+            var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
+            return Json(eventsList);
         }
     }
 }

@@ -38,7 +38,7 @@ AccountHolder | TestUser | Test1234!
 
 ## Known Bugs
 
-* Map doesn't work in Parties calendar for TestUser
+* Map doesn't work in Parties calendar for TestUser (Geocode ZERO_RESULTS error)
 
 ## Specifications
 
@@ -51,16 +51,18 @@ Create a new private calendar for user upon registration | --- | ---
 Log in new user automatically upon registration | --- | ---
 Allow SiteBoss to delete any account | --- | ---
 Have CRUD functionality for a role (only accessible by SiteBoss) | --- | ---
-Add user to a role (many-to-many relationship) | --- | ---
-Remove user from a role | --- | ---
-**View all users by role | --- | ---
+Add user to a role (many-to-many relationship)(only accessible by SiteBoss) | --- | ---
+Remove user from a role (only accessible by SiteBoss) | --- | ---
+**View all users by role (only accessible by SiteBoss) | --- | ---
 Have CRUD functionality for an event | --- | ---
 Allow users to CRUD events (one-to-many-relationship) | --- | ---
 View details for one event on separate page | --- | ---
 Have CRUD functionality for a calendar | --- | ---
 View all events in a calendar on calendar details page | --- | ---
-View all user's event locations on Event Manager | --- | ---
+Create a map of all user's events by date on Event Manager | --- | ---
+Create a map of all calendar events by date on calendar details page | --- | ---
 Center map on user's location | --- | ---
+**Navigate to event details page from map marker | --- | ---
 Restrict site access through authorization | --- | ---
 **Hold API keys in EnvironmentalVariables class | --- | ---
 
@@ -70,17 +72,17 @@ Restrict site access through authorization | --- | ---
 
 HTML | CSS | AJAX | JavaScript | C#
 ----- | ----- | ----- | ----- | -----
-Link each event to details site from calendar details page | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | --- | Email confirmation for new accounts
---- | --- | --- | --- | ---
+Link each event to details page from calendar details | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Make PrivacyStatus for calendars a checkbox | Profile public calendars on landing page
+--- | --- | --- | --- | Email confirmation for new accounts
 
 ## Support and Contact Details
 
-Contact Epicodus for support in running this program.
+Contact Shradha Pulla at pullashradha@gmail.com for support in running this program.
 
 ## Technologies Used
 
-* HTML
-* CSS
+* HTML5
+* CSS3
 * Bootstrap
 * AJAX
 * jQuery

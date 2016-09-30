@@ -25,6 +25,8 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
+        //-----------------------------------------------------------------------------------------------------//
+
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         public IActionResult Index()
         {
@@ -47,13 +49,15 @@ namespace CalendarMapping.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //List of All Users
+        //List All Users
         [Authorize(Roles = "SiteBoss")]
         public IActionResult List()
         {
             var usersList = _db.Users.ToList();
             return View(usersList);
         }
+
+        //-----------------------------------------------------------------------------------------------------//
 
         //User Profile
         [Authorize(Roles = "SiteBoss, AccountHolder")]
@@ -120,6 +124,8 @@ namespace CalendarMapping.Controllers
                 return RedirectToAction("Profile");
             }
         }
+
+        //-----------------------------------------------------------------------------------------------------//
 
         //Delete Current User
         [Authorize(Roles = "SiteBoss, AccountHolder")]

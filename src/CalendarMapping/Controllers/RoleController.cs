@@ -27,6 +27,8 @@ namespace CalendarMapping.Controllers
             _db = db;
         }
 
+        //-----------------------------------------------------------------------------------------------------//
+
         [Authorize(Roles = "SiteBoss")]
         public IActionResult Index()
         {
@@ -81,6 +83,8 @@ namespace CalendarMapping.Controllers
             return RedirectToAction("Index");
         }
 
+        //-----------------------------------------------------------------------------------------------------//
+
         //Add User to Role
         [Authorize(Roles = "SiteBoss")]
         [HttpPost]
@@ -101,6 +105,7 @@ namespace CalendarMapping.Controllers
         }
 
         //Remove User from Role
+        [Authorize(Roles = "SiteBoss")]
         public async Task<IActionResult> RemoveUser(string username, string roleName)
         {
             User user = _db.Users.Where(u => u.UserName.Equals(username, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
