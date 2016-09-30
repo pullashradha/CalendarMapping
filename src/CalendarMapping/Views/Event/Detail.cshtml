@@ -22,8 +22,8 @@
         <div class="more-content">
             <h2>Address: @Model.Address</h2>
             <div class="row">
-                <h2 class="col-xs-6">Date: @Model.Date.Month/@Model.Date.Day/@Model.Date.Year</h2>
-                <h2 class="col-xs-6">Time: @Model.StartTime.Hour:@Model.StartTime.Minute - @Model.EndTime.Hour:@Model.EndTime.Minute</h2>
+                <h2 class="col-xs-6">Starting: @Model.StartingDateTime.Month/@Model.StartingDateTime.Day/@Model.StartingDateTime.Year - @Model.StartingDateTime.Hour:@Model.StartingDateTime.Minute</h2>
+                <h2 class="col-xs-6">Ending: @Model.EndingDateTime.Month/@Model.EndingDateTime.Day/@Model.EndingDateTime.Year - @Model.EndingDateTime.Hour:@Model.EndingDateTime.Minute</h2>
             </div>
         </div>
         <br />
@@ -35,23 +35,19 @@
             <form action="EditEvent" method="post" id="edit-event" class="form-group row">
                 <h2>Edit Event</h2>
                 <label for="description">Description</label>
-                <textarea type="text" value=@Model.Description name="description" class="form-control"></textarea>
+                <input type="text" value="@Model.Description" name="description" class="form-control" />
 
-                <div class="col-xs-4">
-                    <label for="date">Date</label>
-                    <input type="date" value=@Model.Date name="date" class="form-control" />
+                <div class="col-xs-6">
+                    <label for="startingDateTime">Starting Date/Time</label>
+                    <input type="datetime" value="@Model.StartingDateTime" name="startingDateTime" class="form-control" />
                 </div>
-                <div class="col-xs-4">
-                    <label for="startTime">Start Time</label>
-                    <input type="time" value=@Model.StartTime name="startTime" class="form-control" />
-                </div>
-                <div class="col-xs-4">
-                    <label for="endTime">End Time</label>
-                    <input type="time" value=@Model.EndTime name="endTime" class="form-control" />
+                <div class="col-xs-6">
+                    <label for="endingDateTime">Ending Date/Time</label>
+                    <input type="datetime" value="@Model.EndingDateTime" name="endingDateTime" class="form-control" />
                 </div>
 
                 <label for="address">Address</label>
-                <input type="text" value=@Model.Address name="address" class="form-control" />
+                <input type="text" value="@Model.Address" name="address" class="form-control" />
 
                 <input type="hidden" value=@Model.Id name="eventId" />
                 <button type="submit" class="btn btn-success">Save</button>

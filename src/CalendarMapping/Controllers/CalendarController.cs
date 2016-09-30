@@ -95,7 +95,7 @@ namespace CalendarMapping.Controllers
 
             //Need to delete all events in calendar as well
             var eventsList = _db.Events.Where(e => e.Calendar == selectedCalendar);
-            foreach(var individualEvent in eventsList)
+            foreach (var individualEvent in eventsList)
             {
                 _db.Events.Remove(individualEvent);
             }
@@ -107,9 +107,9 @@ namespace CalendarMapping.Controllers
         //Create New Event
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public async Task<IActionResult> CreateEvent(string newDescription, DateTime newDate, DateTime newStartTime, DateTime newEndTime, string newAddress, int calendarId)
+        public async Task<IActionResult> CreateEvent(string newDescription, DateTime newStartingDateTime, DateTime newEndingDateTime, string newAddress, int calendarId)
         {
-            Event newEvent = new Event(newDescription, newStartTime, newEndTime, newAddress, newDate);
+            Event newEvent = new Event(newDescription, newStartingDateTime, newEndingDateTime, newAddress);
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
             newEvent.User = currentUser;

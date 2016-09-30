@@ -123,7 +123,7 @@
                     for (var i = 0; i < result.length; i++) {
                         var geocoder = new google.maps.Geocoder();
                         geocoder.geocode({ "address": result[i].address }, function (results, status) {
-                            console.log(results[0]); //Undefined...
+                            //console.log(results[0]); //Undefined...
                             if (status === "OK") {
                                 var eventMarker = new google.maps.Marker({
                                     map: map,

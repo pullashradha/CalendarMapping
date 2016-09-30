@@ -38,7 +38,7 @@ AccountHolder | TestUser | Test1234!
 
 ## Known Bugs
 
-* Need to fill in all information in edit event form otherwise will be null
+* Map doesn't work in Parties calendar for TestUser
 
 ## Specifications
 

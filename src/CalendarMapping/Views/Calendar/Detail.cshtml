@@ -26,19 +26,15 @@
             <form action="CreateEvent" method="post" id="new-event-form" class="form-group row">
                 <h2>Create Event</h2>
                 <label for="description">Description</label>
-                <textarea type="text" name="newDescription" class="form-control"></textarea>
+                <input type="text" name="newDescription" class="form-control" />
 
-                <div class="col-xs-4">
-                    <label for="date">Date</label>
-                    <input type="date" name="newDate" class="form-control" />
+                <div class="col-xs-6">
+                    <label for="startingDateTime">Starting Date/Time</label>
+                    <input type="datetime-local" name="newStartingDateTime" class="form-control" />
                 </div>
-                <div class="col-xs-4">
-                    <label for="startTime">Start Time</label>
-                    <input type="time" name="newStartTime" class="form-control" />
-                </div>
-                <div class="col-xs-4">
-                    <label for="endTime">End Time</label>
-                    <input type="time" name="newEndTime" class="form-control" />
+                <div class="col-xs-6">
+                    <label for="endingDateTime">Ending Date/Time</label>
+                    <input type="datetime-local" name="newEndingDateTime" class="form-control" />
                 </div>
 
                 <label for="address">Address</label>

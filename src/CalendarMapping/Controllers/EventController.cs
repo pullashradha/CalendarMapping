@@ -59,13 +59,12 @@ namespace CalendarMapping.Controllers
         //Edit An Event
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
-        public IActionResult EditEvent(string description, DateTime date, DateTime startTime, DateTime endTime, string address, int eventId)
+        public IActionResult EditEvent(string description, DateTime startingDateTime, DateTime endingDateTime, string address, int eventId)
         {
             var editedEvent = _db.Events.Where(e => e.Id == eventId).FirstOrDefault();
             editedEvent.Description = description;
-            editedEvent.Date = date;
-            editedEvent.StartTime = startTime;
-            editedEvent.EndTime = endTime;
+            editedEvent.StartingDateTime = startingDateTime;
+            editedEvent.EndingDateTime = endingDateTime;
             editedEvent.Address = address;
 
             _db.SaveChanges();
