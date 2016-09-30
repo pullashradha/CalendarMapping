@@ -38,7 +38,7 @@ AccountHolder | TestUser | Test1234!
 
 ## Known Bugs
 
-* Map doesn't work in Parties calendar for TestUser (Geocode ZERO_RESULTS error)
+No known bugs.
 
 ## Specifications
 

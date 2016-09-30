@@ -36,7 +36,7 @@ namespace CalendarMapping.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
 
-            var eventsList = _db.Events.Where(e => e.User.Id == currentUser.Id).ToList();
+            var eventsList = _db.Events.Where(e => e.User.Id == currentUser.Id).OrderBy(e => e.StartingDateTime).ToList();
 
             ViewData.Add("UserId", userId);
 
