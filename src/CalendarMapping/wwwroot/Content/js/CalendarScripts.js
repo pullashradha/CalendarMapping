@@ -97,7 +97,7 @@
             dataType: "json",
             data: $(this).serialize(),
             url: $("#CalendarEventsMapUrl").val(),
-            success: function (result) {
+            success: function (eventsList) {
                 var userLocationImg = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
                 var showMapDiv = document.getElementById("show-calendar-events-map");
 
@@ -116,22 +116,40 @@
                         position: { lat: userLat, lng: userLng },
                         icon: userLocationImg
                     });
+                    var userInfoWindow = new google.maps.InfoWindow({
+                        content: "Your Location"
+                    });
+                    userLocationMarker.addListener("click", function () {
+                        userInfoWindow.open(map, userLocationMarker);
+                    });
 
-                    for (var i = 0; i < result.length; i++) {
-                        var geocoder = new google.maps.Geocoder();
-                        geocoder.geocode({ "address": result[i].address }, function (results, status) {
-                            //console.log(results[0]); //Null...
-                            if (status === "OK") {
-                                var eventMarker = new google.maps.Marker({
-                                    map: map,
-                                    position: results[0].geometry.location
-                                });
-                            } else {
-                                alert("Geocode was not successful for the following reason: " + status);
-                            }
-                        });
+                    for (var i = 0; i < eventsList.length; i++) {
+                        mapEvent(map, eventsList[i]);
                     }
                 };
+
+                var mapEvent = function (map, event) {
+                    var geocoder = new google.maps.Geocoder();
+
+                    var infoWindowContent = "<a href='/Event/Detail?eventId=" + event.id + "'>" + event.description + "</a>";
+
+                    geocoder.geocode({ "address": event.address }, function (results, status) {
+                        if (status == "OK") {
+                            var eventMarker = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location
+                            });
+                            var eventInfoWindow = new google.maps.InfoWindow({
+                                content: infoWindowContent
+                            });
+                            eventMarker.addListener("click", function () {
+                                eventInfoWindow.open(map, eventMarker);
+                            });
+                        } else {
+                            alert("Geocode was not successful for the following reason: " + status);
+                        }
+                    });
+                }
 
                 var geoError = function (error) {
                     console.log("Error occurred. Error code: " + error.code);

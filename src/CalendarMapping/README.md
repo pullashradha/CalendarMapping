@@ -62,7 +62,7 @@ View all events in a calendar on calendar details page | --- | ---
 Create a map of all user's events by date on Event Manager | --- | ---
 Create a map of all calendar events by date on calendar details page | --- | ---
 Center map on user's location | --- | ---
-**Navigate to event details page from map marker | --- | ---
+Navigate to event details page from map marker | --- | ---
 Restrict site access through authorization | --- | ---
 **Hold API keys in EnvironmentalVariables class | --- | ---
 

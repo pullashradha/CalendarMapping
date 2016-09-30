@@ -81,24 +81,28 @@
                         userInfoWindow.open(map, userLocationMarker);
                     });
 
+                    //Pass mapEvent() function through loop with event object so event properties are accessibly throughout entire function
                     for (var i = 0; i < eventsList.length; i++)
                     {
-                        allEvents(map, eventsList[i]);
+                        mapEvent(map, eventsList[i]);
                     }
                     
                 }
                     
                 //Set markers for all events
-                var allEvents = function (map, event) {
+                var mapEvent = function (map, event) {
                     var geocoder = new google.maps.Geocoder();
+
+                    var infoWindowContent = "<a href='/Event/Detail?eventId=" + event.id + "'>" + event.description + "</a>";
+
                     geocoder.geocode({ "address": event.address }, function (results, status) {
                         if (status == "OK") {
                             var eventMarker = new google.maps.Marker({
                                 map: map,
-                                position: results[0].geometry.location,
+                                position: results[0].geometry.location
                             });
                             var eventInfoWindow = new google.maps.InfoWindow({
-                                content: event.description
+                                content: infoWindowContent
                             });
                             eventMarker.addListener("click", function () {
                                 eventInfoWindow.open(map, eventMarker);

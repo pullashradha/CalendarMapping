@@ -139,6 +139,7 @@ namespace CalendarMapping.Controllers
         {
             var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
             var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar).ToList();
+            //var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar).OrderBy(e => e.StartingDateTime).ToList();
 
             return Json(eventsList);
         }
