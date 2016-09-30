@@ -70,7 +70,7 @@ Restrict site access through authorization | --- | ---
 
 HTML | CSS | AJAX | JavaScript | C#
 ----- | ----- | ----- | ----- | -----
-Change time output on events list from military time to standard time format | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | --- | Email confirmation for new accounts
+Link each event to details site from calendar details page | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | --- | Email confirmation for new accounts
 --- | --- | --- | --- | ---
 
 ## Support and Contact Details

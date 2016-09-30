@@ -22,8 +22,10 @@
         <div class="more-content">
             <h2>Address: @Model.Address</h2>
             <div class="row">
-                <h2 class="col-xs-6">Starting: @Model.StartingDateTime.Month/@Model.StartingDateTime.Day/@Model.StartingDateTime.Year - @Model.StartingDateTime.Hour:@Model.StartingDateTime.Minute</h2>
-                <h2 class="col-xs-6">Ending: @Model.EndingDateTime.Month/@Model.EndingDateTime.Day/@Model.EndingDateTime.Year - @Model.EndingDateTime.Hour:@Model.EndingDateTime.Minute</h2>
+                <h2></h2>
+                <h2 class="col-xs-5">@Model.StartingDateTime.ToString("MM/dd/yyyy") - @Model.StartingDateTime.ToString("hh:mm tt")</h2>
+                <h2 class="col-xs-2">to</h2>
+                <h2 class="col-xs-5">@Model.EndingDateTime.ToString("MM/dd/yyyy") - @Model.EndingDateTime.ToString("hh:mm tt")</h2>
             </div>
         </div>
         <br />
