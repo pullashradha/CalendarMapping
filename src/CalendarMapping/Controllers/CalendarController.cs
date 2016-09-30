@@ -45,19 +45,20 @@ namespace CalendarMapping.Controllers
         {
             Calendar newCalendar = new Calendar();
             newCalendar.Name = newName;
-
-            if (newPrivacyStatus == "True" || newPrivacyStatus == "true")
+            if (newPrivacyStatus == "true")
             {
                 newCalendar.PrivacyStatus = true;
             }
-            else if (newPrivacyStatus == "False" || newPrivacyStatus == "false")
+            else
             {
                 newCalendar.PrivacyStatus = false;
             }
+            
 
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
             newCalendar.User = currentUser;
+
             _db.Calendars.Add(newCalendar);
             _db.SaveChanges();
 
@@ -81,11 +82,11 @@ namespace CalendarMapping.Controllers
         {
             var editedCalendar = _db.Calendars.Where(c => c.Id == calendarId).FirstOrDefault();
             editedCalendar.Name = calendarName;
-            if (calendarPrivacyStatus == "True" || calendarPrivacyStatus == "true")
+            if (calendarPrivacyStatus == "true")
             {
                 editedCalendar.PrivacyStatus = true;
             }
-            else if (calendarPrivacyStatus == "False" || calendarPrivacyStatus == "false")
+            else
             {
                 editedCalendar.PrivacyStatus = false;
             }

@@ -74,7 +74,7 @@ Custom password requirements in Startup.cs | --- | ---
 
 HTML | CSS | AJAX | JavaScript | C#
 ----- | ----- | ----- | ----- | -----
-Profile public calendars on landing page | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Make PrivacyStatus for calendars a checkbox | Email confirmation for new accounts
+Profile public calendars on landing page | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | --- | Email confirmation for new accounts
 --- | --- | --- | --- | Create SiteBoss in Startup.cs (security issues with password being viewable)
 --- | --- | --- | --- | Use Twilio API to let organizations send text messages to users signed up/allow users to favorite public calendars
 

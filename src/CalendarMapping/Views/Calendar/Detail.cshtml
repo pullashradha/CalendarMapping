@@ -19,6 +19,14 @@
         </div>
 
         <h1 class="page-header">@Model.Name</h1>
+        @if (Model.PrivacyStatus == true)
+        {
+            <p>**This calendar is PRIVATE</p>
+        }
+        else
+        {
+            <p>**This calendar is PUBLIC</p>
+        }
         <br />
 
         <button id="new-event-btn" class="btn btn-primary">Open/Close New Event Form</button>
