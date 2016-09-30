@@ -60,7 +60,7 @@ View details for one event on separate page | --- | ---
 Have CRUD functionality for a calendar | --- | ---
 View all events in a calendar on calendar details page | --- | ---
 View all user's event locations on Event Manager | --- | ---
-**Center map on user's location | --- | ---
+Center map on user's location | --- | ---
 Restrict site access through authorization | --- | ---
 
 ** = specs yet to be finished

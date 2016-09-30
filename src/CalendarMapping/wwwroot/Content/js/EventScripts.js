@@ -54,7 +54,7 @@
             data: $(this).serialize(),
             url: $("#CreateMapUrl").val(),
             success: function (result) {
-                var userLocationImg = "http://img.bhs4.com/22/b/22ba395b4d1c710b8aa7a98263ffba74aec4ed58_large.jpg";
+                var userLocationImg = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
                 var showMapDiv = document.getElementById("show-events-map");
 
                 var geoSuccess = function (position) {
