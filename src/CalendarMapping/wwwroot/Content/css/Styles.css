@@ -104,6 +104,22 @@ input {
     margin-top: 40px;
 }
 
+.today-btn {
+    background-color: #FF69B4;
+    border-color: #FF69B4;
+    color: #FFFFFF;
+}
+
+.yesterday-btn, .tomorrow-btn {
+    background-color: #8B008B;
+    border-color: #8B008B;
+    color: #FFFFFF;
+}
+
+.today-btn:hover, .yesterday-btn:hover, .tomorrow-btn:hover {
+    color: #FFFFFF;
+}
+
 /*----------------------------------Maps Styling----------------------------------*/
 
 #show-events-map, #show-calendar-events-map {
