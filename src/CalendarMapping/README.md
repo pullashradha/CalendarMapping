@@ -62,6 +62,7 @@ View all events in a calendar on calendar details page | --- | ---
 View all user's event locations on Event Manager | --- | ---
 Center map on user's location | --- | ---
 Restrict site access through authorization | --- | ---
+**Hold API keys in EnvironmentalVariables class | --- | ---
 
 ** = specs yet to be finished
 
