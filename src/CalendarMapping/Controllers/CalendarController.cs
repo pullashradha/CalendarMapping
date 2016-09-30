@@ -33,7 +33,9 @@ namespace CalendarMapping.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
 
-            return View(_db.Calendars.Where(c => c.User.Id == currentUser.Id));
+            var calendarsList = _db.Calendars.Where(c => c.User.Id == currentUser.Id);
+
+            return View(calendarsList);
         }
 
         //Create New Calendar
@@ -138,10 +140,9 @@ namespace CalendarMapping.Controllers
         public IActionResult EventsList(int calendarId)
         {
             var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
-            var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar).ToList();
-            //var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar).OrderBy(e => e.StartingDateTime).ToList();
+            var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar).OrderBy(e => e.StartingDateTime).ToList();
 
-            return Json(eventsList);
+            return View(eventsList);
         }
 
         //Create All Calendar Events Map

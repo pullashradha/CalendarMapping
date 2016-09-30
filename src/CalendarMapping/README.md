@@ -63,7 +63,9 @@ Create a map of all user's events by date on Event Manager | --- | ---
 Create a map of all calendar events by date on calendar details page | --- | ---
 Center map on user's location | --- | ---
 Navigate to event details page from map marker | --- | ---
+Navigate to event details page from calendar details page | --- | ---
 Restrict site access through authorization | --- | ---
+Custom password requirements in Startup.cs | --- | ---
 **Hold API keys in EnvironmentalVariables class | --- | ---
 
 ** = specs yet to be finished
@@ -72,8 +74,9 @@ Restrict site access through authorization | --- | ---
 
 HTML | CSS | AJAX | JavaScript | C#
 ----- | ----- | ----- | ----- | -----
-Link each event to details page from calendar details | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Make PrivacyStatus for calendars a checkbox | Profile public calendars on landing page
---- | --- | --- | --- | Email confirmation for new accounts
+Profile public calendars on landing page | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Make PrivacyStatus for calendars a checkbox | Email confirmation for new accounts
+--- | --- | --- | --- | Create SiteBoss in Startup.cs (security issues with password being viewable)
+--- | --- | --- | --- | Use Twilio API to let organizations send text messages to users signed up/allow users to favorite public calendars
 
 ## Support and Contact Details
 

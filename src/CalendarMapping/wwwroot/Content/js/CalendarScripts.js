@@ -63,14 +63,11 @@
         event.preventDefault();
         $.ajax({
             type: "GET",
-            dataType: "json",
+            dataType: "html",
             data: $(this).serialize(),
             url: $("#EventsListUrl").val(),
             success: function (result) {
-                for (var i = 0; i < result.length; i++)
-                {
-                    $("#individual-event").append("<h5>" + result[i].description + "</h5>");
-                }
+                $("#show-events-list").html(result);
             }
         });
         $("#events-list").hide();
@@ -89,6 +86,8 @@
             });
         }
     });
+//Events List
+
 //Calendar Events Map
     $("#map-calendar-events").submit(function (event) {
         event.preventDefault();
