@@ -89,7 +89,7 @@
                 }
                     
                 //Set markers for all events
-                function allEvents(map, event) {
+                var allEvents = function (map, event) {
                     var geocoder = new google.maps.Geocoder();
                     geocoder.geocode({ "address": event.address }, function (results, status) {
                         if (status == "OK") {
