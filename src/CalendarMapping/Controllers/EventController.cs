@@ -41,9 +41,9 @@ namespace CalendarMapping.Controllers
             return View(eventsList);
         }
 
-        //Create Events Map
+        //Create All User Events Map
         [HttpPost]
-        public IActionResult CreateMap(string userId)
+        public IActionResult UserEventsMap(string userId)
         {
             var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
             return Json(eventsList);

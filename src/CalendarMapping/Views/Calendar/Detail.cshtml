@@ -14,6 +14,7 @@
         <div>
             @Html.Hidden("CreateEventUrl", Url.Action("CreateEvent"))
             @Html.Hidden("EventsListUrl", Url.Action("EventsList"))
+            @Html.Hidden("CalendarEventsMapUrl", Url.Action("CalendarEventsMap"))
             @Html.Hidden("DeleteCurrentCalendarUrl", Url.Action("DeleteCalendar"))
         </div>
 
@@ -62,6 +63,21 @@
         </div>
         <br />
         <hr />
+        <br />
+
+        <div class="main-content">
+            <h2>Map Calendar Events</h2>
+            <form action="CalendarEventsMap" method="post" id="map-calendar-events" class="form-group">
+                <input type="hidden" value=@Model.Id name="calendarId" />
+                <button type="submit" class="btn btn-info">View Map</button>
+            </form>
+        </div>
+        <br />
+
+        <div id="show-events-map" class="main-content"></div>
+        <br />
+        <hr />
+        <br />
 
         <form action="DeleteCalendar" method="post" class="col-xs-6 delete-calendar-details">
             <input type="hidden" value=@Model.Id name="calendarId" />

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using Google;
 
 namespace CalendarMapping.Controllers
 {
@@ -129,6 +130,14 @@ namespace CalendarMapping.Controllers
             var currentCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
             var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar).ToList();
 
+            return Json(eventsList);
+        }
+
+        //Create All Calendar Events Map
+        [HttpPost]
+        public IActionResult CalendarEventsMap(int calendarId)
+        {
+            var eventsList = _db.Events.Where(e => e.Calendar.Id == calendarId).ToList();
             return Json(eventsList);
         }
     }

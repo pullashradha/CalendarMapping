@@ -45,14 +45,14 @@
             });
         }
     });
-//Google Map
-    $("#map-events").submit(function (event) {
+//All Events Map
+    $("#map-user-events").submit(function (event) {
         event.preventDefault();
         $.ajax({
             type: "POST",
             dataType: "json",
             data: $(this).serialize(),
-            url: $("#CreateMapUrl").val(),
+            url: $("#UserEventsMapUrl").val(),
             success: function (result) {
                 var userLocationImg = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
                 var showMapDiv = document.getElementById("show-events-map");
