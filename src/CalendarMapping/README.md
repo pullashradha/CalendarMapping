@@ -66,6 +66,7 @@ Navigate to event details page from map marker | --- | ---
 Navigate to event details page from calendar details page | --- | ---
 Restrict site access through authorization | --- | ---
 Custom password requirements in Startup.cs | --- | ---
+View all public calendars on landing page (must have at least one event in calendar) | --- | ---
 **Hold API keys in EnvironmentalVariables class | --- | ---
 
 ** = specs yet to be finished
