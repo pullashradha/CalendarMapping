@@ -58,16 +58,19 @@ Have CRUD functionality for an event | --- | ---
 Allow users to CRUD events (one-to-many-relationship) | --- | ---
 View details for one event on separate page | --- | ---
 Have CRUD functionality for a calendar | --- | ---
+View all events in a calendar on calendar details page | --- | ---
+View all user's event locations on Event Manager | --- | ---
+**Center map on user's location | --- | ---
 Restrict site access through authorization | --- | ---
 
 ** = specs yet to be finished
 
 ## Future Features
 
-HTML | CSS | AJAX | C#
------ | ----- | ----- | -----
-Change time output on events list from military time to standard time format | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Email confirmation for new accounts
---- | --- | --- | --- 
+HTML | CSS | AJAX | JavaScript | C#
+----- | ----- | ----- | ----- | -----
+Change time output on events list from military time to standard time format | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | --- | Email confirmation for new accounts
+--- | --- | --- | --- | ---
 
 ## Support and Contact Details
 
@@ -79,7 +82,10 @@ Contact Epicodus for support in running this program.
 * CSS
 * Bootstrap
 * AJAX
+* jQuery
+* JavaScript
 * Visual Studio
+* Google Maps API
 
 ## Links
 
