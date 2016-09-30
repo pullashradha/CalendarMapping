@@ -38,7 +38,7 @@ AccountHolder | TestUser | Test1234!
 
 ## Known Bugs
 
-No known bugs.
+* Failing to register new account redirects to /User page instead of reloading /Account/Register page
 
 ## Specifications
 
