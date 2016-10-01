@@ -38,7 +38,7 @@ AccountHolder | TestUser | Test1234!
 
 ## Database Schema
 
-![alt text](~/src/CalendarMapping/wwwroot/Content/img/DBSchema.PNG "WWW SQL Designer - schema for project")
+![alt text](wwwroot/Content/img/DBSchema.PNG "WWW SQL Designer - schema for project")
 
 ## Known Bugs
 
