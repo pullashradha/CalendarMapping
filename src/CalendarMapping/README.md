@@ -36,6 +36,10 @@ Role(s) | Username | Password
 SiteBoss, AccountHolder | EpicodusAdmin | Epicodus1234!
 AccountHolder | TestUser | Test1234!
 
+## Database Schema
+
+![Alt text](~/wwwroot/Content/img/DBSchema.PNG?raw=true "WWW SQL Designer - schema for project")
+
 ## Known Bugs
 
 * Failing to register new account redirects to /User page instead of reloading /Account/Register page
