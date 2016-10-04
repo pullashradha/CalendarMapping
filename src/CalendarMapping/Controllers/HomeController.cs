@@ -24,7 +24,7 @@ namespace CalendarMapping.Controllers
         public IActionResult Index()
         {
             var publicCalendarsList = _db.Calendars.Where(c => c.PrivacyStatus == false).ToList();
-            var finalCalendarsList = new List<Calendar> { };
+            var finalCalendarsList = new Dictionary<Calendar, string>() { };
 
             foreach (var calendar in publicCalendarsList)
             {
@@ -33,7 +33,8 @@ namespace CalendarMapping.Controllers
 
                 if (foundEventsList.Count > 0)
                 {
-                    finalCalendarsList.Add(foundCalendar);
+                    var calendarUser = foundCalendar.User.Id;
+                    finalCalendarsList.Add(foundCalendar, calendarUser.Id);
                 }
             }
 

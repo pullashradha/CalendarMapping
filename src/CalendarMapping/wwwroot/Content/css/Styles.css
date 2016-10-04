@@ -105,18 +105,12 @@ input {
 }
 
 .today-btn {
-    background-color: #FF69B4;
-    border-color: #FF69B4;
+    background-color: #2E0854;
+    border-color: #2E0854;
     color: #FFFFFF;
 }
 
-.yesterday-btn, .tomorrow-btn {
-    background-color: #8B008B;
-    border-color: #8B008B;
-    color: #FFFFFF;
-}
-
-.today-btn:hover, .yesterday-btn:hover, .tomorrow-btn:hover {
+.today-btn:hover {
     color: #FFFFFF;
 }
 
