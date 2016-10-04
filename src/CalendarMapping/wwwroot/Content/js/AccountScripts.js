@@ -17,11 +17,15 @@
         event.preventDefault();
         $.ajax({
             type: "POST",
-            dataType: "html",
+            dataType: "json",
             data: $(this).serialize(),
             url: $("#RegisterUrl").val(),
             success: function (result) {
-                location.href = "/User";
+                if (result === "succeeded") {
+                    location.href = "/User";
+                } else {
+                    location.href = "/Account/Register";
+                }
             }
         });
     });
