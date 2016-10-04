@@ -21,22 +21,24 @@
 
         <div class="main-content row">
             <h2>Events List</h2>
-            @*<br />
+            <br />
             <div class="row">
-                <button class="btn yesterday-btn col-xs-4" id="yesterdays-events">Yesterday</button>
-                <button class="btn today-btn col-xs-4" id="todays-events">Today</button>
-                <button class="btn tomorrow-btn col-xs-4" id="tomorrows-events">Tomorrow</button>
+                <button class="btn today-btn" id="today-btn">Today</button>
             </div>
-            <br />*@
+            <br />
+            <br />
 
-            <div>
+            <div id="todays-events">
                 @foreach (var individualEvent in Model)
                 {
-                    <h5 class="col-xs-8">@individualEvent.Description | @Html.ActionLink("Details", "Detail", new { eventId = individualEvent.Id })</h5>
-                    <form action="DeleteEvent" method="post" class="col-xs-2 form-group delete-event">
-                        <input type="hidden" value=@individualEvent.Id name="eventId" class="form-control" />
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    @if (individualEvent.StartingDateTime.Month == DateTime.Today.Month && individualEvent.StartingDateTime.Day == DateTime.Today.Day && individualEvent.StartingDateTime.Year == DateTime.Today.Year)
+                    {
+                        <h5 class="col-xs-8">@individualEvent.Description | @Html.ActionLink("Details", "Detail", new { eventId = individualEvent.Id })</h5>
+                        <form action="DeleteEvent" method="post" class="col-xs-2 form-group delete-event">
+                            <input type="hidden" value=@individualEvent.Id name="eventId" class="form-control" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    }
                 }
             </div>
         </div>
