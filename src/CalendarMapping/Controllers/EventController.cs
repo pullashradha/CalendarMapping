@@ -82,13 +82,23 @@ namespace CalendarMapping.Controllers
 
         //-----------------------------------------------------------------------------------------------------//
 
-        //Create All User Events Map
+        //Create Today's Events Map
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
         public IActionResult UserEventsMap(string userId)
         {
             var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
-            return Json(eventsList);
+            var todaysEvents = new List<Event>();
+
+            foreach (var individualEvent in eventsList)
+            {
+                if (individualEvent.StartingDateTime.Month == DateTime.Today.Month && individualEvent.StartingDateTime.Day == DateTime.Today.Day && individualEvent.StartingDateTime.Year == DateTime.Today.Year)
+                {
+                    todaysEvents.Add(individualEvent);
+                }
+            }
+
+            return Json(todaysEvents);
         }
     }
 }

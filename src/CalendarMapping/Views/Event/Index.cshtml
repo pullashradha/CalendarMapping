@@ -23,12 +23,14 @@
             <h2>Events List</h2>
             <br />
             <div class="row">
-                <button class="btn today-btn" id="today-btn">Today</button>
+                <button class="glyphicon glyphicon-triangle-left col-xs-4"></button>
+                <button class="btn today-btn col-xs-4" id="today-btn">@DateTime.Today.Month/@DateTime.Today.Day/@DateTime.Today.Year</button>
+                <button class="glyphicon glyphicon-triangle-right col-xs-4"></button>
             </div>
             <br />
             <br />
 
-            <div id="todays-events">
+            <div id="events-list">
                 @foreach (var individualEvent in Model)
                 {
                     @if (individualEvent.StartingDateTime.Month == DateTime.Today.Month && individualEvent.StartingDateTime.Day == DateTime.Today.Day && individualEvent.StartingDateTime.Year == DateTime.Today.Year)

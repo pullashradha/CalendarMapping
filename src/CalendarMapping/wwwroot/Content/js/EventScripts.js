@@ -14,9 +14,6 @@
             });
         }
     });
-    $("#today-btn").click(function () {
-        $("#todays-events").show();
-    });
 //User Events Map
     $("#map-user-events").submit(function (event) {
         event.preventDefault();
@@ -56,8 +53,7 @@
                     //Pass mapEvent() function through loop with event object so event properties are accessibly throughout entire function
                     for (var i = 0; i < eventsList.length; i++)
                     {
-                        //if (eventsList[i].startingDateTime.Month === DateTime.Now.Month && eventsList[i].startingDateTime.Day === DateTime.Now.Day && eventsList[i].startingDateTime.Year === DateTime.Now.Year) {
-                            mapEvent(map, eventsList[i]);
+                        mapEvent(map, eventsList[i]);
                     }
                 }
                     
@@ -66,8 +62,6 @@
                     var geocoder = new google.maps.Geocoder();
 
                     var infoWindowContent = "<a href='/Event/Detail?eventId=" + event.id + "'>" + event.description + "</a>";
-
-                    console.log(event.startingDateTime.GetMonth());
 
                     geocoder.geocode({ "address": event.address }, function (results, status) {
                         if (status === "OK") {
