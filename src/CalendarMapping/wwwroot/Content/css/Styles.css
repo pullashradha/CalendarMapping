@@ -48,6 +48,14 @@ p {
     text-align: center;
 }
 
+#date-field {
+    background-color: #2E0854;
+    border-color: #2E0854;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15pt;
+}
+
 /*----------------------------------Form Styling----------------------------------*/
 .form-group {
     margin-left: 75px;
@@ -102,14 +110,6 @@ input {
 
 .account-btn {
     margin-top: 40px;
-}
-
-.today-btn {
-    background-color: #2E0854;
-    border-color: #2E0854;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 15pt;
 }
 
 .glyphicon {

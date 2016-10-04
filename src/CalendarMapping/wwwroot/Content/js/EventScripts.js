@@ -14,6 +14,20 @@
             });
         }
     });
+    $(".previous-events").submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: $(this).serialize(),
+            url: $("#PreviousEventsUrl").val(),
+            success: function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    $("#events-list").html(result[i].description);
+                }
+            }
+        });
+    });
 //User Events Map
     $("#map-user-events").submit(function (event) {
         event.preventDefault();

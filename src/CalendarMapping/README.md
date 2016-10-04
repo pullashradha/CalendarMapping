@@ -82,6 +82,7 @@ HTML | CSS | AJAX | JavaScript | C#
 Show username of public calendars on landing page | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Assign tags to calendars so they can be searched for | Email confirmation for new accounts
 --- | --- | --- | --- | Create SiteBoss in Startup.cs (security issues with password being viewable)
 --- | --- | --- | --- | Use Twilio API to let organizations send text messages to users signed up/allow users to favorite public calendars
+--- | --- | --- | --- | Deploy: https://docs.asp.net/en/latest/tutorials/publish-to-azure-webapp-using-vs.html
 
 ## Support and Contact Details
 
