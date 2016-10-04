@@ -42,7 +42,7 @@ AccountHolder | TestUser | Test1234!
 
 ## Known Bugs
 
-No known bugs.
+* Home/Index page not viewable (User apparently null for public calendar, even though it worked 5 minutes ago...)
 
 ## Specifications
 

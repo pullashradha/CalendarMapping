@@ -33,8 +33,8 @@ namespace CalendarMapping.Controllers
 
                 if (foundEventsList.Count > 0)
                 {
-                    var calendarUser = foundCalendar.User.Id;
-                    finalCalendarsList.Add(foundCalendar, calendarUser.Id);
+                    var calendarUser = foundCalendar.User.UserName;
+                    finalCalendarsList.Add(foundCalendar, calendarUser);
                 }
             }
 

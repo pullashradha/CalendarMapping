@@ -28,16 +28,16 @@
         <div class="main-content">
             <h2>All Public Calendars</h2>
             <br />
-            @*@foreach (var calendar in Model)
+            @foreach (var calendar in Model)
             {
-                <h3 class="profiled-calendars">@calendar.Name</h3>
+                <h3 class="profiled-calendars">@calendar.Key.Name | @calendar.Value</h3>
                 <form action="EventsList" method="get" id="profiled-events-list">
-                    <input type="hidden" value=@calendar.Id name="calendarId" />
+                    <input type="hidden" value=@calendar.Key.Id name="calendarId" />
                     <button class="btn btn-info">View Events</button>
                 </form>
                 <div id="show-events"></div>
                 <br />
-            }*@
+            }
         </div>
     </body>
 </html>

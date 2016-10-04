@@ -108,11 +108,16 @@ input {
     background-color: #2E0854;
     border-color: #2E0854;
     color: #FFFFFF;
+    text-align: center;
+    font-size: 15pt;
 }
 
-.today-btn:hover {
-    color: #FFFFFF;
+.glyphicon {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: -1px;
 }
+
 
 /*----------------------------------Maps Styling----------------------------------*/
 
