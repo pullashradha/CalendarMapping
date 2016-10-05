@@ -23,23 +23,29 @@ namespace CalendarMapping.Controllers
 
         public IActionResult Index()
         {
-            //var publicCalendarsList = _db.Calendars.Where(c => c.PrivacyStatus == false).ToList();
-            //var finalCalendarsList = new Dictionary<Calendar, string>() { };
+            var publicCalendarsList = _db.Calendars.Where(c => c.PrivacyStatus == false).ToList();
+            var finalCalendarsList = new Dictionary<Calendar, string>() { };
 
-            //foreach (var calendar in publicCalendarsList)
-            //{
-            //    var foundCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendar.Id);
-            //    var foundEventsList = _db.Events.Where(e => e.Calendar == foundCalendar).ToList();
+            foreach (var calendar in publicCalendarsList)
+            {
+                var foundCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendar.Id);
+                var foundEventsList = _db.Events.Where(e => e.Calendar == foundCalendar).ToList();
 
-            //    if (foundEventsList.Count > 0)
-            //    {
-            //        var calendarUser = foundCalendar.User.UserName;
-            //        finalCalendarsList.Add(foundCalendar, calendarUser);
-            //    }
-            //}
+                if (foundEventsList.Count > 0)
+                {
+                    if (foundCalendar.User != null)
+                    {
+                        var calendarUser = foundCalendar.User.UserName;
+                        finalCalendarsList.Add(foundCalendar, calendarUser);
+                    }
+                    else
+                    {
+                        finalCalendarsList.Add(foundCalendar, "[user not found]");
+                    }
+                }
+            }
 
-            //return View(finalCalendarsList);
-            return View();
+            return View(finalCalendarsList);
         }
 
         //List All Calendar Events
@@ -50,6 +56,19 @@ namespace CalendarMapping.Controllers
             var eventsList = _db.Events.Where(e => e.Calendar == currentCalendar).OrderBy(e => e.StartingDateTime).ToList();
 
             return View(eventsList);
+        }
+
+        //Favorite A Calendar
+        [HttpPost]
+        public IActionResult FavoriteCalendars(int calendarId)
+        {
+            var foundCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
+
+            var username = User.Identity.Name;
+            var currentUser = _db.Users.SingleOrDefault(u => u.UserName == username);
+            ViewData.Add("UserId", currentUser.Id);
+
+            return View();
         }
     }
 }

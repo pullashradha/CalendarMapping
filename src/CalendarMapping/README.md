@@ -42,7 +42,7 @@ AccountHolder | TestUser | Test1234!
 
 ## Known Bugs
 
-* Home/Index page not viewable (User apparently null for public calendar, even though it worked 5 minutes ago...)
+* Home/Index page not viewable (User apparently null for public calendar, even though it worked the first time... Update: Username shows 3/10 times & errors 7/10 times without any changes in the view or controller... -__-)
 
 ## Specifications
 
@@ -79,7 +79,8 @@ View all public calendars on landing page (must have at least one event in calen
 
 HTML | CSS | AJAX | JavaScript | C#
 ----- | ----- | ----- | ----- | -----
-Show username of public calendars on landing page | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Assign tags to calendars so they can be searched for | Email confirmation for new accounts
+--- | Design site (fancy, not just basic) | Set up alerts after user completes a CRUD function | Update authentication for new methods added in controllers
+--- | --- | --- | --- | Assign tags to calendars so they can be searched for | Email confirmation for new accounts
 --- | --- | --- | --- | Create SiteBoss in Startup.cs (security issues with password being viewable)
 --- | --- | --- | --- | Use Twilio API to let organizations send text messages to users signed up/allow users to favorite public calendars
 --- | --- | --- | --- | Deploy: https://docs.asp.net/en/latest/tutorials/publish-to-azure-webapp-using-vs.html

@@ -145,6 +145,8 @@ namespace CalendarMapping.Controllers
             return View(eventsList);
         }
 
+        //-----------------------------------------------------------------------------------------------------//
+
         //Create All Calendar Events Map
         [Authorize(Roles = "SiteBoss, AccountHolder")]
         [HttpPost]
@@ -152,6 +154,13 @@ namespace CalendarMapping.Controllers
         {
             var eventsList = _db.Events.Where(e => e.Calendar.Id == calendarId).ToList();
             return Json(eventsList);
+        }
+
+        //-----------------------------------------------------------------------------------------------------//
+
+        public IActionResult Favorites()
+        {
+            return View();
         }
     }
 }

@@ -23,6 +23,13 @@
         @if (User.Identity.IsAuthenticated)
         {
             <div>
+                <h2 id="favorites-link">@Html.ActionLink("Favorite Calendars", "Favorites")</h2>
+            </div>
+            <br />
+            <hr />
+            <br />
+
+            <div>
                 <button id="new-calendar-btn" class="btn btn-primary">Open/Close New Calendar Form</button>
 
                 <form action="CreateCalendar" method="post" id="new-calendar-form" class="form-group row">
@@ -42,6 +49,7 @@
                     <button type="submit" class="btn btn-success col-xs-2">Save</button>
                 </form>
             </div>
+            <br />
             <hr />
             <br />
 
@@ -74,6 +82,7 @@
                     }
                 </div>
             </div>
+
         }
     </body>
 </html>

@@ -13,6 +13,7 @@
     <body>
         <div>
             @Html.Hidden("EventsListUrl", Url.Action("EventsList"))
+            @Html.Hidden("FavoriteCalendarsUrl", Url.Action("FavoriteCalendars"))
         </div>
 
         <h1 class="page-header">Welcome to Calendar Mapping!</h1>
@@ -24,20 +25,27 @@
         <br />
         <hr />
         <br />
-
-        <div class="main-content">
-            <h2>All Public Calendars</h2>
-            <br />
-            @*@foreach (var calendar in Model)
-            {
-                <h3 class="profiled-calendars">@calendar.Key.Name | @calendar.Value</h3>
-                <form action="EventsList" method="get" id="profiled-events-list">
-                    <input type="hidden" value=@calendar.Key.Id name="calendarId" />
-                    <button class="btn btn-info">View Events</button>
-                </form>
-                <div id="show-events"></div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="main-content">
+                <h2>All Public Calendars</h2>
                 <br />
-            }*@
-        </div>
+                @foreach (var calendar in Model)
+                {
+                    <h3 class="profiled-calendars"><span class="glyphicon glyphicon-heart-empty" value="@calendar.Key.Id" name="calendarId"></span><span class="glyphicon glyphicon-heart" value="@calendar.Key.Id" name="calendarId"></span> | @calendar.Key.Name | @calendar.Value</h3>
+                    <br />
+                    <form action="EventsList" method="get" id="profiled-events-list">
+                        <input type="hidden" value=@calendar.Key.Id name="calendarId" />
+                        <button class="btn btn-info">View Events</button>
+                    </form>
+                    <div id="show-events"></div>
+                    <br />
+                }
+            </div>
+        }
+        else
+        {
+            <h2 class="main-content">To view all public calendar @Html.ActionLink("login", "Login", "Account") or @Html.ActionLink("register for a new account", "Register", "Account")</h2>
+        }
     </body>
 </html>

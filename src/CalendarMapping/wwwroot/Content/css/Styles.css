@@ -56,6 +56,10 @@ p {
     font-size: 15pt;
 }
 
+#favorites-link {
+    text-align: center;
+}
+
 /*----------------------------------Form Styling----------------------------------*/
 .form-group {
     margin-left: 75px;
@@ -87,8 +91,18 @@ input {
     margin-top: 0px;
 }
 
+/*----------------------------------Glyphicon Styling----------------------------------*/
+
 .glyphicon-triangle-left {
     margin-left: 83%;
+}
+
+.glyphicon-heart-empty:hover {
+    cursor: pointer;
+}
+
+.glyphicon-heart {
+    color: red;
 }
 
 /*----------------------------------Button Styling----------------------------------*/
