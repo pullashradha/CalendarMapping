@@ -45,4 +45,38 @@ namespace CalendarMapping.Models
             return this.Id.GetHashCode();
         }
     }
+
+    [Table("FavoriteCalendars")]
+    public class FavoriteCalendar
+    {
+        [Key]
+        public int Id { get; set; }
+        public virtual User User { get; set; }
+        public virtual Calendar Calendar { get; set; }
+
+        public FavoriteCalendar() { }
+
+        public FavoriteCalendar(int id = 0)
+        {
+            Id = id;
+        }
+
+        public override bool Equals(System.Object otherFavoriteCalendar)
+        {
+            if (otherFavoriteCalendar is FavoriteCalendar)
+            {
+                FavoriteCalendar newFavoriteCalendar = (FavoriteCalendar)otherFavoriteCalendar;
+                return this.Id.Equals(newFavoriteCalendar.Id);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
+        }
+    }
 }

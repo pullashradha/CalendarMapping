@@ -12,6 +12,9 @@ namespace CalendarMapping.Models
         public DbSet<Event> Events { get; set; }
 
         public DbSet<Calendar> Calendars { get; set; }
+
+        public DbSet<FavoriteCalendar> FavoriteCalendars { get; set; }
+
         public DBContext(DbContextOptions options) : base(options) { }
     }
 }
