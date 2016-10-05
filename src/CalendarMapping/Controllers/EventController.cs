@@ -103,14 +103,14 @@ namespace CalendarMapping.Controllers
 
         //View Past Events
         [HttpPost]
-        public IActionResult PastEvents(string userId, DateTime currentlyViewingDate)
+        public IActionResult PastEvents(string userId, DateTime currentDate)
         {
             var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
             var previousEvents = new List<Event>();
 
             foreach (var individualEvent in eventsList)
             {
-                if (individualEvent.StartingDateTime.Month == currentlyViewingDate.Month && individualEvent.StartingDateTime.Day == (currentlyViewingDate.Day - 1) && individualEvent.StartingDateTime.Year == currentlyViewingDate.Year)
+                if (individualEvent.StartingDateTime.Month == currentDate.Month && individualEvent.StartingDateTime.Day == (currentDate.Day - 1) && individualEvent.StartingDateTime.Year == currentDate.Year)
                 {
                     previousEvents.Add(individualEvent);
                 }
@@ -120,21 +120,21 @@ namespace CalendarMapping.Controllers
         }
 
         //View Future Events
-        [HttpPost]
-        public IActionResult FutureEvents(string userId, DateTime currentlyViewingDate)
-        {
-            var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
-            var futureEvents = new List<Event>();
+        //[HttpPost]
+        //public IActionResult FutureEvents(string userId, DateTime currentDate)
+        //{
+        //    var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
+        //    var futureEvents = new List<Event>();
 
-            foreach (var individualEvent in eventsList)
-            {
-                if (individualEvent.StartingDateTime.Month == currentlyViewingDate.Month && individualEvent.StartingDateTime.Day == (currentlyViewingDate.Day + 1) && individualEvent.StartingDateTime.Year == currentlyViewingDate.Year)
-                {
-                    futureEvents.Add(individualEvent);
-                }
-            }
+        //    foreach (var individualEvent in eventsList)
+        //    {
+        //        if (individualEvent.StartingDateTime.Month == currentDate.Month && individualEvent.StartingDateTime.Day == (currentDate.Day + 1) && individualEvent.StartingDateTime.Year == currentDate.Year)
+        //        {
+        //            futureEvents.Add(individualEvent);
+        //        }
+        //    }
 
-            return Json(futureEvents);
-        }
+        //    return Json(futureEvents);
+        //}
     }
 }

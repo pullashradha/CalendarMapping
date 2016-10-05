@@ -16,10 +16,13 @@
     });
     $(".past-events").submit(function (event) {
         event.preventDefault();
+        var userId = $(".user-id").val();
+        var currentDate = $("#current-date").val();
+        console.log($("#current-date").val());
         $.ajax({
             type: "POST",
             dataType: "json",
-            data: $(this).serialize(),
+            data: { userId, currentDate },
             url: $("#PastEventsUrl").val(),
             success: function (result) {
                 for (var i = 0; i < result.length; i++)
@@ -29,15 +32,21 @@
 
                 var newDate = new Date (result[0].startingDateTime);
                 $("#date-field").html(newDate.toDateString());
+
+                var changedCurrentDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
+                $("#current-date").val(changedCurrentDate);
             }
         });
+        console.log($("#current-date").val());
     });
     $(".future-events").submit(function (event) {
         event.preventDefault();
+        var userId = $(".user-id").val();
+        var currentDate = $(".current-date").val();
         $.ajax({
             type: "POST",
             dataType: "json",
-            data: $(this).serialize(),
+            data: { userId, currentDate },
             url: $("#FutureEventsUrl").val(),
             success: function (result) {
                 for (var i = 0; i < result.length; i++) {
@@ -46,6 +55,7 @@
 
                 var newDate = new Date(result[0].startingDateTime);
                 $("#date-field").html(newDate.toDateString());
+                $(".current-date").val(newDate);
             }
         });
     });

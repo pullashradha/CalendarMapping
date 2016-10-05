@@ -26,14 +26,14 @@
             <br />
             <div class="row">
                 <form action="PastEvents" method="post" class="past-events col-xs-3">
-                    <input type="hidden" value=@(ViewData["UserId"]) name="userId" />
-                    <input type="hidden" value="@DateTime.Today" name="currentlyViewingDate"/>
+                    <input type="hidden" value=@(ViewData["UserId"]) name="userId" class="user-id" />
+                    <input type="hidden" value="@DateTime.Today" name="currentDate" id="current-date" />
                     <button class="glyphicon glyphicon-triangle-left"></button>
                 </form>
                 <span class="col-xs-6" id="date-field">@DateTime.Today.ToString("ddd MMM dd yyyy")</span>
                 <form action="FutureEvents" method="post" class="future-events col-xs-3">
-                    <input type="hidden" value=@(ViewData["UserId"]) name="userId" />
-                    <input type="hidden" value="@DateTime.Today" name="currentlyViewingDate" />
+                    <input type="hidden" value=@(ViewData["UserId"]) name="userId" class="user-id" />
+                    <input type="hidden" value="@DateTime.Today" name="currentDate"/>
                     <button class="glyphicon glyphicon-triangle-right"></button>
                 </form>
             </div>
