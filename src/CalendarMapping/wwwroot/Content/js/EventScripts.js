@@ -14,17 +14,38 @@
             });
         }
     });
-    $(".previous-events").submit(function (event) {
+    $(".past-events").submit(function (event) {
         event.preventDefault();
         $.ajax({
             type: "POST",
             dataType: "json",
             data: $(this).serialize(),
-            url: $("#PreviousEventsUrl").val(),
+            url: $("#PastEventsUrl").val(),
+            success: function (result) {
+                for (var i = 0; i < result.length; i++)
+                {
+                    $("#events-list").append(result[i].description);
+                }
+
+                var newDate = new Date (result[0].startingDateTime);
+                $("#date-field").html(newDate.toDateString());
+            }
+        });
+    });
+    $(".future-events").submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: $(this).serialize(),
+            url: $("#FutureEventsUrl").val(),
             success: function (result) {
                 for (var i = 0; i < result.length; i++) {
-                    $("#events-list").html(result[i].description);
+                    $("#events-list").append(result[i].description);
                 }
+
+                var newDate = new Date(result[0].startingDateTime);
+                $("#date-field").html(newDate.toDateString());
             }
         });
     });

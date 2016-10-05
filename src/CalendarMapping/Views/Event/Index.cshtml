@@ -14,7 +14,8 @@
         <div>
             @Html.Hidden("DeleteEventUrl", Url.Action("DeleteEvent"))
             @Html.Hidden("UserEventsMapUrl", Url.Action("UserEventsMap"))
-            @Html.Hidden("PreviousEventsUrl", Url.Action("PreviousEvents"))
+            @Html.Hidden("PastEventsUrl", Url.Action("PastEvents"))
+            @Html.Hidden("FutureEventsUrl", Url.Action("FutureEvents"))
         </div>
 
         <h1 class="page-header">Event Manager</h1>
@@ -24,13 +25,17 @@
             <h2>Events List</h2>
             <br />
             <div class="row">
-                <form action="PreviousEvents" method="post" class="previous-events col-xs-3">
+                <form action="PastEvents" method="post" class="past-events col-xs-3">
                     <input type="hidden" value=@(ViewData["UserId"]) name="userId" />
                     <input type="hidden" value="@DateTime.Today" name="currentlyViewingDate"/>
                     <button class="glyphicon glyphicon-triangle-left"></button>
                 </form>
-                <span class="col-xs-6" id="date-field">@DateTime.Today.ToString("MMMM dd, yyyy")</span>
-                <button class="glyphicon glyphicon-triangle-right col-xs-3"></button>
+                <span class="col-xs-6" id="date-field">@DateTime.Today.ToString("ddd MMM dd yyyy")</span>
+                <form action="FutureEvents" method="post" class="future-events col-xs-3">
+                    <input type="hidden" value=@(ViewData["UserId"]) name="userId" />
+                    <input type="hidden" value="@DateTime.Today" name="currentlyViewingDate" />
+                    <button class="glyphicon glyphicon-triangle-right"></button>
+                </form>
             </div>
             <br />
             <br />

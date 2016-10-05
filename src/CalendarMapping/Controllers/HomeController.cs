@@ -23,22 +23,23 @@ namespace CalendarMapping.Controllers
 
         public IActionResult Index()
         {
-            var publicCalendarsList = _db.Calendars.Where(c => c.PrivacyStatus == false).ToList();
-            var finalCalendarsList = new Dictionary<Calendar, string>() { };
+            //var publicCalendarsList = _db.Calendars.Where(c => c.PrivacyStatus == false).ToList();
+            //var finalCalendarsList = new Dictionary<Calendar, string>() { };
 
-            foreach (var calendar in publicCalendarsList)
-            {
-                var foundCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendar.Id);
-                var foundEventsList = _db.Events.Where(e => e.Calendar == foundCalendar).ToList();
+            //foreach (var calendar in publicCalendarsList)
+            //{
+            //    var foundCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendar.Id);
+            //    var foundEventsList = _db.Events.Where(e => e.Calendar == foundCalendar).ToList();
 
-                if (foundEventsList.Count > 0)
-                {
-                    var calendarUser = foundCalendar.User.UserName;
-                    finalCalendarsList.Add(foundCalendar, calendarUser);
-                }
-            }
+            //    if (foundEventsList.Count > 0)
+            //    {
+            //        var calendarUser = foundCalendar.User.UserName;
+            //        finalCalendarsList.Add(foundCalendar, calendarUser);
+            //    }
+            //}
 
-            return View(finalCalendarsList);
+            //return View(finalCalendarsList);
+            return View();
         }
 
         //List All Calendar Events

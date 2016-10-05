@@ -101,9 +101,9 @@ namespace CalendarMapping.Controllers
             return Json(todaysEvents);
         }
 
-        //View Previous Events
+        //View Past Events
         [HttpPost]
-        public IActionResult PreviousEvents(string userId, DateTime currentlyViewingDate)
+        public IActionResult PastEvents(string userId, DateTime currentlyViewingDate)
         {
             var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
             var previousEvents = new List<Event>();
@@ -117,6 +117,24 @@ namespace CalendarMapping.Controllers
             }
 
             return Json(previousEvents);
+        }
+
+        //View Future Events
+        [HttpPost]
+        public IActionResult FutureEvents(string userId, DateTime currentlyViewingDate)
+        {
+            var eventsList = _db.Events.Where(e => e.User.Id == userId).ToList();
+            var futureEvents = new List<Event>();
+
+            foreach (var individualEvent in eventsList)
+            {
+                if (individualEvent.StartingDateTime.Month == currentlyViewingDate.Month && individualEvent.StartingDateTime.Day == (currentlyViewingDate.Day + 1) && individualEvent.StartingDateTime.Year == currentlyViewingDate.Year)
+                {
+                    futureEvents.Add(individualEvent);
+                }
+            }
+
+            return Json(futureEvents);
         }
     }
 }

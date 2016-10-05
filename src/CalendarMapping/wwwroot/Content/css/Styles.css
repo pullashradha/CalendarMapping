@@ -87,6 +87,10 @@ input {
     margin-top: 0px;
 }
 
+.glyphicon-triangle-left {
+    margin-left: 83%;
+}
+
 /*----------------------------------Button Styling----------------------------------*/
 
 .btn {
