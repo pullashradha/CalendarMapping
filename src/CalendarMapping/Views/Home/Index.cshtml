@@ -13,7 +13,7 @@
     <body>
         <div>
             @Html.Hidden("EventsListUrl", Url.Action("EventsList"))
-            @Html.Hidden("FavoriteCalendarsUrl", Url.Action("FavoriteCalendars"))
+            @Html.Hidden("AddFavoriteCalendarUrl", Url.Action("AddFavoriteCalendar"))
         </div>
 
         <h1 class="page-header">Welcome to Calendar Mapping!</h1>
@@ -32,7 +32,15 @@
                 <br />
                 @foreach (var calendar in Model)
                 {
-                    <h3 class="profiled-calendars"><span class="glyphicon glyphicon-heart-empty" value="@calendar.Key.Id" name="calendarId"></span><span class="glyphicon glyphicon-heart" value="@calendar.Key.Id" name="calendarId"></span> | @calendar.Key.Name | @calendar.Value</h3>
+                    <h3 class="profiled-calendars">@calendar.Key.Name | @calendar.Value</h3>
+                    <form action="AddFavoriteCalendar" method="post" id="add-favorite-calendar">
+                        <input type="hidden" value="@calendar.Key.Id" name="calendarId" />
+                        <button type="submit" class="glyphicon glyphicon-heart-empty"></button>
+                    </form>
+                    <form action="RemoveFavoriteCalendar" method="post" id="remove-favorite-calendar">
+                        <input type="hidden" value="@calendar.Key.Id" name="calendarId" />
+                        <button type="submit" class="glyphicon glyphicon-heart"></button>
+                    </form>
                     <br />
                     <form action="EventsList" method="get" id="profiled-events-list">
                         <input type="hidden" value=@calendar.Key.Id name="calendarId" />

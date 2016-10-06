@@ -51,34 +51,8 @@ namespace CalendarMapping.Models
     {
         [Key]
         public int Id { get; set; }
-        public virtual User User { get; set; }
+
         public virtual Calendar Calendar { get; set; }
-
-        public FavoriteCalendar() { }
-
-        public FavoriteCalendar(User user, Calendar calendar, int id = 0)
-        {
-            user = User;
-            calendar = Calendar;
-            Id = id;
-        }
-
-        public override bool Equals(System.Object otherFavoriteCalendar)
-        {
-            if (otherFavoriteCalendar is FavoriteCalendar)
-            {
-                FavoriteCalendar newFavoriteCalendar = (FavoriteCalendar)otherFavoriteCalendar;
-                return this.Id.Equals(newFavoriteCalendar.Id);
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public override int GetHashCode()
-        {
-            return this.Id.GetHashCode();
-        }
+        public virtual User User { get; set; }
     }
 }

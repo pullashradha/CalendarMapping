@@ -1,18 +1,21 @@
 ﻿$(document).ready(function () {
-    //Index
+//Index
     $(".glyphicon-heart").hide();
-    $(".glyphicon-heart-empty").click(function () {
-        $(".glyphicon-heart-empty").hide();
-        $(".glyphicon-heart").show();
+    $("#add-favorite-calendar").submit(function (event) {
+        event.preventDefault();
+        console.log("Hello");
+        $("#add-favorite-calendar").hide();
+        $("#remove-favorite-calendar").show();
         $.ajax({
             type: "POST",
             dataType: "html",
             data: $(this).serialize(),
-            url: $("#FavoriteCalendarsUrl").val(),
+            url: $("#AddFavoriteCalendarUrl").val(),
             success: function (result) {
                 location.reload();
             }
         });
+        console.log("Goodbye");
     });
     $("#profiled-events-list").submit(function (event) {
         event.preventDefault();

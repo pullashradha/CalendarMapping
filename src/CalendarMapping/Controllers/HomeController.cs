@@ -60,18 +60,29 @@ namespace CalendarMapping.Controllers
 
         //Favorite A Calendar
         [HttpPost]
-        public IActionResult FavoriteCalendars(int calendarId)
+        public IActionResult AddFavoriteCalendar(int calendarId)
         {
-            var foundCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
+            if (calendarId > 0)
+            {
+                var foundCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
 
-            var username = User.Identity.Name;
-            var currentUser = _db.Users.FirstOrDefault(u => u.UserName == username);
+                var username = User.Identity.Name;
+                var currentUser = _db.Users.FirstOrDefault(u => u.UserName == username);
 
-            _db.FavoriteCalendars.Add(foundCalendar);
-            _db.FavoriteCalendars.Add(currentUser);
-            _db.SaveChanges();
+                FavoriteCalendar favoritedCalendar = new FavoriteCalendar();
 
-            return View();
+                favoritedCalendar.Calendar = foundCalendar;
+                favoritedCalendar.User = currentUser;
+
+                _db.FavoriteCalendars.Add(favoritedCalendar);
+                _db.SaveChanges();
+
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }
