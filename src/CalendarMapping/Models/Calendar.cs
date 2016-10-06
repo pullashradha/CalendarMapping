@@ -27,12 +27,12 @@ namespace CalendarMapping.Models
             Id = id;
         }
 
-        public override bool Equals(System.Object otherEvent)
+        public override bool Equals(System.Object otherCalendar)
         {
-            if (otherEvent is Event)
+            if (otherCalendar is Calendar)
             {
-                Event newEvent = (Event)otherEvent;
-                return this.Id.Equals(newEvent.Id);
+                Calendar newCalendar = (Calendar)otherCalendar;
+                return this.Id.Equals(newCalendar.Id);
             }
             else
             {
@@ -56,8 +56,10 @@ namespace CalendarMapping.Models
 
         public FavoriteCalendar() { }
 
-        public FavoriteCalendar(int id = 0)
+        public FavoriteCalendar(User user, Calendar calendar, int id = 0)
         {
+            user = User;
+            calendar = Calendar;
             Id = id;
         }
 

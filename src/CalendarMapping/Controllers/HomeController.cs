@@ -65,8 +65,11 @@ namespace CalendarMapping.Controllers
             var foundCalendar = _db.Calendars.FirstOrDefault(c => c.Id == calendarId);
 
             var username = User.Identity.Name;
-            var currentUser = _db.Users.SingleOrDefault(u => u.UserName == username);
-            ViewData.Add("UserId", currentUser.Id);
+            var currentUser = _db.Users.FirstOrDefault(u => u.UserName == username);
+
+            _db.FavoriteCalendars.Add(foundCalendar);
+            _db.FavoriteCalendars.Add(currentUser);
+            _db.SaveChanges();
 
             return View();
         }
