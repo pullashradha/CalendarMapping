@@ -33,6 +33,7 @@
                 @foreach (var calendar in Model)
                 {
                     <h3 class="profiled-calendars">@calendar.Key.Name | @calendar.Value</h3>
+                    <br />
                     <form action="AddFavoriteCalendar" method="post" id="add-favorite-calendar">
                         <input type="hidden" value="@calendar.Key.Id" name="calendarId" />
                         <button type="submit" class="glyphicon glyphicon-heart-empty"></button>

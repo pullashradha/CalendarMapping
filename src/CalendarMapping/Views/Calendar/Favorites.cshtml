@@ -9,7 +9,17 @@
         <script src="~/Content/js/CalendarScripts.js" type="text/javascript"></script>
     </head>
     <body>
-        <h1 class="page-header">Favorite Calendars</h1>
-        <br />
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h1 class="page-header">Favorite Calendars</h1>
+            <br />
+
+            <div>
+                @foreach (var calendar in Model)
+                {
+                    <h5>@calendar.Name</h5>
+                }
+            </div>
+        }
     </body>
 </html>

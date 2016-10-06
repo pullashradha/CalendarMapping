@@ -160,7 +160,18 @@ namespace CalendarMapping.Controllers
 
         public IActionResult Favorites()
         {
-            return View();
+            var username = User.Identity.Name;
+            var currentUser = _db.Users.FirstOrDefault(u => u.UserName == username);
+            var userFavorites = _db.FavoriteCalendars.Where(fc => fc.User == currentUser).ToList(); //Apparently Calendar found is null
+
+            var favoriteCalendarsList = new List<Calendar>();
+
+            foreach (var favoriteCalendar in userFavorites)
+            {
+                favoriteCalendarsList.Add(favoriteCalendar.Calendar);
+            }
+
+            return View(favoriteCalendarsList);
         }
     }
 }
