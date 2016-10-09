@@ -1,4 +1,6 @@
-﻿@{
+﻿@model string
+
+@{
     ViewData["Title"] = "Favorite Calendars";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -14,11 +16,18 @@
             <h1 class="page-header">Favorite Calendars</h1>
             <br />
 
-            <div>
-                @foreach (var calendar in Model)
+            <div class="main-content">
+                @if (Model == "You do not have any favorite calendars")
                 {
-                    <h5>@calendar.Name</h5>
+                    <h5>@Model</h5>
                 }
+                @*else
+                {
+                    @foreach (var calendar in Model)
+                    {
+                        <h5>@calendar.Name</h5>
+                    }
+                }*@
             </div>
         }
     </body>

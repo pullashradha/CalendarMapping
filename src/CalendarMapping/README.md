@@ -43,7 +43,7 @@ AccountHolder | TestUser | Test1234!
 ## Known Bugs
 
 * Home/Index page not viewable (User apparently null for public calendar, even though it worked the first time... Update: Username shows 3/10 times & errors 7/10 times without any changes in the view or controller... -__-)
-* Calendar/Favorites page not viewable
+* Calendars are not accessbile by user (Calendar/Favorites) & Users not accessible by Calendar (Home/Index) - in database but show up as null values in controllers
 
 ## Specifications
 

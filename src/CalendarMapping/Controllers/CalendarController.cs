@@ -171,7 +171,14 @@ namespace CalendarMapping.Controllers
                 favoriteCalendarsList.Add(favoriteCalendar.Calendar);
             }
 
-            return View(favoriteCalendarsList);
+            if (favoriteCalendarsList[0] == null)
+            {
+                return View("Favorites", "You do not have any favorite calendars");
+            }
+            else
+            {
+                return View(favoriteCalendarsList);
+            }
         }
     }
 }
