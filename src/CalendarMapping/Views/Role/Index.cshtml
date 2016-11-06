@@ -13,11 +13,7 @@
     </head>
     <body>
         <div>
-            @Html.Hidden("CreateRoleUrl", Url.Action("CreateRole"))
-            @Html.Hidden("EditRoleUrl", Url.Action("EditRole"))
             @Html.Hidden("DeleteRoleUrl", Url.Action("DeleteRole"))
-            @Html.Hidden("AddUserUrl", Url.Action("AddUser"))
-            @Html.Hidden("RemoveUserUrl", Url.Action("RemoveUser"))
         </div>
 
         <h1 class="page-header">Role Manager</h1>
@@ -46,7 +42,7 @@
                 <div class="row">
                     <h5 class="col-xs-2">@role.Name</h5>
                     @*Form should have a class not an id when inside a loop otherwise only the first value in the loop inherits the id & resulting function/request*@
-                    <form action="EditRole" method="post" class="col-xs-4 form-group edit-role row">
+                    <form action="EditRole" method="post" class="col-xs-4 form-group row">
                         <div class="col-xs-9">
                             <label for="roleName">Name</label>
                             <input placeholder="@role.Name" name="roleName" class="form-control" />
@@ -66,7 +62,7 @@
         <br />
 
         <div>
-            <form action="AddUser" method="post" id="add-user-form" class="form-group row">
+            <form action="AddUser" method="post" class="form-group row">
                 <h2>Add User to Role</h2>
                 <div class="col-xs-6">
                     <label>Username</label>
@@ -84,7 +80,7 @@
         <br />
 
         <div>
-            <form action="RemoveUser" method="post" id="remove-user-form" class="form-group row">
+            <form action="RemoveUser" method="post" class="form-group row">
                 <h2>Remove User From Role</h2>
                 <div class="col-xs-6">
                     <label>Username</label>

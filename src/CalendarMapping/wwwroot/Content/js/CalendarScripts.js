@@ -1,32 +1,8 @@
 ﻿$(document).ready(function () {
 //Index
-    $("#new-calendar-form").hide();
+    $(".new-calendar-form").hide();
     $("#new-calendar-btn").click(function () {
-        $("#new-calendar-form").toggle();
-    });
-    $("#new-calendar-form").submit(function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            dataType: "html",
-            data: $(this).serialize(),
-            url: $("#CreateCalendarUrl").val(),
-            success: function (result) {
-                location.reload();
-            }
-        });
-    });
-    $(".edit-calendar").submit(function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            dataType: "html",
-            data: $(this).serialize(),
-            url: $("#EditCalendarUrl").val(),
-            success: function (result) {
-                location.reload();
-            }
-        });
+        $(".new-calendar-form").toggle();
     });
     $(".delete-calendar").submit(function (event) {
         event.preventDefault();
@@ -46,18 +22,6 @@
     $("#new-event-form").hide();
     $("#new-event-btn").click(function () {
         $("#new-event-form").toggle();
-    });
-    $("#new-event-form").submit(function (event) {
-        event.preventDefault();
-        $.ajax({
-            type: "POST",
-            dataType: "html",
-            data: $(this).serialize(),
-            url: $("#CreateEventUrl").val(),
-            success: function (result) {
-                location.reload();
-            }
-        });
     });
     $("#events-list").submit(function (event) {
         event.preventDefault();
@@ -87,7 +51,6 @@
         }
     });
 //Events List
-
 //Calendar Events Map
     $("#map-calendar-events").submit(function (event) {
         event.preventDefault();

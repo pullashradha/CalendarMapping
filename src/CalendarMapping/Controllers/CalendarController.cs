@@ -61,7 +61,7 @@ namespace CalendarMapping.Controllers
             _db.Calendars.Add(newCalendar);
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return View();
         }
 
         //Calendar Details
@@ -91,7 +91,7 @@ namespace CalendarMapping.Controllers
             }
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return View();
         }
 
         //Delete A Calendar
@@ -110,7 +110,7 @@ namespace CalendarMapping.Controllers
             }
 
             _db.SaveChanges();
-            return RedirectToAction("Index");
+            return View();
         }
 
         //-----------------------------------------------------------------------------------------------------//
