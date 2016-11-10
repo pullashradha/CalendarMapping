@@ -43,25 +43,28 @@ namespace CalendarMapping.Controllers
                     firstCalendar.User = newUser;
                     _db.Calendars.Add(firstCalendar);
                     _db.SaveChanges();
-
                     if (registeredUser.Succeeded && userAddedToRole.Succeeded)
                     {
                         Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(newUsername, newPassword, isPersistent: true, lockoutOnFailure: false);
-                        return RedirectToAction("Index", "User");
+                        string message = "succeeded";
+                        return Json(message);
                     }
                     else
                     {
-                        return View();
+                        string message = "failed";
+                        return Json(message);
                     }
                 }
                 else
                 {
-                    return View();
+                    string message = "failed";
+                    return Json(message);
                 }
             }
             else
             {
-                return View();
+                string message = "failed";
+                return Json(message);
             }
         }
 

@@ -143,6 +143,18 @@
     $("#edit-form-btn").click(function () {
         $("#edit-event").toggle();
     });
+    $("#edit-event").submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            dataType: "html",
+            data: $(this).serialize(),
+            url: $("#EditEventUrl").val(),
+            success: function (result) {
+                location.reload();
+            }
+        });
+    });
     $(".delete-event-details").submit(function (event) {
         event.preventDefault();
         if (confirm("Are you sure you want to delete this event?")) {

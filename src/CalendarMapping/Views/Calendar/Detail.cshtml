@@ -13,6 +13,7 @@
     </head>
     <body>
         <div>
+            @Html.Hidden("CreateEventUrl", Url.Action("CreateEvent"))
             @Html.Hidden("EventsListUrl", Url.Action("EventsList"))
             @Html.Hidden("CalendarEventsMapUrl", Url.Action("CalendarEventsMap"))
             @Html.Hidden("DeleteCurrentCalendarUrl", Url.Action("DeleteCalendar"))

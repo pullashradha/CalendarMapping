@@ -9,6 +9,10 @@
         <script src="~/Content/js/AccountScripts.js" type="text/javascript"></script>
     </head>
     <body>
+        <div>
+            @Html.Hidden("RegisterUrl", Url.Action("Register"))
+        </div>
+
         <h1 class="page-header">Register for a New Account</h1>
         <br />
 
@@ -16,7 +20,7 @@
         <br />
 
         <div class="more-content">
-            <form action="Register" method="post" class="form-group">
+            <form class="register-form form-group">
                 <div class="row">
                     <div class="col-xs-6">
                         <label>First Name</label>
@@ -54,5 +58,6 @@
                 <button type="submit" class="btn btn-success account-btn">Register</button>
             </form>
         </div>
+
     </body>
 </html>

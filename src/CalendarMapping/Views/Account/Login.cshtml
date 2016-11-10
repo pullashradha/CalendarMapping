@@ -9,11 +9,15 @@
         <script src="~/Content/js/AccountScripts.js" type="text/javascript"></script>
     </head>
     <body>
+        <div>
+            @Html.Hidden("LoginUrl", Url.Action("Login"))
+        </div>
+
         <h1 class="page-header">Log in to Your Account</h1>
         <br />
 
         <div class="more-content">
-            <form action="Login" method="post" class="form-group">
+            <form action="Login" method="post" class="login-form form-group">
                 <label for="username">Username</label>
                 <input name="username" class="form-control" />
                 <label for="password">Password</label>
