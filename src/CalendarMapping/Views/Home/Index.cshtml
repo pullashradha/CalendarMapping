@@ -19,12 +19,12 @@
         <h1 class="page-header">Welcome to Calendar Mapping!</h1>
         <br />
 
-        <div class="main-content">
-            <h2>Profiled Calendars</h2>
-        </div>
-        <br />
-        <hr />
-        <br />
+        @*<div class="main-content">
+        <h2>Profiled Calendars</h2>
+    </div>
+    <br />
+    <hr />
+    <br />*@
         @if (User.Identity.IsAuthenticated)
         {
             <div class="main-content">
@@ -54,7 +54,7 @@
         }
         else
         {
-            <h2 class="main-content">To view all public calendar @Html.ActionLink("login", "Login", "Account") or @Html.ActionLink("register for a new account", "Register", "Account")</h2>
+            <h2 class="main-content">To view all public calendars @Html.ActionLink("login", "Login", "Account") or @Html.ActionLink("register for a new account", "Register", "Account")</h2>
         }
     </body>
 </html>
